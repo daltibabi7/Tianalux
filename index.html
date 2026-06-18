@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIANA LUX | Luxury Beauty House Canada</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="World-class luxury beauty house in Canada. Specializing in Tiana Locs (braiding, installations, natural hair care) and Brows By Tiana (brows, lashes, nails, manicures).">
+    <meta name="keywords" content="Luxury Beauty Salon Canada, Luxury Loc Specialist Canada, Professional Braiding Services, Luxury Brows Near Me, Lash Extensions Canada, Luxury Nail Services, Beauty Studio Canada, Black Hair Specialist Canada, Loc Retwist Services Canada">
+    <meta name="author" content="Tiana Lux">
+    <!-- Google Fonts: Playfair Display (Luxury Serif) & Montserrat (Modern Sans-Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Luxury Page Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">T I A N A &nbsp; L U X</div>
+            <div class="preloader-line"></div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header id="header-root"></header>
+
+    <!-- Main Dynamic Application Container -->
+    <main id="app-content"></main>
+
+    <!-- Footer -->
+    <footer id="footer-root"></footer>
+
+    <!-- Global Toast Notification System -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Global Video Modal -->
+    <div id="video-modal" class="modal video-modal" onclick="closeVideoModal()">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="video-wrapper">
+                <video id="modal-video-player" controls autoplay loop>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Router and Controller (ES Module) -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
