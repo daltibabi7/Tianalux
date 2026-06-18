@@ -1,56 +1,1618 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIANA LUX | Luxury Beauty House Canada</title>
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="World-class luxury beauty house in Canada. Specializing in Tiana Locs (braiding, installations, natural hair care) and Brows By Tiana (brows, lashes, nails, manicures).">
-    <meta name="keywords" content="Luxury Beauty Salon Canada, Luxury Loc Specialist Canada, Professional Braiding Services, Luxury Brows Near Me, Lash Extensions Canada, Luxury Nail Services, Beauty Studio Canada, Black Hair Specialist Canada, Loc Retwist Services Canada">
-    <meta name="author" content="Tiana Lux">
-    <!-- Google Fonts: Playfair Display (Luxury Serif) & Montserrat (Modern Sans-Serif) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIANA LUX | Luxury Beauty House Canada</title>
+<meta name="description" content="World-class luxury beauty house in Canada. Tiana Locs — loc installations, braiding, natural hair. Brows By Tiana — brows, lashes, nails, manicures.">
+<meta name="keywords" content="Luxury Beauty Salon Canada, Luxury Loc Specialist Canada, Professional Braiding Services, Luxury Brows Near Me, Lash Extensions Canada, Luxury Nail Services, Beauty Studio Canada, Black Hair Specialist Canada, Loc Retwist Services Canada">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#111111;--white:#faf7f2;--gold:#d4af37;--gold-dark:#b59223;--gold-light:#f3e5ab;
+  --beige:#f2e9dc;--beige-dark:#eae3d2;--muted:#6b6359;--serif:'Playfair Display',Georgia,serif;
+  --sans:'Montserrat',sans-serif;--ease:all .5s cubic-bezier(.25,.8,.25,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--white);color:var(--black);font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--white)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+h1,h2,h3,h4,h5{font-family:var(--serif);font-weight:400;letter-spacing:1.5px}
+a{text-decoration:none;color:inherit;transition:var(--ease)}
+img,video{max-width:100%;height:auto;object-fit:cover;display:block}
+
+/* PRELOADER */
+#preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s}
+.pre-logo{font-family:var(--serif);font-size:28px;letter-spacing:10px;color:var(--white);animation:shimmer 2s infinite}
+.pre-bar{width:0;height:1px;background:var(--gold);margin:20px auto 0;animation:grow 1.5s forwards}
+@keyframes shimmer{0%,100%{opacity:.4;color:var(--white)}50%{opacity:1;color:var(--gold)}}
+@keyframes grow{to{width:120px}}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;transition:var(--ease)}
+header.scrolled{background:rgba(250,247,242,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,175,55,.2);box-shadow:0 4px 30px rgba(0,0,0,.05)}
+.nav{max-width:1400px;margin:0 auto;padding:22px 40px;display:flex;justify-content:space-between;align-items:center;transition:var(--ease)}
+header.scrolled .nav{padding:12px 40px}
+.logo{font-family:var(--serif);font-size:22px;letter-spacing:6px;color:var(--white);transition:var(--ease)}
+header.scrolled .logo{color:var(--black)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;list-style:none;gap:28px;align-items:center}
+.nav-links a{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.75);transition:var(--ease);cursor:pointer}
+header.scrolled .nav-links a{color:var(--black)}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)!important}
+.nav-book{border:1px solid var(--gold)!important;color:var(--gold)!important;padding:8px 20px}
+.nav-book:hover{background:var(--gold)!important;color:var(--black)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:24px;height:1.5px;background:var(--white);transition:var(--ease);display:block}
+header.scrolled .burger span{background:var(--black)}
+@media(max-width:960px){
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--black);flex-direction:column;justify-content:center;align-items:center;gap:35px;z-index:999}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:16px;color:rgba(255,255,255,.8)!important}
+  .burger{display:flex;z-index:1000}
+}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:13px 30px;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border:1px solid var(--black);background:transparent;color:var(--black);position:relative;overflow:hidden;z-index:1;transition:var(--ease)}
+.btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--black);z-index:-1;transition:var(--ease)}
+.btn:hover{color:var(--white)}.btn:hover::after{left:0}
+.btn-gold{border-color:var(--gold);color:var(--gold)}.btn-gold::after{background:var(--gold)}.btn-gold:hover{color:var(--black)}
+.btn-solid{background:var(--black);color:var(--white)}.btn-solid::after{background:var(--gold)}.btn-solid:hover{color:var(--black);border-color:var(--gold)}
+.btn-w{border-color:#fff;color:#fff}.btn-w::after{background:#fff}.btn-w:hover{color:var(--black)}
+
+/* LAYOUT */
+.section{padding:90px 20px}
+.container{max-width:1200px;margin:0 auto}
+.section-wrap{text-align:center;margin-bottom:65px}
+.subtitle{font-size:10px;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+.section-title{font-size:40px;margin-bottom:18px}
+.section-title::after{content:'';display:block;width:45px;height:1px;background:var(--gold);margin:14px auto 0}
+.section-desc{max-width:580px;margin:0 auto;color:var(--muted);font-size:15px}
+
+/* ── HOME PAGE ── */
+.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.72) 0%,rgba(17,17,17,.5) 50%,rgba(17,17,17,.82) 100%);z-index:1}
+.hero-body{position:relative;z-index:2;max-width:900px;padding:0 20px;animation:fadeUp 1s .4s both}
+.hero-title{font-size:64px;line-height:1.12;margin-bottom:24px;color:#fff}
+.hero-title em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:14px;letter-spacing:1.5px;color:rgba(255,255,255,.82);margin-bottom:44px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero-ctas{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.scroll-hint{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;font-size:9px;letter-spacing:3px;text-transform:uppercase;opacity:.6;color:#fff;cursor:pointer}
+.scroll-line{width:1px;height:38px;background:var(--gold);margin-top:8px;animation:pulse 2s infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* STATS */
+.stats-bar{background:var(--black);padding:60px 20px;border-bottom:1px solid rgba(212,175,55,.12)}
+.stats-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:40px}
+.stat-num{font-family:var(--serif);font-size:46px;color:var(--gold)}
+.stat-lbl{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:6px}
+
+/* ABOUT SPLIT */
+.about-split{display:flex;align-items:center;gap:70px}
+.about-frame{flex:1;position:relative}
+.about-frame::before{content:'';position:absolute;top:18px;left:18px;right:-18px;bottom:-18px;border:1px solid var(--gold);z-index:0}
+.about-frame img{position:relative;z-index:1;width:100%;height:500px;object-fit:cover}
+.about-text{flex:1.2}
+.about-sig{font-family:var(--serif);font-size:32px;font-style:italic;color:var(--gold-dark);margin-top:28px}
+@media(max-width:900px){.about-split{flex-direction:column;gap:50px}.about-frame::before{display:none}}
+
+/* DIVISIONS SPLIT HOVER */
+.divisions{display:flex;height:580px;overflow:hidden}
+.div-panel{flex:1;position:relative;overflow:hidden;cursor:pointer;transition:flex .8s cubic-bezier(.25,.8,.25,1);display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
+.div-panel:hover{flex:1.5}
+.div-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.2s ease;z-index:0}
+.div-panel:hover .div-bg{transform:scale(1.08)}
+.div-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,17,17,.82),rgba(17,17,17,.42));z-index:1;transition:.8s}
+.div-panel:hover .div-overlay{background:linear-gradient(135deg,rgba(17,17,17,.88),rgba(197,160,89,.18))}
+.div-body{position:relative;z-index:2;padding:40px;max-width:460px;transform:translateY(16px);transition:transform .8s cubic-bezier(.25,.8,.25,1)}
+.div-panel:hover .div-body{transform:translateY(0)}
+.div-title{font-size:36px;color:#fff;letter-spacing:4px;margin-bottom:18px}
+.div-desc{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:32px;line-height:1.7;opacity:.8;transition:opacity .8s}
+.div-panel:hover .div-desc{opacity:1}
+@media(max-width:768px){.divisions{flex-direction:column;height:auto}.div-panel{height:320px}}
+
+/* TRANSFORM GRID */
+.t-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px}
+.t-card{background:#fff;border:1px solid var(--beige-dark);overflow:hidden;transition:var(--ease)}
+.t-card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(197,160,89,.1);border-color:var(--gold)}
+
+/* BEFORE/AFTER SLIDER */
+.ba-wrap{position:relative;width:100%;height:340px;overflow:hidden;user-select:none;cursor:ew-resize}
+.ba-after{position:absolute;inset:0;z-index:1}.ba-after img{width:100%;height:100%;object-fit:cover}
+.ba-before{position:absolute;inset:0;z-index:2;overflow:hidden;width:50%}.ba-before img{width:100%;height:100%;object-fit:cover;min-width:200%}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);z-index:10;cursor:ew-resize}
+.ba-handle::after{content:'↔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:var(--black);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:14px;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.ba-lbl{position:absolute;bottom:12px;background:rgba(17,17,17,.7);color:#fff;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;z-index:8}
+.ba-lbl.l{left:12px}.ba-lbl.r{right:12px}
+
+/* TESTIMONIALS CAROUSEL */
+.testi-section{background:var(--beige)}
+.testi-car{position:relative;max-width:780px;margin:0 auto;overflow:hidden}
+.testi-track{display:flex;transition:transform .6s cubic-bezier(.25,.8,.25,1)}
+.testi-slide{min-width:100%;padding:10px 50px;text-align:center}
+.stars{color:var(--gold);font-size:18px;margin-bottom:22px}
+.testi-quote{font-family:var(--serif);font-size:20px;line-height:1.8;color:var(--black);margin-bottom:28px;font-style:italic}
+.testi-name{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.testi-loc{font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:4px}
+.car-btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;font-size:22px;cursor:pointer;color:var(--black);padding:10px;transition:var(--ease);z-index:5}
+.car-btn:hover{color:var(--gold)}
+.car-btn.prev{left:0}.car-btn.next{right:0}
+.car-dots{display:flex;justify-content:center;gap:10px;margin-top:36px}
+.dot{width:6px;height:6px;background:rgba(0,0,0,.2);border-radius:50%;cursor:pointer;transition:var(--ease)}
+.dot.active{background:var(--gold);transform:scale(1.5)}
+
+/* FINAL CTA */
+.cta-section{background:var(--black);text-align:center;padding:110px 20px;border-top:1px solid rgba(212,175,55,.12)}
+.cta-section h2{color:#fff;font-size:46px;margin-bottom:22px}
+.cta-section p{color:rgba(255,255,255,.65);font-size:15px;letter-spacing:1.5px;margin-bottom:42px}
+
+/* ── SERVICES PAGE ── */
+.page-hero{background:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)) center/cover;padding:150px 20px 80px;text-align:center;color:#fff}
+.page-hero h1{color:#fff;font-size:50px}
+.page-hero p{color:rgba(255,255,255,.7);max-width:560px;margin:16px auto 0;font-size:13px;letter-spacing:1px}
+.filter-row{display:flex;justify-content:center;gap:16px;margin-bottom:50px;flex-wrap:wrap}
+.fbtn{background:transparent;border:1px solid var(--beige-dark);padding:9px 22px;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:var(--ease)}
+.fbtn:hover,.fbtn.active{background:var(--black);color:#fff;border-color:var(--black)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:36px}
+.svc-card{background:#fff;border:1px solid var(--beige-dark);display:flex;flex-direction:column;transition:var(--ease)}
+.svc-card:hover{transform:translateY(-7px);box-shadow:0 18px 38px rgba(197,160,89,.08);border-color:var(--gold)}
+.svc-img{position:relative;height:240px;overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.svc-card:hover .svc-img img{transform:scale(1.07)}
+.svc-tag{position:absolute;top:18px;right:18px;background:var(--black);color:var(--gold);font-size:8px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;z-index:3}
+.svc-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:rgba(17,17,17,.75);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);cursor:pointer;opacity:0;transition:var(--ease);z-index:5;font-size:16px}
+.svc-img:hover .svc-play{opacity:1}
+.svc-play:hover{background:var(--gold);color:var(--black)}
+.svc-body{padding:28px;display:flex;flex-direction:column;flex-grow:1}
+.svc-name{font-size:20px;margin-bottom:10px}
+.svc-desc{color:var(--muted);font-size:12px;line-height:1.7;margin-bottom:22px;flex-grow:1}
+.svc-meta{display:flex;justify-content:space-between;border-top:1px solid var(--white);padding-top:18px;margin-bottom:22px;align-items:center}
+.svc-dur{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.svc-price{font-family:var(--serif);font-size:19px}
+.svc-price small{font-family:var(--sans);font-size:9px;color:var(--muted);font-weight:300;letter-spacing:1px;margin-right:4px}
+.svc-acts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.svc-acts button{padding:11px 8px;font-size:9px;letter-spacing:1.5px}
+
+/* ── PORTFOLIO ── */
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:36px}
+.port-item{background:#fff;border:1px solid var(--beige-dark);overflow:hidden;transition:var(--ease)}
+.port-item:hover{transform:translateY(-7px);box-shadow:0 18px 38px rgba(197,160,89,.08);border-color:var(--gold)}
+.port-info{padding:22px}
+.port-cat{font-size:8px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px}
+.port-title{font-family:var(--serif);font-size:16px;margin-bottom:6px}
+.port-desc{font-size:12px;color:var(--muted)}
+
+/* ── BOOKING WIZARD ── */
+.book-wrap{max-width:860px;margin:0 auto;background:#fff;border:1px solid var(--beige-dark);border-top:3px solid var(--gold)}
+.book-head{background:var(--black);color:#fff;padding:38px 40px;text-align:center}
+.book-head h2{color:#fff;font-size:26px;margin-bottom:8px}
+.book-steps-bar{display:flex;justify-content:space-around;padding:22px 40px;background:var(--white);border-bottom:1px solid var(--beige-dark);flex-wrap:wrap;gap:12px}
+.step-ind{display:flex;align-items:center;gap:9px;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.step-ind.active{color:var(--gold-dark)}
+.step-ind.done{color:var(--black)}
+.step-num{width:22px;height:22px;border-radius:50%;border:1px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:9px}
+.step-ind.active .step-num{border-color:var(--gold);background:var(--gold);color:var(--black)}
+.step-ind.done .step-num{border-color:var(--black);background:var(--black);color:#fff}
+.book-body{padding:38px 40px}
+.book-pane{display:none}.book-pane.active{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.svc-list{display:flex;flex-direction:column;gap:12px;max-height:380px;overflow-y:auto;padding-right:8px}
+.svc-row{border:1px solid var(--beige-dark);padding:18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:var(--ease)}
+.svc-row:hover,.svc-row.sel{border-color:var(--gold);background:var(--white)}
+.svc-row-title{font-family:var(--serif);font-size:16px;margin-bottom:4px}
+.svc-row-sub{font-size:11px;color:var(--muted)}
+.svc-row-price{font-family:var(--serif);font-size:17px;font-weight:500;margin-left:18px}
+.cal-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+@media(max-width:640px){.cal-layout{grid-template-columns:1fr}}
+.cal-box{border:1px solid var(--beige-dark);padding:20px;background:#fff}
+.cal-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.cal-title{font-family:var(--serif);font-size:17px}
+.cal-arrow{background:none;border:none;font-size:18px;cursor:pointer;color:var(--black)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.cal-dh{font-size:9px;font-weight:600;color:var(--muted);padding:4px 0;text-transform:uppercase}
+.cal-d{padding:9px 0;font-size:12px;cursor:pointer;transition:var(--ease);border-radius:2px}
+.cal-d:hover:not(.dis){background:var(--beige)}
+.cal-d.sel{background:var(--gold);color:var(--black);font-weight:600}
+.cal-d.dis{color:rgba(0,0,0,.15);cursor:not-allowed}
+.slots-box{border:1px solid var(--beige-dark);padding:18px;background:#fff}
+.slots-title{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;border-bottom:1px solid var(--white);padding-bottom:8px}
+.slots-grid{display:flex;flex-direction:column;gap:8px;max-height:240px;overflow-y:auto}
+.slot-btn{border:1px solid var(--beige-dark);background:transparent;padding:10px;font-family:var(--sans);font-size:11px;cursor:pointer;transition:var(--ease)}
+.slot-btn:hover:not(.dis),.slot-btn.sel{border-color:var(--black);background:var(--black);color:#fff}
+.slot-btn.dis{opacity:.3;cursor:not-allowed}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg.full{grid-column:span 2}
+.fg label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.fg input,.fg textarea,.fg select{border:1px solid var(--beige-dark);padding:11px 14px;font-family:var(--sans);font-size:13px;background:var(--white);transition:var(--ease)}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--gold);background:#fff}
+@media(max-width:640px){.form-grid{grid-template-columns:1fr}.fg.full{grid-column:span 1}}
+.summary-box{border:1px solid var(--gold);background:var(--white);padding:28px;margin-bottom:28px}
+.sum-title{font-family:var(--serif);font-size:20px;border-bottom:1px solid rgba(212,175,55,.2);padding-bottom:14px;margin-bottom:18px}
+.sum-row{display:flex;justify-content:space-between;margin-bottom:11px;font-size:13px}
+.sum-row.total{border-top:1px solid rgba(212,175,55,.2);padding-top:14px;margin-top:14px;font-size:17px;font-weight:600}
+.sum-lbl{color:var(--muted)}.sum-val{font-weight:500}
+.book-nav{display:flex;justify-content:space-between;margin-top:36px}
+.cat-filter-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+
+/* ── PAYMENT ── */
+.pay-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--beige-dark);padding:38px;box-shadow:0 10px 30px rgba(0,0,0,.04)}
+.pay-tabs{display:flex;justify-content:space-around;margin-bottom:28px;border-bottom:1px solid var(--white);padding-bottom:14px}
+.pay-tab{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:6px 12px;transition:var(--ease)}
+.pay-tab.active{color:var(--gold-dark);border-bottom:2px solid var(--gold)}
+.card-mock{background:linear-gradient(135deg,#1f1f1f,#0d0d0d);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:24px;color:#fff;height:180px;display:flex;flex-direction:column;justify-content:space-between;margin-bottom:28px;position:relative;overflow:hidden}
+.card-mock::before{content:'';position:absolute;width:180px;height:180px;background:radial-gradient(circle,rgba(212,175,55,.06) 0%,transparent 70%);top:-40px;right:-40px}
+.chip{width:36px;height:26px;background:linear-gradient(135deg,#f2e0a2,#b89330);border-radius:4px}
+.card-num-mock{font-family:monospace;font-size:17px;letter-spacing:3px;margin:12px 0}
+.card-btm{display:flex;justify-content:space-between;align-items:flex-end}
+.card-holder-mock,.card-exp-mock{font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.card-brand{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--gold)}
+.receipt{background:var(--white);border:1px dashed var(--gold);padding:28px;margin-top:28px;animation:scaleIn .4s ease}
+@keyframes scaleIn{from{transform:scale(.95);opacity:0}to{transform:scale(1);opacity:1}}
+.receipt-head{text-align:center;border-bottom:1px solid var(--beige-dark);padding-bottom:16px;margin-bottom:16px}
+.receipt-logo{font-family:var(--serif);font-size:17px;letter-spacing:3px}
+
+/* ── TESTIMONIALS PAGE ── */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:32px}
+.review-card{background:#fff;border:1px solid var(--beige-dark);padding:36px;display:flex;flex-direction:column;justify-content:space-between;transition:var(--ease)}
+.review-card:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(197,160,89,.08);border-color:var(--gold)}
+
+/* ── BLOG ── */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:36px}
+.blog-card{background:#fff;border:1px solid var(--beige-dark);display:flex;flex-direction:column;transition:var(--ease)}
+.blog-card:hover{transform:translateY(-7px);box-shadow:0 16px 36px rgba(0,0,0,.05);border-color:var(--gold)}
+.blog-img{height:210px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-body{padding:28px;display:flex;flex-direction:column;flex-grow:1}
+.blog-date{font-size:9px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:9px}
+.blog-title{font-size:19px;margin-bottom:12px;line-height:1.35}
+.blog-sum{font-size:12px;color:var(--muted);margin-bottom:22px;flex-grow:1;line-height:1.6}
+.blog-more{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold-dark);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.article{max-width:780px;margin:0 auto;padding:140px 20px 80px}
+.art-back{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:36px;cursor:pointer}
+.art-cat{font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:12px}
+.art-title{font-size:42px;line-height:1.2;margin-bottom:18px}
+.art-meta{font-size:11px;color:var(--muted)}
+.art-img{height:420px;width:100%;object-fit:cover;margin:38px 0}
+.art-body{font-size:15px;line-height:1.9;color:#2c2c2c}
+.art-body p{margin-bottom:26px}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:54px;margin-top:44px}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr}}
+.contact-panel{background:var(--black);color:#fff;padding:46px;border:1px solid rgba(212,175,55,.15)}
+.contact-panel h3{color:#fff;margin-bottom:28px;font-size:22px}
+.c-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:28px}
+.c-icon{width:38px;height:38px;background:rgba(255,255,255,.04);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:15px;flex-shrink:0}
+.c-lbl{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:4px}
+.c-val{font-size:13px;color:rgba(255,255,255,.6)}
+.socials{display:flex;gap:13px;margin-top:36px}
+.soc-btn{width:42px;height:42px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;cursor:pointer;transition:var(--ease)}
+.soc-btn:hover{border-color:var(--gold);background:var(--gold);color:var(--black)}
+
+/* ── DASHBOARD ── */
+.dash-layout{display:grid;grid-template-columns:250px 1fr;min-height:75vh;border:1px solid var(--beige-dark);background:#fff}
+@media(max-width:800px){.dash-layout{grid-template-columns:1fr}}
+.dash-side{background:var(--black);padding:28px;border-right:1px solid rgba(212,175,55,.12)}
+.dash-logo{font-family:var(--serif);font-size:16px;letter-spacing:3px;color:#fff;margin-bottom:32px;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:14px}
+.dash-user{margin-bottom:28px;padding:13px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
+.dash-uname{font-size:12px;font-weight:600;color:#fff;margin-bottom:2px}
+.dash-urole{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.dash-menu{list-style:none;display:flex;flex-direction:column;gap:6px}
+.d-item{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:11px 14px;cursor:pointer;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:9px;transition:var(--ease);border-radius:3px}
+.d-item:hover,.d-item.active{background:rgba(255,255,255,.05);color:var(--gold)}
+.d-item.danger{color:#ffcdd2}
+.dash-main{padding:36px;overflow-y:auto}
+.d-pane{display:none}.d-pane.active{display:block;animation:fadeIn .4s ease}
+.d-pane-title{font-size:24px;margin-bottom:26px;border-bottom:1px solid var(--white);padding-bottom:13px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin-bottom:36px}
+.metric{background:var(--white);border:1px solid var(--beige-dark);padding:22px;text-align:center}
+.metric-num{font-family:var(--serif);font-size:30px;color:var(--gold-dark);margin-bottom:6px}
+.metric-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.dtable{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.dtable th{background:var(--white);padding:13px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid var(--beige-dark)}
+.dtable td{padding:13px;border-bottom:1px solid var(--white);vertical-align:middle}
+.badge{display:inline-block;padding:3px 9px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;border-radius:20px}
+.badge.approved{background:#e8f5e9;color:#2e7d32}.badge.pending{background:#fff8e1;color:#f57f17}.badge.cancelled{background:#ffebee;color:#c62828}
+.tbl-acts{display:flex;gap:7px}
+.tbl-acts button{border:1px solid var(--beige-dark);background:transparent;padding:5px 10px;font-size:9px;cursor:pointer;transition:var(--ease)}
+.tbl-acts button:hover{background:var(--black);color:#fff}
+.cms-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:32px}
+@media(max-width:700px){.cms-grid{grid-template-columns:1fr}}
+.cms-list{border:1px solid var(--beige-dark);max-height:460px;overflow-y:auto}
+.cms-item{padding:13px 18px;border-bottom:1px solid var(--white);cursor:pointer;display:flex;justify-content:space-between;transition:var(--ease)}
+.cms-item:hover,.cms-item.active{background:var(--white);border-left:3px solid var(--gold)}
+.cms-editor{background:var(--white);border:1px solid var(--beige-dark);padding:26px}
+.upload-zone{border:2px dashed var(--gold);padding:26px;text-align:center;background:#fff;cursor:pointer;transition:var(--ease)}
+.upload-zone:hover{background:var(--beige)}
+.upload-zone p{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* FOOTER */
+footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px solid rgba(212,175,55,.12)}
+.foot-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:46px;max-width:1400px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:46px;margin-bottom:26px}
+@media(max-width:960px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+.foot-brand h2{color:#fff;font-size:24px;letter-spacing:4px;margin-bottom:18px}
+.foot-brand p{color:rgba(255,255,255,.55);font-size:12px;max-width:300px;line-height:1.7;margin-bottom:26px}
+.foot-title{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:13px}
+.foot-links a{color:rgba(255,255,255,.55);font-size:12px;transition:var(--ease);cursor:pointer}
+.foot-links a:hover{color:var(--gold);padding-left:5px}
+.nl-form{display:flex;margin-top:6px}
+.nl-input{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:11px 14px;color:#fff;font-family:var(--sans);font-size:12px;flex-grow:1}
+.nl-input:focus{outline:none;border-color:var(--gold)}
+.nl-btn{background:var(--gold);border:none;color:var(--black);padding:0 18px;cursor:pointer;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:var(--ease)}
+.nl-btn:hover{background:#fff}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;font-size:10px;color:rgba(255,255,255,.35);flex-wrap:wrap;gap:10px}
+.foot-tag{font-style:italic;color:var(--gold)}
+
+/* TOAST */
+#toasts{position:fixed;bottom:28px;right:28px;z-index:99999;display:flex;flex-direction:column;gap:12px}
+.toast{background:var(--black);color:#fff;border-left:4px solid var(--gold);padding:14px 24px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;box-shadow:0 8px 28px rgba(0,0,0,.25);animation:fadeUp .4s ease forwards}
+.toast.err{border-left-color:#f44336}.toast.ok{border-left-color:#4caf50}
+
+/* VIDEO MODAL */
+#vmodal{display:none;position:fixed;inset:0;background:rgba(17,17,17,.92);z-index:99999;justify-content:center;align-items:center}
+#vmodal.open{display:flex}
+.v-close{position:absolute;top:26px;right:36px;color:#fff;font-size:48px;font-weight:200;cursor:pointer;transition:var(--ease);line-height:1}
+.v-close:hover{color:var(--gold)}
+.v-content{max-width:880px;width:92%;position:relative;padding-bottom:50.25%;height:0}
+.v-content video{position:absolute;inset:0;width:100%;height:100%;border:1px solid var(--gold)}
+
+/* ABOUT PAGE */
+.about-hero-bg{background:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80') center/cover}
+.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+@media(max-width:768px){.about-values{grid-template-columns:1fr}}
+.value-card{background:#fff;border:1px solid var(--beige-dark);padding:36px;text-align:center;transition:var(--ease)}
+.value-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.value-icon{font-size:30px;margin-bottom:16px}
+.value-title{font-size:18px;margin-bottom:12px}
+.value-desc{font-size:12px;color:var(--muted);line-height:1.7}
+.creds-bar{background:var(--black);color:#fff;padding:80px 20px;border-bottom:1px solid rgba(212,175,55,.12)}
+
+/* MISC */
+.hidden{display:none!important}
+.map-ph{width:100%;height:240px;background:#e5e0d8;border:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;margin-top:28px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+</style>
 </head>
 <body>
-    <!-- Luxury Page Preloader -->
-    <div id="preloader" class="preloader">
-        <div class="preloader-content">
-            <div class="preloader-logo">T I A N A &nbsp; L U X</div>
-            <div class="preloader-line"></div>
-        </div>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div>
+    <div class="pre-logo">T I A N A &nbsp; L U X</div>
+    <div class="pre-bar"></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <nav class="nav">
+    <a class="logo" onclick="goTo('home')">TIANA <span>LUX</span></a>
+    <div class="burger" id="burger">
+      <span></span><span></span><span></span>
     </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a onclick="goTo('home');closeMenu()">Home</a></li>
+      <li><a onclick="goTo('about');closeMenu()">About</a></li>
+      <li><a onclick="goTo('services');closeMenu()">Services</a></li>
+      <li><a onclick="goTo('portfolio');closeMenu()">Portfolio</a></li>
+      <li><a onclick="goTo('testimonials');closeMenu()">Reviews</a></li>
+      <li><a onclick="goTo('blog');closeMenu()">Blog</a></li>
+      <li><a onclick="goTo('contact');closeMenu()">Contact</a></li>
+      <li><a onclick="goTo('dashboard');closeMenu()">Dashboard</a></li>
+      <li><a class="nav-book btn" onclick="goTo('booking');closeMenu()">Book Now</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <!-- Header Navigation -->
-    <header id="header-root"></header>
+<!-- MAIN CONTENT -->
+<main id="page"></main>
 
-    <!-- Main Dynamic Application Container -->
-    <main id="app-content"></main>
+<!-- FOOTER -->
+<footer id="site-footer"></footer>
 
-    <!-- Footer -->
-    <footer id="footer-root"></footer>
+<!-- TOAST CONTAINER -->
+<div id="toasts"></div>
 
-    <!-- Global Toast Notification System -->
-    <div id="toast-container" class="toast-container"></div>
+<!-- VIDEO MODAL -->
+<div id="vmodal" onclick="closeVid()">
+  <span class="v-close" onclick="closeVid()">&times;</span>
+  <div class="v-content" onclick="event.stopPropagation()">
+    <video id="vplayer" controls autoplay loop playsinline></video>
+  </div>
+</div>
 
-    <!-- Global Video Modal -->
-    <div id="video-modal" class="modal video-modal" onclick="closeVideoModal()">
-        <span class="close-modal">&times;</span>
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="video-wrapper">
-                <video id="modal-video-player" controls autoplay loop>
-                    <source src="" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+<script>
+/* =============================================
+   TIANA LUX — LUXURY BEAUTY SPA
+   Single-file SPA — All JS below
+   =============================================*/
+
+/* ── STATE / LOCAL DB ── */
+const DEFAULTS = {
+  services:[
+    {id:'l1',cat:'locs',name:'Luxury Starter Locs',desc:'Begin your loc journey with precision comb coils or two-strand twists. Includes a hair analysis, deep detoxifying wash, steam treatment and professional mapping.',dur:'180 min',price:250,dep:50,img:'https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4'},
+    {id:'l2',cat:'locs',name:'Premium Loc Retwist & Style',desc:'Professional palm rolling or interlocking to secure new growth. Finished with luxury hair oil massage and your choice of design — barrels, ropes or updos.',dur:'120 min',price:150,dep:50,img:'https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4'},
+    {id:'l3',cat:'locs',name:'Instant Loc Installation',desc:'Crochet needle method for mature-looking locs instantly. Ideal for straight, wavy or curly textures. Extensions available upon consultation.',dur:'360 min',price:650,dep:150,img:'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',vid:''},
+    {id:'l4',cat:'locs',name:'Knotless Braids (Medium/Long)',desc:'Sleek, lightweight, tension-free knotless braiding. Includes custom hair blending, wash, blow dry and gold thread accessory highlights.',dur:'240 min',price:280,dep:50,img:'https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&q=80',vid:''},
+    {id:'l5',cat:'locs',name:'Botanical Deep Hair Treatment',desc:'Custom blend of organic oils and deep steam hydration to restore moisture-protein balance in dry, damaged or color-treated natural hair.',dur:'60 min',price:95,dep:30,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:''},
+    {id:'b1',cat:'brows',name:'Luxury Brow Sculpt & Tint',desc:'Precision map, custom wax/thread, tweeze and tint using premium hybrid dyes that stain skin and color brow hairs for up to 6 weeks.',dur:'45 min',price:80,dep:25,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4'},
+    {id:'b2',cat:'brows',name:'Luxury Brow Lamination',desc:'Keratin-infused lifting treatment that aligns brow hairs in a uniform upward direction, creating a fuller, fluffier, high-fashion runway look.',dur:'60 min',price:120,dep:40,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:''},
+    {id:'b3',cat:'brows',name:'Premium Silk Lash Extensions',desc:'Full set of feather-light silk lash extensions. Hand-applied using medical-grade adhesive. Available in natural, wispy, cat-eye or hybrid volumes.',dur:'120 min',price:180,dep:50,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4'},
+    {id:'b4',cat:'brows',name:'Signature Gel Manicure',desc:'Luxury nail shaping, cuticle care, hand exfoliation and premium LED-cured gel polish. Finished with warm towel wrapping and gold-infused cuticle oil.',dur:'50 min',price:75,dep:25,img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4'},
+    {id:'b5',cat:'brows',name:'Luxury Jelly Pedicure SPA',desc:'Relaxing foot soak in warm organic jelly, detailed scrub, callus removal, nourishing mud masque, hot stone massage and professional gel polish.',dur:'75 min',price:110,dep:35,img:'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80',vid:''}
+  ],
+  portfolio:[
+    {id:'p1',cat:'locs',title:'Loc Installation & Grooming',desc:'6-month progression of instant locs using human hair extensions.',type:'slider',before:'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&q=80',after:'https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&q=80'},
+    {id:'p2',cat:'brows',title:'Ombre Powder Brows',desc:'Perfect gradient shading from light bulbs to defined dark arches.',type:'slider',before:'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',after:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80'},
+    {id:'p3',cat:'hair',title:'Luxury Fulani Braids',desc:'Intricate scalp patterns with long waist-length braids.',type:'video',img:'https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4'},
+    {id:'p4',cat:'nails',title:'Luxury Gold Foil Nail Art',desc:'French tips embellished with 24k gold foil accents on acrylic extensions.',type:'image',img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80'},
+    {id:'p5',cat:'lashes',title:'Volume Lashes Dramatic Set',desc:'Full volume 5D lashes with dramatic yet lightweight fluffiness.',type:'slider',before:'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&q=80',after:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80'},
+    {id:'p6',cat:'nails',title:'Champagne Nude Extensions',desc:'Handpainted chrome details on coffin gel nails.',type:'video',img:'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4'}
+  ],
+  testimonials:[
+    {id:'t1',name:'Amara K.',loc:'Toronto, ON',rating:5,comment:'Tiana is the absolute queen of locs! She started my loc journey 6 months ago and they look incredibly clean and healthy. The studio vibe is pure Beverly Hills — luxurious, peaceful and professional.',vid:''},
+    {id:'t2',name:'Sophia M.',loc:'Mississauga, ON',rating:5,comment:'I get my brow lamination and lash extensions done here every 6 weeks. The precision is unmatched. The champagne service makes you feel like royalty.',vid:''},
+    {id:'t3',name:'Chloe D.',loc:'Oakville, ON',rating:5,comment:'Unmatched nail art! I showed Tiana a design from a Dubai influencer and she executed it even better. The gel manicure easily lasts 5 weeks without lifting.',vid:''}
+  ],
+  blogs:[
+    {id:'bg1',cat:'Loc Care',title:'The Ultimate Guide to Starter Locs Maintenance',summary:'Important routines, washing schedules and organic oils for your starter locs journey.',content:'Embarking on a loc journey is a beautiful decision. However, the starter stage is crucial.\n\nHere are 3 key tips from Tiana Lux:\n\n1. Avoid Frequent Washing — Wash only once every 3–4 weeks using a stocking cap to protect the coils. Use a residue-free shampoo.\n\n2. Moisturize Correctly — Avoid heavy waxes or petroleum products. Opt for light botanical rosewater mist and jojoba oil.\n\n3. Protect at Night — Always wear a satin or silk bonnet to lock in moisture and prevent lint.\n\nStay confident, trust the process, and visit our Toronto house for professional steam treatments!',date:'June 15, 2026',img:'https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80'},
+    {id:'bg2',cat:'Brows',title:'How to Extend Your Brow Lamination Lifespan',summary:'Maximize your fluffy brow look for up to 8 weeks with these professional post-treatment rules.',content:'Brow lamination gives you that dreamy, full, brushed-up brow look. But how do you keep it looking fresh for 6–8 weeks?\n\nFirst 24 Hours:\n\nKeep brows completely dry. No sweat, steam or face washing. Avoid sleeping on your face to prevent crimping.\n\nDaily Care:\n\nApply a drop of castor oil or keratin brow serum every night to keep hairs hydrated. Brush them in place each morning using a clean spoolie brush.\n\nWith consistent care your lamination results can last up to 8 weeks — extending your investment and keeping your look runway-ready.',date:'June 10, 2026',img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80'},
+    {id:'bg3',cat:'Nail Care',title:'5 Nail Health Tips Between Acrylic Sets',summary:'Keep your natural nails strong, flexible and hydrated even with regular extensions.',content:'Acrylics look stunning but your natural nails need care too.\n\n1. Never peel or pick extensions off — always soak off professionally.\n\n2. Apply cuticle oil twice daily. Cuticle hydration stimulates healthy nail growth.\n\n3. Take a 1-week break every 3 months. Use a keratin nail strengthener during the break.\n\n4. Wear gloves when using household cleaning products.\n\n5. Stay hydrated. Healthy nails start from the inside — drink at least 8 glasses of water daily.',date:'June 05, 2026',img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80'}
+  ],
+  bookings:[
+    {id:'bk101',client:'Amara K.',email:'amara@example.com',phone:'+1 (416) 555-0199',svcName:'Premium Loc Retwist & Style',svcId:'l2',date:'2026-06-25',time:'10:00 AM',notes:'Barrels style please.',status:'Approved',paid:50,payType:'Deposit Only',receipt:'TX-2026-0988'},
+    {id:'bk102',client:'Sophia M.',email:'sophia@example.com',phone:'+1 (905) 555-0144',svcName:'Luxury Brow Sculpt & Tint',svcId:'b1',date:'2026-06-28',time:'02:00 PM',notes:'Prefer threading over waxing.',status:'Approved',paid:80,payType:'Full Payment',receipt:'TX-2026-0989'}
+  ],
+  inquiries:[
+    {id:'iq1',name:'Jessica Jones',email:'jessica@example.com',phone:'+1 (647) 555-0112',msg:'Hi, do you offer bridal packages for loc styling and makeup for a party of 5?',date:'2026-06-17',status:'Unread'}
+  ],
+  client:{name:'Amara K.',email:'amara@example.com',phone:'+1 (416) 555-0199'}
+};
+
+function db(key){
+  const raw=localStorage.getItem('tl_'+key);
+  if(!raw){localStorage.setItem('tl_'+key,JSON.stringify(DEFAULTS[key]));return DEFAULTS[key];}
+  return JSON.parse(raw);
+}
+function dbSet(key,val){localStorage.setItem('tl_'+key,JSON.stringify(val));}
+function dbGetServices(){return db('services');}
+function dbGetPortfolio(){return db('portfolio');}
+function dbGetTestimonials(){return db('testimonials');}
+function dbGetBlogs(){return db('blogs');}
+function dbGetBookings(){return db('bookings');}
+function dbGetInquiries(){return db('inquiries');}
+function dbGetClient(){return db('client');}
+
+/* ── ROUTER ── */
+let currentPage='home';
+function goTo(page,extra){
+  currentPage=page;
+  window.scrollTo({top:0,behavior:'instant'});
+  const el=document.getElementById('page');
+  el.innerHTML=render(page,extra);
+  setTimeout(()=>initPage(page,extra),50);
+  updateNav(page);
+  renderFooter();
+}
+function updateNav(page){
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('onclick')&&a.getAttribute('onclick').includes("'"+page+"'")){a.classList.add('active');}
+  });
+}
+
+/* ── GLOBAL UTILS ── */
+function toast(msg,type='ok'){
+  const c=document.getElementById('toasts');
+  const d=document.createElement('div');
+  d.className='toast '+type;d.textContent=msg;c.appendChild(d);
+  setTimeout(()=>d.remove(),3500);
+}
+function openVid(src){
+  const m=document.getElementById('vmodal');
+  const v=document.getElementById('vplayer');
+  v.src=src;m.classList.add('open');v.play().catch(()=>{});
+}
+function closeVid(){
+  const m=document.getElementById('vmodal');
+  const v=document.getElementById('vplayer');
+  m.classList.remove('open');v.pause();v.src='';
+}
+
+/* ── BEFORE/AFTER SLIDER ── */
+function initBA(){
+  document.querySelectorAll('.ba-wrap').forEach(wrap=>{
+    const handle=wrap.querySelector('.ba-handle');
+    const before=wrap.querySelector('.ba-before');
+    let dragging=false;
+    function setPos(x){
+      const r=wrap.getBoundingClientRect();
+      let p=((x-r.left)/r.width)*100;
+      p=Math.max(0,Math.min(100,p));
+      before.style.width=p+'%';
+      handle.style.left=p+'%';
+    }
+    handle.addEventListener('mousedown',e=>{dragging=true;e.preventDefault();});
+    window.addEventListener('mouseup',()=>dragging=false);
+    window.addEventListener('mousemove',e=>{if(dragging)setPos(e.clientX);});
+    handle.addEventListener('touchstart',()=>dragging=true,{passive:true});
+    window.addEventListener('touchend',()=>dragging=false);
+    window.addEventListener('touchmove',e=>{if(dragging&&e.touches[0])setPos(e.touches[0].clientX);},{passive:true});
+    before.style.width='50%';handle.style.left='50%';
+  });
+}
+
+/* ── RENDER PAGES ── */
+function render(page,extra){
+  switch(page){
+    case 'home':return renderHome();
+    case 'about':return renderAbout();
+    case 'services':return renderServices(extra);
+    case 'portfolio':return renderPortfolio();
+    case 'testimonials':return renderTestimonials();
+    case 'blog':return extra?renderArticle(extra):renderBlog();
+    case 'contact':return renderContact();
+    case 'dashboard':return renderDashboard();
+    case 'booking':return renderBooking(extra);
+    case 'payment':return renderPayment();
+    default:return renderHome();
+  }
+}
+
+/* ── HOME ── */
+function renderHome(){
+  const testimonials=dbGetTestimonials();
+  const slides=testimonials.map((t,i)=>`
+    <div class="testi-slide">
+      <div class="stars">${'★'.repeat(t.rating)}${'☆'.repeat(5-t.rating)}</div>
+      <p class="testi-quote">"${t.comment}"</p>
+      <div class="testi-name">${t.name}</div>
+      <div class="testi-loc">${t.loc}</div>
+      ${t.vid?`<button class="btn btn-gold" style="margin-top:18px;padding:8px 18px;font-size:9px;" onclick="openVid('${t.vid}')">▶ Watch Video</button>`:''}
+    </div>`).join('');
+  const dots=testimonials.map((_,i)=>`<div class="dot ${i===0?'active':''}" onclick="goSlide(${i})"></div>`).join('');
+  const portfolio=dbGetPortfolio().slice(0,3);
+  const cards=portfolio.map(p=>portCard(p)).join('');
+  return `
+  <section class="hero">
+    <video class="hero-vid" autoplay loop muted playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-body">
+      <div class="subtitle" style="color:var(--gold)">Exclusive Beauty House · Canada</div>
+      <h1 class="hero-title">Beauty Refined.<br><em>Confidence Elevated.</em></h1>
+      <p class="hero-sub">A luxury beauty house specialising in premium locs, braiding, precision brows, lash extensions and manicures.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-gold" onclick="goTo('booking')">Book Appointment</button>
+        <button class="btn btn-w" onclick="goTo('services')">Explore Services</button>
+      </div>
+    </div>
+    <div class="scroll-hint" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">
+      Scroll<div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div id="stats-section" class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item" style="text-align:center"><div class="stat-num">100+</div><div class="stat-lbl">Happy Clients Weekly</div></div>
+      <div class="stat-item" style="text-align:center"><div class="stat-num">5-Star</div><div class="stat-lbl">Client Experience</div></div>
+      <div class="stat-item" style="text-align:center"><div class="stat-num">Premium</div><div class="stat-lbl">Beauty Standards</div></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-frame"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Tiana Lux"></div>
+        <div class="about-text">
+          <div class="subtitle">About Tiana Lux</div>
+          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Canada's Elite Beauty Destination</h2>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Tiana Lux is not simply a salon. It is a premium beauty house where self-care meets unmatched professional mastery.</p>
+          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Through our two dedicated divisions — Tiana Locs and Brows By Tiana — we tailor every treatment to your unique aesthetic.</p>
+          <button class="btn btn-solid" onclick="goTo('about')">Our Story</button>
+          <div class="about-sig">Tiana Lux</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding:80px 0 0">
+    <div class="section-wrap"><div class="subtitle">Specialist Divisions</div><h2 class="section-title">Explore Our Artistry</h2></div>
+    <div class="divisions">
+      <div class="div-panel" onclick="goTo('services','locs')">
+        <div class="div-bg" style="background-image:url('https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=1200&q=80')"></div>
+        <div class="div-overlay"></div>
+        <div class="div-body">
+          <div class="div-title">TIANA LOCS</div>
+          <p class="div-desc">Expert braiding, loc installations, retwists, natural hair care and protective styling designed to elevate your texture.</p>
+          <button class="btn btn-gold">Explore Hair Services</button>
+        </div>
+      </div>
+      <div class="div-panel" onclick="goTo('services','brows')">
+        <div class="div-bg" style="background-image:url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80')"></div>
+        <div class="div-overlay"></div>
+        <div class="div-body">
+          <div class="div-title">BROWS BY TIANA</div>
+          <p class="div-desc">Luxury brows, lash extensions, gel manicures, pedicures and beauty treatments crafted with precision.</p>
+          <button class="btn btn-gold">Explore Beauty Services</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-wrap">
+        <div class="subtitle">Transformations</div>
+        <h2 class="section-title">Artistry In Action</h2>
+        <p class="section-desc">Real, untouched transformations highlighting the precision of our specialists.</p>
+      </div>
+      <div class="t-grid">${cards}</div>
+      <div style="text-align:center;margin-top:54px"><button class="btn btn-solid" onclick="goTo('portfolio')">View Full Portfolio</button></div>
+    </div>
+  </section>
+
+  <section class="section testi-section">
+    <div class="container">
+      <div class="section-wrap">
+        <div class="subtitle">Testimonials</div>
+        <h2 class="section-title">The Lux Experience</h2>
+        <p class="section-desc">Hear from our exclusive clientele who trust Tiana Lux with their beauty routines.</p>
+      </div>
+      <div class="testi-car">
+        <button class="car-btn prev" onclick="shiftSlide(-1)">←</button>
+        <div class="testi-track" id="ttrack">${slides}</div>
+        <button class="car-btn next" onclick="shiftSlide(1)">→</button>
+        <div class="car-dots">${dots}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready To Experience Luxury Beauty?</h2>
+      <p>Schedule your session today. All slots include complimentary tea, coffee or champagne.</p>
+      <button class="btn btn-gold" style="padding:16px 40px" onclick="goTo('booking')">Book Your Appointment Today</button>
+    </div>
+  </section>`;
+}
+
+let slideIdx=0;
+function goSlide(i){
+  slideIdx=i;
+  const track=document.getElementById('ttrack');
+  if(track)track.style.transform=`translateX(-${i*100}%)`;
+  document.querySelectorAll('.dot').forEach((d,idx)=>d.classList.toggle('active',idx===i));
+}
+function shiftSlide(dir){
+  const testimonials=dbGetTestimonials();
+  slideIdx=(slideIdx+dir+testimonials.length)%testimonials.length;
+  goSlide(slideIdx);
+}
+
+function portCard(p){
+  if(p.type==='slider'){return `<div class="t-card"><div class="ba-wrap"><div class="ba-after"><img src="${p.after}" alt="${p.title}"></div><div class="ba-before"><img src="${p.before}" alt="${p.title}"></div><div class="ba-handle"></div><div class="ba-lbl l">Before</div><div class="ba-lbl r">After</div></div><div class="port-info"><div class="port-cat">${p.cat}</div><h4 class="port-title">${p.title}</h4><p class="port-desc">${p.desc}</p></div></div>`;}
+  if(p.type==='video'){return `<div class="t-card"><div class="svc-img" style="height:300px"><img src="${p.img}" alt="${p.title}"><div class="svc-play" onclick="openVid('${p.vid}')">▶</div></div><div class="port-info"><div class="port-cat">${p.cat}</div><h4 class="port-title">${p.title}</h4><p class="port-desc">${p.desc}</p></div></div>`;}
+  return `<div class="t-card"><div class="svc-img" style="height:300px"><img src="${p.img}" alt="${p.title}"></div><div class="port-info"><div class="port-cat">${p.cat}</div><h4 class="port-title">${p.title}</h4><p class="port-desc">${p.desc}</p></div></div>`;
+}
+
+/* ── ABOUT ── */
+function renderAbout(){return `
+  <section class="page-hero about-hero-bg">
+    <div class="subtitle" style="color:var(--gold)">Our Essence</div>
+    <h1>Welcome To Tiana Lux</h1>
+    <p>Delivering world-class beauty enhancements and premium natural hair styling.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-text" style="flex:1.2">
+          <div class="subtitle">Founder & Artist</div>
+          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Meet Tiana</h2>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Tiana is a senior beauty practitioner and natural hair specialist based in Toronto, Canada. With over a decade of experience styling premium clienteles in London, Dubai and Canada, she established TIANA LUX to provide a sophisticated sanctuary for self-care.</p>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Her dual specialisation in intricate loc installations and precision brow design has positioned her as an authority in the Canadian beauty landscape.</p>
+          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Tiana believes beauty enhancements are deeply personal rituals that celebrate natural beauty and restore inner confidence.</p>
+          <div class="about-sig">Tiana Lux</div>
+        </div>
+        <div class="about-frame" style="flex:1"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Tiana" style="height:500px;object-fit:cover"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:var(--beige)">
+    <div class="container" style="max-width:860px;text-align:center">
+      <div class="subtitle">The Legacy</div>
+      <h2 class="section-title">Our Brand Story</h2>
+      <p style="font-size:15px;line-height:1.9;color:var(--black);margin-bottom:22px">Tiana Lux was conceived during Tiana's travels between Dubai and London. Witnessing the highly specialised premium service structures of overseas beauty houses, she noticed a gap in the Canadian market. Salons were predominantly generic operations where clients felt rushed and procedures lacked precision.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--black)">By creating TIANA LUX she unified two distinct domains under a single banner of luxury standards: <strong>TIANA LOCS</strong> and <strong>BROWS BY TIANA</strong>. Today our Toronto beauty house serves as a sanctuary where clients enjoy champagne, peaceful ambient sounds and bespoke beauty design.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-wrap"><div class="subtitle">Values</div><h2 class="section-title">Our Pillars</h2></div>
+      <div class="about-values">
+        <div class="value-card"><div class="value-icon">👁</div><h3 class="value-title">Our Vision</h3><p class="value-desc">To stand as the leading authority in Canadian luxury beauty, rivalling elite houses in Beverly Hills and London.</p></div>
+        <div class="value-card"><div class="value-icon">🛡</div><h3 class="value-title">Our Mission</h3><p class="value-desc">To honour our client's time, protect the health of natural hair and skin, and craft beauty enhancements with surgical precision.</p></div>
+        <div class="value-card"><div class="value-icon">✨</div><h3 class="value-title">Philosophy</h3><p class="value-desc">True beauty is an inside-out alignment. We don't mask who you are; we refine your features to elevate your natural, elegant self.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="creds-bar">
+    <div class="container" style="max-width:760px;text-align:center">
+      <div class="subtitle" style="color:var(--gold)">Credentials</div>
+      <h2 class="section-title" style="color:#fff;margin-bottom:32px">Mastery Certified</h2>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:22px;font-size:14px;font-weight:300;color:rgba(255,255,255,.75)">
+        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Senior Locs Practitioner Certification</strong> · London Academy of Natural Styling</li>
+        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Microblading & Lamination Master</strong> · Dubai Eyebrow Guild</li>
+        <li><strong>Aesthetician & Cosmetology Diploma</strong> · Ontario College of Aesthetics</li>
+      </ul>
+    </div>
+  </section>`;}
+
+/* ── SERVICES ── */
+function renderServices(cat){
+  const svcs=dbGetServices();
+  const cards=svcs.map(s=>`
+    <div class="svc-card" data-cat="${s.cat}">
+      <div class="svc-img">
+        <img src="${s.img}" alt="${s.name}">
+        <div class="svc-tag">${s.cat==='locs'?'Tiana Locs':'Brows By Tiana'}</div>
+        ${s.vid?`<div class="svc-play" onclick="openVid('${s.vid}')">▶</div>`:''}
+      </div>
+      <div class="svc-body">
+        <h3 class="svc-name">${s.name}</h3>
+        <p class="svc-desc">${s.desc}</p>
+        <div class="svc-meta">
+          <span class="svc-dur">⏱ ${s.dur}</span>
+          <span class="svc-price"><small>starting at</small>$${s.price}</span>
+        </div>
+        <div class="svc-acts">
+          <button class="btn btn-solid" onclick="goTo('booking','${s.id}')">Book Slot</button>
+          <button class="btn btn-gold" onclick="goTo('booking','${s.id}')">Pay Deposit</button>
+        </div>
+      </div>
+    </div>`).join('');
+  return `
+  <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80')">
+    <div class="subtitle" style="color:var(--gold)">Services & Pricing</div>
+    <h1>The Luxury Catalog</h1>
+    <p>Indulge in our tailored services. Select a treatment to reserve your beauty experience.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="filter-row">
+        <button class="fbtn ${!cat||cat==='all'?'active':''}" onclick="filterSvc('all')">All Services</button>
+        <button class="fbtn ${cat==='locs'?'active':''}" onclick="filterSvc('locs')">Tiana Locs</button>
+        <button class="fbtn ${cat==='brows'?'active':''}" onclick="filterSvc('brows')">Brows By Tiana</button>
+      </div>
+      <div class="svc-grid" id="svc-grid">${cards}</div>
+    </div>
+  </section>`;
+}
+function filterSvc(cat){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(cat)||cat==='all'&&b.textContent==='All Services'));
+  document.querySelectorAll('.svc-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';});
+}
+
+/* ── PORTFOLIO ── */
+function renderPortfolio(){
+  const cards=dbGetPortfolio().map(p=>`<div class="port-item" data-cat="${p.cat}">${portCard(p)}</div>`).join('');
+  return `
+  <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=1600&q=80')">
+    <div class="subtitle" style="color:var(--gold)">Visual Showcase</div>
+    <h1>The Artistry Wall</h1>
+    <p>Browse clinical before/after results, close-up details and cinematic procedural reels.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="filter-row">
+        <button class="fbtn active" onclick="filterPort('all')">All Art</button>
+        <button class="fbtn" onclick="filterPort('locs')">Locs</button>
+        <button class="fbtn" onclick="filterPort('hair')">Hair & Braids</button>
+        <button class="fbtn" onclick="filterPort('brows')">Brows</button>
+        <button class="fbtn" onclick="filterPort('lashes')">Lashes</button>
+        <button class="fbtn" onclick="filterPort('nails')">Nails</button>
+      </div>
+      <div class="port-grid" id="port-grid">${cards}</div>
+    </div>
+  </section>`;
+}
+function filterPort(cat){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.port-item').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';});
+  initBA();
+}
+
+/* ── TESTIMONIALS ── */
+function renderTestimonials(){
+  const ts=dbGetTestimonials();
+  const cards=ts.map(t=>`
+    <div class="review-card">
+      <div>
+        <div class="stars">${'★'.repeat(t.rating)}${'☆'.repeat(5-t.rating)}</div>
+        <p style="font-family:var(--serif);font-size:17px;line-height:1.75;font-style:italic;margin-bottom:20px">"${t.comment}"</p>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--white);padding-top:14px">
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase">${t.name}</div><div style="font-size:9px;color:var(--muted);margin-top:3px">${t.loc}</div></div>
+        ${t.vid?`<button class="btn btn-gold" style="padding:6px 12px;font-size:8px" onclick="openVid('${t.vid}')">▶ Watch</button>`:''}
+      </div>
+    </div>`).join('');
+  return `
+  <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80')">
+    <div class="subtitle" style="color:var(--gold)">Client Reviews</div>
+    <h1>The Lux Testimonies</h1>
+    <p>Read verified written and video reviews from our elite Canadian community.</p>
+  </section>
+  <section class="section">
+    <div class="container"><div class="review-grid">${cards}</div></div>
+  </section>
+  <section class="section" style="background:var(--beige);border-top:1px solid var(--beige-dark)">
+    <div class="container" style="max-width:580px">
+      <div class="section-wrap" style="margin-bottom:36px"><div class="subtitle">Feedback</div><h2 class="section-title" style="font-size:30px">Share Your Experience</h2></div>
+      <form id="review-form" style="background:#fff;padding:36px;border:1px solid var(--beige-dark)">
+        <div class="form-grid" style="margin-bottom:18px">
+          <div class="fg"><label>Your Name</label><input id="rv-name" required placeholder="e.g. Jessica J."></div>
+          <div class="fg"><label>Location</label><input id="rv-loc" required placeholder="e.g. Toronto, ON"></div>
+        </div>
+        <div class="fg" style="margin-bottom:18px"><label>Rating</label>
+          <select id="rv-rating" style="border:1px solid var(--beige-dark);padding:10px;font-family:var(--sans);background:var(--white)">
+            <option value="5">5 Stars — Excellent</option><option value="4">4 Stars — Good</option><option value="3">3 Stars — Average</option>
+          </select>
+        </div>
+        <div class="fg" style="margin-bottom:22px"><label>Review Details</label><textarea id="rv-comment" rows="4" required placeholder="Share your experience..."></textarea></div>
+        <button type="submit" class="btn btn-solid" style="width:100%">Submit Review</button>
+      </form>
+    </div>
+  </section>`;
+}
+
+/* ── BLOG ── */
+function renderBlog(){
+  const blogs=dbGetBlogs();
+  const cats=[...new Set(blogs.map(b=>b.cat))];
+  const cards=blogs.map(b=>`
+    <div class="blog-card" data-cat="${b.cat}">
+      <div class="blog-img"><img src="${b.img}" alt="${b.title}"></div>
+      <div class="blog-body">
+        <div class="blog-date">${b.date} · ${b.cat}</div>
+        <h3 class="blog-title">${b.title}</h3>
+        <p class="blog-sum">${b.summary}</p>
+        <span class="blog-more" onclick="goTo('blog','${b.id}')">Read Article →</span>
+      </div>
+    </div>`).join('');
+  return `
+  <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=80')">
+    <div class="subtitle" style="color:var(--gold)">Beauty Registry</div>
+    <h1>The Tiana Edit</h1>
+    <p>Expert advice on loc care, brow tints, extension health and luxury self-care routines.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="filter-row">
+        <button class="fbtn active" onclick="filterBlog('all')">All Topics</button>
+        ${cats.map(c=>`<button class="fbtn" onclick="filterBlog('${c}')">${c}</button>`).join('')}
+      </div>
+      <div class="blog-grid" id="blog-grid">${cards}</div>
+    </div>
+  </section>`;
+}
+function filterBlog(cat){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';});
+}
+function renderArticle(id){
+  const b=dbGetBlogs().find(x=>x.id===id);
+  if(!b)return `<div class="article"><button class="btn" onclick="goTo('blog')">← Back</button><h2 style="margin-top:30px">Article not found.</h2></div>`;
+  return `<article class="article">
+    <div class="art-back" onclick="goTo('blog')">← Back To Articles</div>
+    <div class="art-cat">${b.cat}</div>
+    <h1 class="art-title">${b.title}</h1>
+    <div class="art-meta">Published ${b.date} · Tiana Lux</div>
+    <img class="art-img" src="${b.img}" alt="${b.title}">
+    <div class="art-body">${b.content.split('\n\n').map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`).join('')}</div>
+  </article>`;
+}
+
+/* ── CONTACT ── */
+function renderContact(){return `
+  <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=80')">
+    <div class="subtitle" style="color:var(--gold)">Get In Touch</div>
+    <h1>Connect With Tiana</h1>
+    <p>Custom questions about loc techniques, lamination or nail art? Drop us a line.</p>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-panel">
+          <h3>Contact Details</h3>
+          <div class="c-row"><div class="c-icon">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">+1 (416) 555-LUXX</div><div class="c-val">+1 (416) 555-5899</div></div></div>
+          <div class="c-row"><div class="c-icon">✉</div><div><div class="c-lbl">Email</div><div class="c-val">appointments@tianalux.ca</div></div></div>
+          <div class="c-row"><div class="c-icon">📍</div><div><div class="c-lbl">Location</div><div class="c-val">88 Luxury Ave, Suite 100<br>Toronto, ON, M5V 2J2, Canada</div></div></div>
+          <div class="c-row"><div class="c-icon">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">Mon–Fri: 9am–7pm<br>Sat: 9am–6pm<br>Sun: Private bookings only</div></div></div>
+          <div class="socials">
+            <a href="https://instagram.com" target="_blank" class="soc-btn" title="Instagram">📸</a>
+            <a href="https://tiktok.com" target="_blank" class="soc-btn" title="TikTok">🎵</a>
+            <a href="https://facebook.com" target="_blank" class="soc-btn" title="Facebook">📘</a>
+            <a href="https://wa.me/14165555899" target="_blank" class="soc-btn" title="WhatsApp">💬</a>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px">Send Message</h3>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:26px">We respond within 1 business day.</p>
+          <form id="contact-form" class="form-grid" style="gap:16px">
+            <div class="fg"><label>Full Name *</label><input id="c-name" required placeholder="e.g. Jessica Jones"></div>
+            <div class="fg"><label>Phone Number *</label><input id="c-phone" required placeholder="+1 (647) 555-0112"></div>
+            <div class="fg full"><label>Email Address *</label><input id="c-email" type="email" required placeholder="jessica@example.com"></div>
+            <div class="fg full"><label>Message *</label><textarea id="c-msg" rows="5" required placeholder="Write your inquiry here..."></textarea></div>
+            <div class="fg full"><button type="submit" class="btn btn-solid">Send Message</button></div>
+          </form>
+          <div class="map-ph">Interactive Map — Toronto, Canada</div>
+        </div>
+      </div>
+    </div>
+  </section>`;}
+
+/* ── DASHBOARD ── */
+function renderDashboard(){
+  const role=sessionStorage.getItem('tl_role');
+  if(!role){return `
+    <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.9),rgba(17,17,17,.9)),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80')">
+      <div class="subtitle" style="color:var(--gold)">Access Portal</div><h1>Luxury Dashboard</h1>
+    </section>
+    <section class="section">
+      <div class="container" style="max-width:560px">
+        <div style="background:#fff;border:1px solid var(--beige-dark);border-top:3px solid var(--gold);padding:42px;text-align:center">
+          <div style="font-size:38px;margin-bottom:16px">🔒</div>
+          <h3 style="font-family:var(--serif);font-size:22px;margin-bottom:14px">Select Your Role</h3>
+          <p style="color:var(--muted);font-size:13px;margin-bottom:32px;line-height:1.7">No credentials required — choose your access level to explore the full dashboard system.</p>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <button class="btn btn-solid" style="padding:15px;width:100%" onclick="loginAs('client')">Log In As Verified Client</button>
+            <button class="btn btn-gold" style="padding:15px;width:100%" onclick="loginAs('admin')">Log In As Salon Owner / Admin</button>
+          </div>
+        </div>
+      </div>
+    </section>`;}
+  const client=dbGetClient();
+  const bookings=dbGetBookings();
+  const inquiries=dbGetInquiries();
+  const svcs=dbGetServices();
+  const isClient=role==='client';
+  const myBookings=isClient?bookings.filter(b=>b.email===client.email):bookings;
+
+  const menuItems=isClient?[
+    {icon:'📅',label:'My Bookings',pane:'p-bookings'},
+    {icon:'⚙',label:'Profile Settings',pane:'p-profile'}
+  ]:[
+    {icon:'📊',label:'Overview',pane:'p-overview'},
+    {icon:'📅',label:'Bookings Manager',pane:'p-bookings'},
+    {icon:'✏',label:'Services CMS',pane:'p-cms'},
+    {icon:'📝',label:'Publish Blog',pane:'p-blog'},
+    {icon:'📩',label:'Inquiries',pane:'p-inquiries'}
+  ];
+  const menuHTML=menuItems.map((m,i)=>`<li class="d-item ${i===0?'active':''}" data-pane="${m.pane}" onclick="switchPane('${m.pane}')">${m.icon} ${m.label}</li>`).join('');
+
+  /* bookings table */
+  const bRows=myBookings.map(b=>`<tr>
+    <td><strong>${b.client}</strong><br><small style="color:var(--muted)">${b.email}</small></td>
+    <td>${b.svcName}</td>
+    <td>${b.date} · ${b.time}</td>
+    <td>$${b.paid} CAD<br><small style="color:var(--muted)">${b.payType}</small></td>
+    <td><span class="badge ${b.status.toLowerCase()}">${b.status}</span></td>
+    ${!isClient?`<td><div class="tbl-acts">
+      ${b.status!=='Approved'?`<button onclick="adminAction('approve','${b.id}')" style="background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9">Approve</button>`:''}
+      ${b.status!=='Cancelled'?`<button onclick="adminAction('cancel','${b.id}')" style="background:#ffebee;color:#c62828;border-color:#ffcdd2">Cancel</button>`:''}
+    </div></td>`:''}</tr>`).join('');
+
+  /* services CMS list */
+  const cmsItems=svcs.map(s=>`<div class="cms-item" data-id="${s.id}" onclick="selectCmsItem('${s.id}')"><div><div style="font-weight:600;font-size:12px">${s.name}</div><div style="font-size:10px;color:var(--muted)">${s.cat.toUpperCase()} · ${s.dur}</div></div><div style="font-weight:600">$${s.price}</div></div>`).join('');
+
+  /* inquiries */
+  const iqHTML=dbGetInquiries().map(i=>`
+    <div style="border:1px solid var(--beige-dark);padding:18px;margin-bottom:16px;background:#fff">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px"><strong>${i.name}</strong><span style="font-size:10px;color:var(--muted)">${i.date}</span></div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${i.email} · ${i.phone}</div>
+      <p style="font-size:13px;font-style:italic;margin-bottom:12px">"${i.msg}"</p>
+      <div style="display:flex;gap:8px">
+        <button class="btn" style="padding:5px 12px;font-size:9px;letter-spacing:1px" onclick="adminReply('${i.id}')">Reply</button>
+        ${i.status==='Unread'?`<button class="btn btn-solid" style="padding:5px 12px;font-size:9px;letter-spacing:1px" onclick="adminMarkRead('${i.id}')">Mark Read</button>`:`<span style="font-size:10px;color:#4caf50;align-self:center">✔ Read</span>`}
+      </div>
+    </div>`).join('');
+
+  return `
+  <section class="section" style="padding:110px 20px 60px">
+    <div class="container">
+      <div class="dash-layout">
+        <aside class="dash-side">
+          <div class="dash-logo">TIANA LUX</div>
+          <div class="dash-user">
+            <div class="dash-uname">${isClient?client.name:'Tiana Lux'}</div>
+            <div class="dash-urole">${isClient?'Gold Client':'Owner / Admin'}</div>
+          </div>
+          <ul class="dash-menu">${menuHTML}
+            <li class="d-item danger" style="margin-top:auto;border-top:1px solid rgba(255,255,255,.05);padding-top:18px" onclick="logOut()">🚪 Log Out</li>
+          </ul>
+        </aside>
+        <div class="dash-main">
+
+          ${!isClient?`<div class="d-pane active" id="p-overview">
+            <div class="d-pane-title">Overview</div>
+            <div class="metrics">
+              <div class="metric"><div class="metric-num">$${bookings.filter(b=>b.status==='Approved').reduce((s,b)=>s+b.paid,0)}</div><div class="metric-lbl">Simulated Earnings</div></div>
+              <div class="metric"><div class="metric-num">${bookings.filter(b=>b.status==='Approved').length}</div><div class="metric-lbl">Approved Appts</div></div>
+              <div class="metric"><div class="metric-num">${inquiries.filter(i=>i.status==='Unread').length}</div><div class="metric-lbl">Unread Inquiries</div></div>
+              <div class="metric"><div class="metric-num">${svcs.length}</div><div class="metric-lbl">Active Services</div></div>
             </div>
-        </div>
-    </div>
+          </div>`:``}
 
-    <!-- Main Router and Controller (ES Module) -->
-    <script type="module" src="app.js"></script>
+          <div class="d-pane ${isClient?'active':''}" id="p-bookings">
+            <div class="d-pane-title">Appointment Records</div>
+            <div style="overflow-x:auto">
+              <table class="dtable">
+                <thead><tr><th>Client</th><th>Service</th><th>Schedule</th><th>Paid</th><th>Status</th>${!isClient?'<th>Actions</th>':''}</tr></thead>
+                <tbody>${bRows||'<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--muted)">No bookings yet. Schedule a service!</td></tr>'}</tbody>
+              </table>
+            </div>
+          </div>
+
+          ${!isClient?`
+          <div class="d-pane" id="p-cms">
+            <div class="d-pane-title">Services & Pricing CMS</div>
+            <div style="margin-bottom:16px"><button class="btn btn-gold" style="padding:8px 16px;font-size:9px" onclick="newCmsService()">+ New Service</button></div>
+            <div class="cms-grid">
+              <div class="cms-list" id="cms-list">${cmsItems}</div>
+              <div class="cms-editor" id="cms-editor">
+                <p style="color:var(--muted);font-size:13px">Select a service to edit, or click "New Service" to create one.</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-pane" id="p-blog">
+            <div class="d-pane-title">Publish Blog Article</div>
+            <form id="blog-form" style="max-width:660px;display:flex;flex-direction:column;gap:16px">
+              <div class="form-grid">
+                <div class="fg"><label>Title</label><input id="bl-title" required placeholder="e.g. The Secret to Healthy Locs"></div>
+                <div class="fg"><label>Category</label>
+                  <select id="bl-cat" style="border:1px solid var(--beige-dark);padding:10px;font-family:var(--sans);background:var(--white)">
+                    <option>Loc Care</option><option>Hair Care</option><option>Brows</option><option>Lashes</option><option>Nail Care</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fg"><label>Banner Image URL (optional)</label><input id="bl-img" placeholder="Paste an image URL or leave blank for a default photo"></div>
+              <div class="fg"><label>Summary (shown on blog cards)</label><input id="bl-sum" required placeholder="One sentence summarising the article"></div>
+              <div class="fg"><label>Full Article Content</label><textarea id="bl-content" rows="8" required placeholder="Write the full article paragraphs here..."></textarea></div>
+              <button type="submit" class="btn btn-solid">Publish Article</button>
+            </form>
+          </div>
+          <div class="d-pane" id="p-inquiries">
+            <div class="d-pane-title">Client Inquiries</div>
+            <div>${iqHTML||'<p style="color:var(--muted)">No inquiries yet.</p>'}</div>
+          </div>`:``}
+
+          <div class="d-pane" id="p-profile">
+            <div class="d-pane-title">Profile Settings</div>
+            <form id="profile-form" style="max-width:520px;display:flex;flex-direction:column;gap:16px">
+              <div class="fg"><label>Full Name</label><input id="pf-name" value="${client.name}" required></div>
+              <div class="fg"><label>Phone Number</label><input id="pf-phone" value="${client.phone}" required></div>
+              <div class="fg"><label>Email (read-only)</label><input value="${client.email}" readonly style="background:var(--beige-dark);cursor:not-allowed"></div>
+              <button type="submit" class="btn btn-solid">Save Changes</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ── BOOKING WIZARD ── */
+function renderBooking(preselectId){
+  const svcs=dbGetServices();
+  const locs=svcs.filter(s=>s.cat==='locs');
+  const brows=svcs.filter(s=>s.cat==='brows');
+  const rows=list=>list.map(s=>`<div class="svc-row" data-id="${s.id}" data-price="${s.price}" data-dep="${s.dep}" data-dur="${s.dur}" data-name="${s.name}" onclick="selectSvc(this)"><div><div class="svc-row-title">${s.name}</div><div class="svc-row-sub">${s.dur} · Starting price</div></div><div class="svc-row-price">$${s.price}</div></div>`).join('');
+  return `
+  <section class="section" style="padding:110px 20px 60px">
+    <div class="container">
+      <div class="book-wrap">
+        <div class="book-head"><h2>Book Your Experience</h2><p>Select a service and date to secure your slot with Tiana.</p></div>
+        <div class="book-steps-bar">
+          <div class="step-ind active" id="si1"><div class="step-num">1</div>Service</div>
+          <div class="step-ind" id="si2"><div class="step-num">2</div>Date & Time</div>
+          <div class="step-ind" id="si3"><div class="step-num">3</div>Your Details</div>
+          <div class="step-ind" id="si4"><div class="step-num">4</div>Review</div>
+        </div>
+        <div class="book-body">
+          <div class="book-pane active" id="bp1">
+            <div class="cat-filter-row">
+              <button class="fbtn active" onclick="switchSvcCat('locs',this)">Tiana Locs</button>
+              <button class="fbtn" onclick="switchSvcCat('brows',this)">Brows By Tiana</button>
+            </div>
+            <div class="svc-list" id="svc-list-locs">${rows(locs)}</div>
+            <div class="svc-list hidden" id="svc-list-brows">${rows(brows)}</div>
+          </div>
+          <div class="book-pane" id="bp2">
+            <div class="cal-layout">
+              <div class="cal-box">
+                <div class="cal-hdr">
+                  <button class="cal-arrow" onclick="shiftCal(-1)">←</button>
+                  <div class="cal-title" id="cal-title">June 2026</div>
+                  <button class="cal-arrow" onclick="shiftCal(1)">→</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+              </div>
+              <div class="slots-box">
+                <div class="slots-title">Available Slots</div>
+                <div class="slots-grid" id="slots-grid"><p style="color:var(--muted);font-size:12px">Select a date first.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="book-pane" id="bp3">
+            <div class="form-grid" id="client-form">
+              <div class="fg"><label>Full Name *</label><input id="bk-name" required placeholder="e.g. Amara Kingston"></div>
+              <div class="fg"><label>Phone Number *</label><input id="bk-phone" required placeholder="+1 (416) 555-0199"></div>
+              <div class="fg full"><label>Email Address *</label><input id="bk-email" type="email" required placeholder="amara@example.com"></div>
+              <div class="fg full"><label>Special Instructions</label><textarea id="bk-notes" rows="4" placeholder="Hair texture, style preferences..."></textarea></div>
+            </div>
+          </div>
+          <div class="book-pane" id="bp4">
+            <div class="summary-box">
+              <div class="sum-title" id="sum-svc">Service Name</div>
+              <div class="sum-row"><span class="sum-lbl">Duration:</span><span class="sum-val" id="sum-dur">—</span></div>
+              <div class="sum-row"><span class="sum-lbl">Date:</span><span class="sum-val" id="sum-date">—</span></div>
+              <div class="sum-row"><span class="sum-lbl">Time:</span><span class="sum-val" id="sum-time">—</span></div>
+              <div class="sum-row"><span class="sum-lbl">Artist:</span><span class="sum-val">Tiana (Senior Specialist)</span></div>
+              <div class="sum-row total"><span class="sum-lbl">Starting Price:</span><span class="sum-val" id="sum-price">—</span></div>
+              <div class="sum-row"><span class="sum-lbl">Deposit Due Now:</span><span class="sum-val" id="sum-dep" style="color:var(--gold-dark);font-weight:700">—</span></div>
+            </div>
+            <p style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:18px">Deposit is fully refundable if rescheduled 48+ hours in advance.</p>
+          </div>
+          <div class="book-nav">
+            <button class="btn" id="bk-back" style="visibility:hidden" onclick="bookStep(-1)">← Back</button>
+            <button class="btn btn-solid" id="bk-next" disabled onclick="bookStep(1)">Select a Service First</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ── PAYMENT ── */
+function renderPayment(){
+  const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');
+  if(!tb){return `<section class="section" style="padding:120px 20px 60px"><div class="container" style="max-width:480px;text-align:center"><div style="font-size:48px;margin-bottom:18px">⚠</div><h3 style="font-family:var(--serif);margin-bottom:14px">No Booking Found</h3><p style="color:var(--muted);margin-bottom:28px">Go back and complete the booking wizard first.</p><button class="btn btn-solid" onclick="goTo('booking')">Go To Scheduler</button></div></section>`;}
+  return `
+  <section class="section" style="padding:120px 20px 60px">
+    <div class="container">
+      <div class="pay-wrap">
+        <h3 style="font-family:var(--serif);font-size:22px;text-align:center;margin-bottom:22px">Secure Checkout</h3>
+        <div style="background:var(--white);border:1px solid var(--beige-dark);padding:16px;margin-bottom:22px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;font-weight:600;margin-bottom:4px"><span>${tb.svcName}</span><span>$${tb.price} CAD</span></div>
+          <div style="color:var(--muted)">${tb.date} at ${tb.time}</div>
+        </div>
+        <div class="fg" style="margin-bottom:22px"><label>Payment Option</label>
+          <select id="pay-type" style="border:1px solid var(--beige-dark);padding:10px;font-family:var(--sans);background:var(--white)" onchange="updatePayBtn()">
+            <option value="dep">Pay Deposit Only ($${tb.dep} CAD)</option>
+            <option value="full">Pay Full Amount ($${tb.price} CAD)</option>
+          </select>
+        </div>
+        <div class="pay-tabs">
+          <div class="pay-tab active" onclick="switchPayTab('card',this)">💳 Card (Stripe)</div>
+          <div class="pay-tab" onclick="switchPayTab('paypal',this)">🅿 PayPal</div>
+          <div class="pay-tab" onclick="switchPayTab('square',this)">⬛ Square</div>
+        </div>
+        <div id="pt-card">
+          <div class="card-mock">
+            <div style="display:flex;justify-content:space-between;align-items:center"><div class="chip"></div><div class="card-brand">Tiana Lux</div></div>
+            <div class="card-num-mock" id="mock-num">•••• •••• •••• ••••</div>
+            <div class="card-btm">
+              <div><div style="font-size:7px;opacity:.55;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Card Holder</div><div class="card-holder-mock" id="mock-name">YOUR NAME</div></div>
+              <div><div style="font-size:7px;opacity:.55;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Expires</div><div class="card-exp-mock" id="mock-exp">MM/YY</div></div>
+            </div>
+          </div>
+          <form id="card-form" style="display:flex;flex-direction:column;gap:14px">
+            <div class="fg"><label>Card Holder Name</label><input id="cn-name" placeholder="e.g. Amara Kingston" required oninput="document.getElementById('mock-name').textContent=this.value.toUpperCase()||'YOUR NAME'"></div>
+            <div class="fg"><label>Card Number</label><input id="cn-num" placeholder="4111 2222 3333 4444" maxlength="19" required oninput="fmtCardNum(this)"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div class="fg"><label>Expiry Date</label><input id="cn-exp" placeholder="MM/YY" maxlength="5" required oninput="fmtExp(this)"></div>
+              <div class="fg"><label>CVC</label><input type="password" id="cn-cvc" placeholder="•••" maxlength="4" required></div>
+            </div>
+            <button type="submit" class="btn btn-solid" id="pay-submit-btn" style="width:100%;padding:14px">Pay Deposit ($${tb.dep} CAD)</button>
+          </form>
+        </div>
+        <div id="pt-paypal" class="hidden" style="text-align:center;padding:20px 0">
+          <div style="background:#f7c124;padding:14px;border-radius:4px;font-weight:700;cursor:pointer;color:#111" onclick="processPayment('PayPal')">Pay with PayPal</div>
+          <p style="font-size:11px;color:var(--muted);margin-top:12px">You will be redirected to PayPal's secure portal.</p>
+        </div>
+        <div id="pt-square" class="hidden" style="text-align:center;padding:20px 0">
+          <button class="btn" style="width:100%;border-color:#3f51b5;color:#3f51b5" onclick="processPayment('Square Pay')">Pay with Square Pay</button>
+        </div>
+        <div id="receipt-wrap"></div>
+      </div>
+    </div>
+  </section>`;
+}
+
+/* ── PAGE INIT HOOKS ── */
+function initPage(page,extra){
+  switch(page){
+    case 'home':initHome();break;
+    case 'services':if(extra)filterSvc(extra);break;
+    case 'portfolio':initBA();break;
+    case 'testimonials':initReviewForm();break;
+    case 'blog':break;
+    case 'contact':initContactForm();break;
+    case 'dashboard':initDash();break;
+    case 'booking':initBooking(extra);break;
+    case 'payment':initPayment();break;
+  }
+}
+function initHome(){initBA();}
+
+function initReviewForm(){
+  const f=document.getElementById('review-form');
+  if(!f)return;
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const t=dbGetTestimonials();
+    t.unshift({id:'t'+Date.now(),name:document.getElementById('rv-name').value,loc:document.getElementById('rv-loc').value,rating:parseInt(document.getElementById('rv-rating').value),comment:document.getElementById('rv-comment').value,vid:''});
+    dbSet('testimonials',t);
+    toast('Thank you! Your review has been added.','ok');
+    goTo('testimonials');
+  });
+}
+
+function initContactForm(){
+  const f=document.getElementById('contact-form');
+  if(!f)return;
+  f.addEventListener('submit',e=>{
+    e.preventDefault();
+    const iqs=dbGetInquiries();
+    iqs.unshift({id:'iq'+Date.now(),name:document.getElementById('c-name').value,email:document.getElementById('c-email').value,phone:document.getElementById('c-phone').value,msg:document.getElementById('c-msg').value,date:new Date().toISOString().split('T')[0],status:'Unread'});
+    dbSet('inquiries',iqs);
+    toast('Message sent! We\'ll respond within 1 business day.','ok');
+    f.reset();
+  });
+}
+
+function initDash(){
+  const profileForm=document.getElementById('profile-form');
+  if(profileForm){profileForm.addEventListener('submit',e=>{e.preventDefault();dbSet('client',{name:document.getElementById('pf-name').value,email:dbGetClient().email,phone:document.getElementById('pf-phone').value});toast('Profile updated!','ok');});}
+  const blogForm=document.getElementById('blog-form');
+  if(blogForm){blogForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const blogs=dbGetBlogs();
+    const defaultImgs=['https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80','https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80'];
+    blogs.unshift({id:'bg'+Date.now(),cat:document.getElementById('bl-cat').value,title:document.getElementById('bl-title').value,summary:document.getElementById('bl-sum').value,content:document.getElementById('bl-content').value,date:new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),img:document.getElementById('bl-img').value||defaultImgs[Math.floor(Math.random()*defaultImgs.length)]});
+    dbSet('blogs',blogs);toast('Blog article published!','ok');blogForm.reset();
+  });}
+}
+
+function loginAs(role){sessionStorage.setItem('tl_role',role);toast(role==='client'?'Logged in as Amara K. (Verified Client)':'Logged in as Salon Owner / Admin','ok');goTo('dashboard');}
+function logOut(){sessionStorage.removeItem('tl_role');toast('Logged out.','ok');goTo('dashboard');}
+function switchPane(id){document.querySelectorAll('.d-pane').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.d-item').forEach(i=>i.classList.remove('active'));const el=document.getElementById(id);if(el)el.classList.add('active');event.currentTarget.classList.add('active');}
+function adminAction(action,id){const bks=dbGetBookings();const i=bks.findIndex(b=>b.id===id);if(i>-1){bks[i].status=action==='approve'?'Approved':'Cancelled';dbSet('bookings',bks);toast(`Booking ${bks[i].status.toLowerCase()}.`,'ok');goTo('dashboard');}}
+function adminReply(id){const iqs=dbGetInquiries();const i=iqs.find(x=>x.id===id);if(!i)return;const msg=prompt(`Simulated reply to ${i.email}:`,'Hi '+i.name.split(' ')[0]+', thanks for reaching out to Tiana Lux. ');if(msg!==null){const idx=iqs.findIndex(x=>x.id===id);iqs[idx].status='Read';dbSet('inquiries',iqs);toast('Simulated reply dispatched to '+i.email,'ok');goTo('dashboard');}}
+function adminMarkRead(id){const iqs=dbGetInquiries();const i=iqs.findIndex(x=>x.id===id);if(i>-1){iqs[i].status='Read';dbSet('inquiries',iqs);toast('Marked as read.','ok');goTo('dashboard');}}
+
+function newCmsService(){renderCmsEditor(null);}
+function selectCmsItem(id){document.querySelectorAll('.cms-item').forEach(i=>i.classList.toggle('active',i.dataset.id===id));const s=dbGetServices().find(x=>x.id===id);renderCmsEditor(s);}
+function renderCmsEditor(s){
+  const el=document.getElementById('cms-editor');
+  if(!el)return;
+  el.innerHTML=`
+    <h4 style="font-family:var(--serif);margin-bottom:18px;border-bottom:1px solid var(--beige-dark);padding-bottom:10px">${s?'Edit: '+s.name:'Create New Service'}</h4>
+    <form id="cms-form" style="display:flex;flex-direction:column;gap:13px">
+      <div class="fg"><label>Service Name</label><input id="cs-name" required value="${s?s.name:''}"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+        <div class="fg"><label>Category</label><select id="cs-cat" style="border:1px solid var(--beige-dark);padding:9px;font-family:var(--sans);background:var(--white)"><option value="locs" ${s&&s.cat==='locs'?'selected':''}>Tiana Locs</option><option value="brows" ${s&&s.cat==='brows'?'selected':''}>Brows By Tiana</option></select></div>
+        <div class="fg"><label>Duration</label><input id="cs-dur" required placeholder="e.g. 120 min" value="${s?s.dur:''}"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+        <div class="fg"><label>Starting Price ($CAD)</label><input type="number" id="cs-price" required min="0" value="${s?s.price:''}"></div>
+        <div class="fg"><label>Deposit ($CAD)</label><input type="number" id="cs-dep" required min="0" value="${s?s.dep:''}"></div>
+      </div>
+      <div class="fg"><label>Description</label><textarea id="cs-desc" rows="3" required>${s?s.desc:''}</textarea></div>
+      <div class="fg"><label>Photo (Upload from Device or URL)</label>
+        <div class="upload-zone" id="upload-zone" onclick="simulateUpload()"><div style="font-size:26px">📷</div><p>Tap to Upload Photo from Device</p></div>
+        <input id="cs-img" type="hidden" value="${s?s.img:''}">
+        <div id="upload-preview" style="${s&&s.img?'':'display:none'}"><img src="${s?s.img:''}" id="upload-img" style="height:90px;object-fit:cover;border:1px solid var(--gold);margin-top:8px"></div>
+      </div>
+      <div class="fg"><label>Video URL (optional)</label><input id="cs-vid" placeholder="Paste a direct video URL" value="${s?s.vid:''}"></div>
+      <button type="submit" class="btn btn-solid">${s?'Save Changes':'Create Service'}</button>
+    </form>`;
+  document.getElementById('cms-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const svcs=dbGetServices();
+    const updated={id:s?s.id:(document.getElementById('cs-cat').value+Date.now()),cat:document.getElementById('cs-cat').value,name:document.getElementById('cs-name').value,dur:document.getElementById('cs-dur').value,price:parseFloat(document.getElementById('cs-price').value),dep:parseFloat(document.getElementById('cs-dep').value),desc:document.getElementById('cs-desc').value,img:document.getElementById('cs-img').value||'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80',vid:document.getElementById('cs-vid').value};
+    if(s){const i=svcs.findIndex(x=>x.id===s.id);svcs[i]=updated;}else{svcs.push(updated);}
+    dbSet('services',svcs);
+    toast(s?`"${updated.name}" updated!`:`"${updated.name}" created!`,'ok');
+    goTo('dashboard');
+  });
+}
+const mockDevicePhotos=['https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80','https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80','https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80','https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80'];
+function simulateUpload(){
+  const zone=document.getElementById('upload-zone');
+  if(!zone)return;
+  zone.innerHTML='<div style="font-size:22px">⏳</div><p>Accessing camera roll...</p>';
+  setTimeout(()=>{
+    const img=mockDevicePhotos[Math.floor(Math.random()*mockDevicePhotos.length)];
+    document.getElementById('cs-img').value=img;
+    document.getElementById('upload-img')&&(document.getElementById('upload-img').src=img);
+    const prev=document.getElementById('upload-preview');if(prev)prev.style.display='block';
+    if(!document.getElementById('upload-img')){prev.innerHTML=`<img src="${img}" id="upload-img" style="height:90px;object-fit:cover;border:1px solid var(--gold);margin-top:8px">`;}
+    zone.innerHTML='<div style="font-size:22px;color:#4caf50">✔</div><p>Photo uploaded! Tap to change.</p>';
+    toast('Device photo connected!','ok');
+  },1400);
+}
+
+/* ── BOOKING LOGIC ── */
+let bkState={step:1,svcId:null,svcName:'',price:0,dep:0,dur:'',date:null,time:null};
+let calYear=2026,calMonth=5;
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const TIMES=['09:00 AM','10:30 AM','12:00 PM','01:30 PM','03:00 PM','04:30 PM','06:00 PM'];
+
+function initBooking(preselectId){
+  // Pre-fill client info
+  const c=dbGetClient();
+  const n=document.getElementById('bk-name'),p=document.getElementById('bk-phone'),em=document.getElementById('bk-email');
+  if(n)n.value=c.name||'';if(p)p.value=c.phone||'';if(em)em.value=c.email||'';
+  // Validate form fields on input
+  ['bk-name','bk-phone','bk-email'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',checkClientForm);});
+  renderCal();
+  if(preselectId){
+    const row=document.querySelector(`.svc-row[data-id="${preselectId}"]`);
+    if(row){
+      const cat=preselectId.startsWith('b')?'brows':'locs';
+      if(cat==='brows')document.querySelectorAll('.cat-filter-row .fbtn').forEach((b,i)=>{b.classList.toggle('active',i===1);});
+      switchSvcCat(cat,document.querySelectorAll('.cat-filter-row .fbtn')[preselectId.startsWith('b')?1:0]);
+      selectSvc(row);
+    }
+  }
+}
+function switchSvcCat(cat,btn){
+  document.querySelectorAll('.cat-filter-row .fbtn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('svc-list-locs').classList.toggle('hidden',cat==='brows');
+  document.getElementById('svc-list-brows').classList.toggle('hidden',cat==='locs');
+  bkState.svcId=null;updateBkNext();
+}
+function selectSvc(el){
+  document.querySelectorAll('.svc-row').forEach(r=>r.classList.remove('sel'));
+  el.classList.add('sel');
+  bkState.svcId=el.dataset.id;bkState.svcName=el.dataset.name;bkState.price=parseFloat(el.dataset.price);bkState.dep=parseFloat(el.dataset.dep);bkState.dur=el.dataset.dur;
+  updateBkNext();
+}
+function updateBkNext(){
+  const btn=document.getElementById('bk-next');if(!btn)return;
+  if(bkState.step===1){btn.disabled=!bkState.svcId;btn.textContent=bkState.svcId?'Next: Choose Date & Time →':'Select a Service First';}
+  if(bkState.step===2){btn.disabled=!(bkState.date&&bkState.time);btn.textContent=bkState.date&&bkState.time?'Next: Enter Your Details →':'Choose a Date & Time';}
+  if(bkState.step===3){checkClientForm();}
+  if(bkState.step===4){btn.disabled=false;btn.textContent='Confirm & Pay Deposit';}
+}
+function checkClientForm(){
+  const btn=document.getElementById('bk-next');if(!btn||bkState.step!==3)return;
+  const ok=document.getElementById('bk-name')?.value.trim()&&document.getElementById('bk-phone')?.value.trim()&&document.getElementById('bk-email')?.value.trim();
+  btn.disabled=!ok;btn.textContent=ok?'Next: Review Booking →':'Fill Required Fields';
+}
+function renderCal(){
+  const grid=document.getElementById('cal-grid');const title=document.getElementById('cal-title');
+  if(!grid||!title)return;
+  title.textContent=MONTHS[calMonth]+' '+calYear;
+  grid.innerHTML='';
+  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d=>{const h=document.createElement('div');h.className='cal-dh';h.textContent=d;grid.appendChild(h);});
+  const first=new Date(calYear,calMonth,1).getDay();
+  const days=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date(2026,5,18);
+  for(let i=0;i<first;i++){grid.appendChild(document.createElement('div'));}
+  for(let d=1;d<=days;d++){
+    const cell=document.createElement('div');cell.className='cal-d';cell.textContent=d;
+    const dt=new Date(calYear,calMonth,d);
+    if(dt<today){cell.classList.add('dis');}else{
+      if(bkState.date&&bkState.date.getDate()===d&&bkState.date.getMonth()===calMonth&&bkState.date.getFullYear()===calYear)cell.classList.add('sel');
+      cell.onclick=()=>{bkState.date=new Date(calYear,calMonth,d);bkState.time=null;renderCal();renderSlots();};
+    }
+    grid.appendChild(cell);
+  }
+}
+function shiftCal(dir){calMonth+=dir;if(calMonth<0){calMonth=11;calYear--;}if(calMonth>11){calMonth=0;calYear++;}renderCal();}
+function renderSlots(){
+  const g=document.getElementById('slots-grid');if(!g||!bkState.date)return;
+  const dateStr=bkState.date.toISOString().split('T')[0];
+  const booked=dbGetBookings().filter(b=>b.date===dateStr&&b.status!=='Cancelled').map(b=>b.time);
+  g.innerHTML='';
+  TIMES.forEach(t=>{
+    const btn=document.createElement('button');btn.className='slot-btn';btn.textContent=t;
+    if(booked.includes(t)){btn.classList.add('dis');btn.disabled=true;}
+    else{if(bkState.time===t)btn.classList.add('sel');btn.onclick=()=>{bkState.time=t;renderSlots();updateBkNext();};}
+    g.appendChild(btn);
+  });
+  updateBkNext();
+}
+function fillSummary(){
+  document.getElementById('sum-svc').textContent=bkState.svcName;
+  document.getElementById('sum-dur').textContent=bkState.dur;
+  const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
+  document.getElementById('sum-date').textContent=bkState.date.toLocaleDateString('en-US',opts);
+  document.getElementById('sum-time').textContent=bkState.time;
+  document.getElementById('sum-price').textContent='$'+bkState.price.toFixed(2)+' CAD';
+  document.getElementById('sum-dep').textContent='$'+bkState.dep.toFixed(2)+' CAD';
+}
+function bookStep(dir){
+  const max=4;const min=1;const next=bkState.step+dir;
+  if(next<min||next>max)return;
+  document.getElementById('bp'+bkState.step).classList.remove('active');
+  document.getElementById('si'+bkState.step).classList.remove('active');
+  if(dir>0)document.getElementById('si'+bkState.step).classList.add('done');
+  else document.getElementById('si'+next).classList.remove('done');
+  bkState.step=next;
+  document.getElementById('bp'+bkState.step).classList.add('active');
+  document.getElementById('si'+bkState.step).classList.add('active');
+  const back=document.getElementById('bk-back');if(back)back.style.visibility=bkState.step>1?'visible':'hidden';
+  if(bkState.step===4)fillSummary();
+  if(bkState.step===4){
+    const btn=document.getElementById('bk-next');
+    btn.textContent='Confirm & Pay Deposit';btn.disabled=false;
+    btn.onclick=()=>{
+      sessionStorage.setItem('tl_pending',JSON.stringify({svcId:bkState.svcId,svcName:bkState.svcName,price:bkState.price,dep:bkState.dep,date:bkState.date.toISOString().split('T')[0],time:bkState.time,clientName:document.getElementById('bk-name').value,clientEmail:document.getElementById('bk-email').value,clientPhone:document.getElementById('bk-phone').value,notes:document.getElementById('bk-notes').value}));
+      toast('Opening checkout...','ok');setTimeout(()=>goTo('payment'),700);
+    };
+  }else{updateBkNext();}
+}
+
+/* ── PAYMENT LOGIC ── */
+let payAmtType='dep';
+function updatePayBtn(){
+  const sel=document.getElementById('pay-type');const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');if(!sel||!tb)return;
+  payAmtType=sel.value;
+  const amt=payAmtType==='dep'?tb.dep:tb.price;
+  const btn=document.getElementById('pay-submit-btn');if(btn)btn.textContent=`Pay $${amt.toFixed(2)} CAD`;
+}
+function switchPayTab(tab,el){
+  document.querySelectorAll('.pay-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');
+  ['pt-card','pt-paypal','pt-square'].forEach(id=>document.getElementById(id)?.classList.add('hidden'));
+  document.getElementById('pt-'+tab)?.classList.remove('hidden');
+}
+function fmtCardNum(el){let v=el.value.replace(/\D/g,''),f='';for(let i=0;i<v.length;i++){if(i>0&&i%4===0)f+=' ';f+=v[i];}el.value=f;document.getElementById('mock-num').textContent=f||'•••• •••• •••• ••••';}
+function fmtExp(el){let v=el.value.replace(/\D/g,'');if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2,4);el.value=v;document.getElementById('mock-exp').textContent=v||'MM/YY';}
+function initPayment(){
+  const cf=document.getElementById('card-form');
+  if(cf)cf.addEventListener('submit',e=>{e.preventDefault();processPayment('Stripe Card');});
+}
+function processPayment(method){
+  const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');if(!tb)return;
+  const btn=document.getElementById('pay-submit-btn');if(btn){btn.disabled=true;btn.textContent='Processing...';}
+  toast('Authenticating... please wait.','ok');
+  setTimeout(()=>{
+    const amt=payAmtType==='dep'?tb.dep:tb.price;
+    const rec='TX-2026-'+Math.floor(1000+Math.random()*9000);
+    const ts=new Date().toISOString().split('T')[0];
+    const bks=dbGetBookings();
+    bks.unshift({id:'bk'+Date.now(),client:tb.clientName,email:tb.clientEmail,phone:tb.clientPhone,svcName:tb.svcName,svcId:tb.svcId,date:tb.date,time:tb.time,notes:tb.notes,status:'Approved',paid:amt,payType:payAmtType==='dep'?'Deposit Only':'Full Payment',receipt:rec});
+    dbSet('bookings',bks);
+    sessionStorage.removeItem('tl_pending');
+    const rw=document.getElementById('receipt-wrap');
+    document.getElementById('pt-card')?.classList.add('hidden');
+    document.getElementById('pt-paypal')?.classList.add('hidden');
+    document.getElementById('pt-square')?.classList.add('hidden');
+    document.querySelector('.pay-tabs')?.style.setProperty('display','none');
+    document.querySelector('#pay-type')?.parentElement?.style.setProperty('display','none');
+    if(rw)rw.innerHTML=`<div class="receipt">
+      <div class="receipt-head">
+        <div style="font-size:28px;color:#4caf50;margin-bottom:8px">✔</div>
+        <div class="receipt-logo">T I A N A &nbsp; L U X</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Booking Invoice & Receipt</div>
+      </div>
+      <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
+        <div><strong>Receipt No:</strong> ${rec}</div>
+        <div><strong>Date:</strong> ${ts}</div>
+        <div><strong>Client:</strong> ${tb.clientName}</div>
+        <div><strong>Email:</strong> ${tb.clientEmail}</div>
+      </div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse;margin-bottom:20px">
+        <thead><tr style="border-bottom:1px solid var(--beige-dark);text-align:left;font-weight:600"><th style="padding:6px 0">Description</th><th style="padding:6px 0;text-align:right">Amount</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:9px 0">${tb.svcName}<br><small style="color:var(--muted)">${tb.date} @ ${tb.time}</small></td><td style="padding:9px 0;text-align:right">$${tb.price.toFixed(2)} CAD</td></tr>
+          <tr style="border-top:1px solid var(--beige-dark);font-weight:600"><td style="padding:9px 0">Paid (${payAmtType==='dep'?'Deposit':' Full'} via ${method}):</td><td style="padding:9px 0;text-align:right;color:#2e7d32">$${amt.toFixed(2)} CAD</td></tr>
+          <tr><td style="padding:5px 0;font-size:10px;color:var(--muted)">Balance due at salon:</td><td style="padding:5px 0;text-align:right;font-size:10px;color:var(--muted)">$${(tb.price-amt).toFixed(2)} CAD</td></tr>
+        </tbody>
+      </table>
+      <div style="text-align:center;display:flex;gap:10px;justify-content:center">
+        <button class="btn btn-solid" onclick="window.print()" style="padding:8px 16px;font-size:9px">🖨 Print Receipt</button>
+        <button class="btn" onclick="goTo('dashboard')" style="padding:8px 16px;font-size:9px">Go to Dashboard</button>
+      </div>
+      <div style="background:#e3f2fd;border:1px solid #90caf9;padding:12px;margin-top:16px;font-size:11px;text-align:center;color:#0d47a1">
+        ✉ Simulated confirmation email sent to <strong>${tb.clientEmail}</strong>
+      </div>
+    </div>`;
+    toast('Payment successful! Appointment confirmed.','ok');
+  },2000);
+}
+
+/* ── FOOTER ── */
+function renderFooter(){
+  const el=document.getElementById('site-footer');
+  if(!el)return;
+  el.innerHTML=`
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <h2>TIANA LUX</h2>
+      <p>A premier beauty house dedicated to delivering exclusive loc, hair, brow, lash and nail care treatments. Beauty is a ritual, not a transaction.</p>
+      <div class="socials">
+        <a href="https://instagram.com" target="_blank" class="soc-btn" title="Instagram">📸</a>
+        <a href="https://tiktok.com" target="_blank" class="soc-btn" title="TikTok">🎵</a>
+        <a href="https://facebook.com" target="_blank" class="soc-btn" title="Facebook">📘</a>
+        <a href="https://wa.me/14165555899" target="_blank" class="soc-btn" title="WhatsApp">💬</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-title">Quick Links</div>
+      <ul class="foot-links">
+        <li><a onclick="goTo('home')">Home</a></li>
+        <li><a onclick="goTo('about')">About Tiana</a></li>
+        <li><a onclick="goTo('services')">Services Catalog</a></li>
+        <li><a onclick="goTo('portfolio')">Portfolio Wall</a></li>
+        <li><a onclick="goTo('testimonials')">Client Reviews</a></li>
+        <li><a onclick="goTo('blog')">Beauty Blog</a></li>
+        <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-title">Our Divisions</div>
+      <ul class="foot-links">
+        <li><a onclick="goTo('services','locs')">Tiana Locs</a></li>
+        <li><a onclick="goTo('services','brows')">Brows By Tiana</a></li>
+        <li><a onclick="goTo('services','locs')">Loc Retwists</a></li>
+        <li><a onclick="goTo('services','brows')">Lash Extensions</a></li>
+        <li><a onclick="goTo('services','brows')">Nail Art Salon</a></li>
+        <li><a onclick="goTo('contact')">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-title">Newsletter</div>
+      <p style="color:rgba(255,255,255,.55);font-size:12px;margin-bottom:16px;line-height:1.7">Subscribe for exclusive promotions, beauty tips and booking alerts.</p>
+      <form class="nl-form" onsubmit="nlSignup(event)">
+        <input class="nl-input" type="email" id="nl-email" placeholder="Your email address" required>
+        <button type="submit" class="nl-btn">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-tag">Experience Luxury. Experience Tiana Lux.</div>
+    <div>© 2026 TIANA LUX Beauty House. All Rights Reserved.</div>
+  </div>`;
+}
+function nlSignup(e){e.preventDefault();const em=document.getElementById('nl-email');if(em){toast('Welcome! '+em.value+' has been added to the Tiana Lux VIP list.','ok');em.value='';}}
+
+/* ── HEADER SCROLL ── */
+window.addEventListener('scroll',()=>{document.getElementById('site-header').classList.toggle('scrolled',window.scrollY>50);});
+
+/* ── BURGER MENU ── */
+function closeMenu(){document.getElementById('nav-links').classList.remove('open');document.getElementById('burger').classList.remove('open');}
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('open');
+});
+
+/* ── BOOT ── */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderFooter();
+  goTo('home');
+  setTimeout(()=>{
+    const pre=document.getElementById('preloader');
+    pre.style.opacity='0';
+    setTimeout(()=>pre.style.display='none',900);
+  },1100);
+});
+</script>
 </body>
 </html>
