@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TIANA LUX | Luxury Beauty House Canada</title>
-<meta name="description" content="World-class luxury beauty house in Canada. Tiana Locs — loc installations, braiding, natural hair. Brows By Tiana — brows, lashes, nails, manicures.">
-<meta name="keywords" content="Luxury Beauty Salon Canada, Luxury Loc Specialist Canada, Professional Braiding Services, Luxury Brows Near Me, Lash Extensions Canada, Luxury Nail Services, Beauty Studio Canada, Black Hair Specialist Canada, Loc Retwist Services Canada">
+<title>TianaLux | Luxury Beauty in St. John's, Newfoundland</title>
+<meta name="description" content="TianaLux is a luxury beauty brand in St. John's, Newfoundland. Tiana Locs — loc installations, microlocs, retwists, cornrows. Brows by Tiana — ombré brows, touch-ups, brow corrections.">
+<meta name="keywords" content="TianaLux, Luxury Beauty St Johns Newfoundland, Loc Specialist Newfoundland, Ombré Brows St Johns, Tiana Locs, Brows by Tiana, Microlocs Newfoundland, Loc Retwist NL, Beauty Salon St Johns">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -436,18 +436,22 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* ── STATE / LOCAL DB ── */
+const DATA_VER='3.0';
+// Auto-reset localStorage when data version changes
+(function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
+
 const DEFAULTS = {
   services:[
-    {id:'l1',cat:'locs',name:'Luxury Starter Locs',desc:'Begin your loc journey with precision comb coils or two-strand twists. Includes a hair analysis, deep detoxifying wash, steam treatment and professional mapping.',dur:'180 min',price:250,dep:50,img:'https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4'},
-    {id:'l2',cat:'locs',name:'Premium Loc Retwist & Style',desc:'Professional palm rolling or interlocking to secure new growth. Finished with luxury hair oil massage and your choice of design — barrels, ropes or updos.',dur:'120 min',price:150,dep:50,img:'https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4'},
-    {id:'l3',cat:'locs',name:'Instant Loc Installation',desc:'Crochet needle method for mature-looking locs instantly. Ideal for straight, wavy or curly textures. Extensions available upon consultation.',dur:'360 min',price:650,dep:150,img:'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',vid:''},
-    {id:'l4',cat:'locs',name:'Knotless Braids (Medium/Long)',desc:'Sleek, lightweight, tension-free knotless braiding. Includes custom hair blending, wash, blow dry and gold thread accessory highlights.',dur:'240 min',price:280,dep:50,img:'https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&q=80',vid:''},
-    {id:'l5',cat:'locs',name:'Botanical Deep Hair Treatment',desc:'Custom blend of organic oils and deep steam hydration to restore moisture-protein balance in dry, damaged or color-treated natural hair.',dur:'60 min',price:95,dep:30,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:''},
-    {id:'b1',cat:'brows',name:'Luxury Brow Sculpt & Tint',desc:'Precision map, custom wax/thread, tweeze and tint using premium hybrid dyes that stain skin and color brow hairs for up to 6 weeks.',dur:'45 min',price:80,dep:25,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4'},
-    {id:'b2',cat:'brows',name:'Luxury Brow Lamination',desc:'Keratin-infused lifting treatment that aligns brow hairs in a uniform upward direction, creating a fuller, fluffier, high-fashion runway look.',dur:'60 min',price:120,dep:40,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:''},
-    {id:'b3',cat:'brows',name:'Premium Silk Lash Extensions',desc:'Full set of feather-light silk lash extensions. Hand-applied using medical-grade adhesive. Available in natural, wispy, cat-eye or hybrid volumes.',dur:'120 min',price:180,dep:50,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4'},
-    {id:'b4',cat:'brows',name:'Signature Gel Manicure',desc:'Luxury nail shaping, cuticle care, hand exfoliation and premium LED-cured gel polish. Finished with warm towel wrapping and gold-infused cuticle oil.',dur:'50 min',price:75,dep:25,img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4'},
-    {id:'b5',cat:'brows',name:'Luxury Jelly Pedicure SPA',desc:'Relaxing foot soak in warm organic jelly, detailed scrub, callus removal, nourishing mud masque, hot stone massage and professional gel polish.',dur:'75 min',price:110,dep:35,img:'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80',vid:''}
+    {id:'l1',cat:'locs',consult:true, name:'Traditional Locs Installation',desc:'Begin your loc journey with expert traditional loc installation. Final price depends on hair length, density, desired size, and overall hair condition.',dur:'180+ min',price:200,dep:50,img:'https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4'},
+    {id:'l2',cat:'locs',consult:true, name:'Microlocs Installation',desc:'Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. Consultation required.',dur:'360+ min',price:600,dep:100,img:'https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4'},
+    {id:'l3',cat:'locs',consult:true, name:'Traditional Loc Retie / Retwist',desc:'Professional loc retie and retwist to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.',dur:'90+ min',price:100,dep:25,img:'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80',vid:''},
+    {id:'l4',cat:'locs',consult:true, name:'Microlocs Retie',desc:'Expert microloc retie service to keep your microlocs looking fresh and well-maintained. Final price depends on density, size, and time required.',dur:'120+ min',price:200,dep:50,img:'https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&q=80',vid:''},
+    {id:'l5',cat:'locs',consult:false,name:'Hair Wash',desc:'A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required — book directly.',dur:'45 min',price:30,dep:0,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:''},
+    {id:'l6',cat:'locs',consult:true, name:'Cornrows',desc:'Beautifully crafted cornrows tailored to your style preferences. Final price depends on style, length, and complexity.',dur:'120+ min',price:50,dep:20,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:''},
+    {id:'l7',cat:'locs',consult:false,name:'Luxury Pedicure',desc:'A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book directly — no consultation needed.',dur:'60 min',price:50,dep:20,img:'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80',vid:''},
+    {id:'b1',cat:'brows',consult:false,name:'Ombré Brows',desc:'Semi-permanent powder brows designed to enhance shape, definition, and symmetry. A beautiful, long-lasting brow transformation tailored to your features.',dur:'120 min',price:200,dep:50,img:'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4'},
+    {id:'b2',cat:'brows',consult:false,name:'Ombré Brow Touch-Up',desc:'Touch-up price applies only to clients whose original Ombré Brows were done by Brows by Tiana. Clients from another artist are charged as a new service.',dur:'90 min',price:100,dep:30,img:'https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&q=80',vid:''},
+    {id:'b3',cat:'brows',consult:true, name:'Brow Correction / Previous Work Done Elsewhere',desc:'Expert brow correction for work done by other artists. Consultation required before booking to assess and design the best correction plan.',dur:'120+ min',price:200,dep:50,img:'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80',vid:''}
   ],
   portfolio:[
     {id:'p1',cat:'locs',title:'Loc Installation & Grooming',desc:'6-month progression of instant locs using human hair extensions.',type:'slider',before:'https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&q=80',after:'https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&q=80'},
@@ -458,9 +462,9 @@ const DEFAULTS = {
     {id:'p6',cat:'nails',title:'Champagne Nude Extensions',desc:'Handpainted chrome details on coffin gel nails.',type:'video',img:'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=80',vid:'https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4'}
   ],
   testimonials:[
-    {id:'t1',name:'Amara K.',loc:'Toronto, ON',rating:5,comment:'Tiana is the absolute queen of locs! She started my loc journey 6 months ago and they look incredibly clean and healthy. The studio vibe is pure Beverly Hills — luxurious, peaceful and professional.',vid:''},
-    {id:'t2',name:'Sophia M.',loc:'Mississauga, ON',rating:5,comment:'I get my brow lamination and lash extensions done here every 6 weeks. The precision is unmatched. The champagne service makes you feel like royalty.',vid:''},
-    {id:'t3',name:'Chloe D.',loc:'Oakville, ON',rating:5,comment:'Unmatched nail art! I showed Tiana a design from a Dubai influencer and she executed it even better. The gel manicure easily lasts 5 weeks without lifting.',vid:''}
+    {id:'t1',name:'Amara K.',loc:"St. John's, NL",rating:5,comment:"Christiana is absolutely incredible! She did my traditional locs and the result was breathtaking. The whole experience felt so personal and luxurious — I left feeling like a completely new woman. TianaLux is the real deal in Newfoundland.",vid:''},
+    {id:'t2',name:'Sophia M.',loc:"St. John's, NL",rating:5,comment:"I got my Ombré Brows done at Brows by Tiana and I'm obsessed! Christiana took her time to map out the perfect shape for my face. The semi-permanent results are gorgeous — I get compliments every single day.",vid:''},
+    {id:'t3',name:'Chloe D.',loc:"St. John's, NL",rating:5,comment:"My microloc installation was done so beautifully — the precision and detail were unmatched. TianaLux made the whole process comfortable and fun. I'm booked for my retie already!",vid:''}
   ],
   blogs:[
     {id:'bg1',cat:'Loc Care',title:'The Ultimate Guide to Starter Locs Maintenance',summary:'Important routines, washing schedules and organic oils for your starter locs journey.',content:'Embarking on a loc journey is a beautiful decision. However, the starter stage is crucial.\n\nHere are 3 key tips from Tiana Lux:\n\n1. Avoid Frequent Washing — Wash only once every 3–4 weeks using a stocking cap to protect the coils. Use a residue-free shampoo.\n\n2. Moisturize Correctly — Avoid heavy waxes or petroleum products. Opt for light botanical rosewater mist and jojoba oil.\n\n3. Protect at Night — Always wear a satin or silk bonnet to lock in moisture and prevent lint.\n\nStay confident, trust the process, and visit our Toronto house for professional steam treatments!',date:'June 15, 2026',img:'https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&q=80'},
@@ -588,12 +592,12 @@ function renderHome(){
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-body">
-      <div class="subtitle" style="color:var(--gold)">Exclusive Beauty House · Canada</div>
-      <h1 class="hero-title">Beauty Refined.<br><em>Confidence Elevated.</em></h1>
-      <p class="hero-sub">A luxury beauty house specialising in premium locs, braiding, precision brows, lash extensions and manicures.</p>
+      <div class="subtitle" style="color:var(--gold)">St. John's, Newfoundland</div>
+      <h1 class="hero-title">Luxury Beauty Services<br><em>in St. John's, NL.</em></h1>
+      <p class="hero-sub">Expert Loc Care, Ombré Brows and Beauty Services Designed to Enhance Your Natural Beauty.</p>
       <div class="hero-ctas">
         <button class="btn btn-gold" onclick="goTo('booking')">Book Appointment</button>
-        <button class="btn btn-w" onclick="goTo('services')">Explore Services</button>
+        <button class="btn btn-w" onclick="goTo('services')">View Services</button>
       </div>
     </div>
     <div class="scroll-hint" onclick="document.getElementById('stats-section').scrollIntoView({behavior:'smooth'})">
@@ -614,12 +618,12 @@ function renderHome(){
       <div class="about-split">
         <div class="about-frame"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Tiana Lux"></div>
         <div class="about-text">
-          <div class="subtitle">About Tiana Lux</div>
-          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Canada's Elite Beauty Destination</h2>
-          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Tiana Lux is not simply a salon. It is a premium beauty house where self-care meets unmatched professional mastery.</p>
-          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Through our two dedicated divisions — Tiana Locs and Brows By Tiana — we tailor every treatment to your unique aesthetic.</p>
+          <div class="subtitle">About TianaLux</div>
+          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">St. John's Premier Luxury Beauty Destination</h2>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Founded by Christiana Adesanya, TianaLux is a luxury beauty brand in St. John's, Newfoundland — dedicated to helping women look and feel their absolute best.</p>
+          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Through our two expert divisions — <strong>Tiana Locs</strong> and <strong>Brows by Tiana</strong> — every service is delivered with precision, warmth, and an unwavering commitment to excellence.</p>
           <button class="btn btn-solid" onclick="goTo('about')">Our Story</button>
-          <div class="about-sig">Tiana Lux</div>
+          <div class="about-sig">Christiana Adesanya</div>
         </div>
       </div>
     </div>
@@ -633,7 +637,7 @@ function renderHome(){
         <div class="div-overlay"></div>
         <div class="div-body">
           <div class="div-title">TIANA LOCS</div>
-          <p class="div-desc">Expert braiding, loc installations, retwists, natural hair care and protective styling designed to elevate your texture.</p>
+          <p class="div-desc">Expert loc installations, microlocs, retwists, hair wash, cornrows and natural hair care — tailored to celebrate your natural texture.</p>
           <button class="btn btn-gold">Explore Hair Services</button>
         </div>
       </div>
@@ -642,8 +646,8 @@ function renderHome(){
         <div class="div-overlay"></div>
         <div class="div-body">
           <div class="div-title">BROWS BY TIANA</div>
-          <p class="div-desc">Luxury brows, lash extensions, gel manicures, pedicures and beauty treatments crafted with precision.</p>
-          <button class="btn btn-gold">Explore Beauty Services</button>
+          <p class="div-desc">Precision ombré brows, brow touch-ups and expert brow corrections — semi-permanent artistry designed to frame your natural beauty.</p>
+          <button class="btn btn-gold">Explore Brow Services</button>
         </div>
       </div>
     </div>
@@ -679,8 +683,8 @@ function renderHome(){
 
   <section class="cta-section">
     <div class="container">
-      <h2>Ready To Experience Luxury Beauty?</h2>
-      <p>Schedule your session today. All slots include complimentary tea, coffee or champagne.</p>
+      <h2>Ready To Experience Luxury Beauty in St. John's?</h2>
+      <p>Book your appointment with Christiana today. Every session is crafted to leave you feeling confident, refreshed, and empowered.</p>
       <button class="btn btn-gold" style="padding:16px 40px" onclick="goTo('booking')">Book Your Appointment Today</button>
     </div>
   </section>`;
@@ -709,50 +713,51 @@ function portCard(p){
 function renderAbout(){return `
   <section class="page-hero about-hero-bg">
     <div class="subtitle" style="color:var(--gold)">Our Essence</div>
-    <h1>Welcome To Tiana Lux</h1>
-    <p>Delivering world-class beauty enhancements and premium natural hair styling.</p>
+    <h1>Welcome To TianaLux</h1>
+    <p>A luxury beauty brand rooted in confidence, self-expression, and exceptional care — based in St. John's, Newfoundland.</p>
   </section>
   <section class="section">
     <div class="container">
       <div class="about-split">
         <div class="about-text" style="flex:1.2">
-          <div class="subtitle">Founder & Artist</div>
-          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Meet Tiana</h2>
-          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Tiana is a senior beauty practitioner and natural hair specialist based in Toronto, Canada. With over a decade of experience styling premium clienteles in London, Dubai and Canada, she established TIANA LUX to provide a sophisticated sanctuary for self-care.</p>
-          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">Her dual specialisation in intricate loc installations and precision brow design has positioned her as an authority in the Canadian beauty landscape.</p>
-          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Tiana believes beauty enhancements are deeply personal rituals that celebrate natural beauty and restore inner confidence.</p>
-          <div class="about-sig">Tiana Lux</div>
+          <div class="subtitle">Founder &amp; Beauty Professional</div>
+          <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Meet Christiana</h2>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">My name is Christiana Adesanya — founder of TianaLux and creator of <strong>Brows by Tiana</strong> and <strong>Tiana Locs</strong>. I am a beauty professional based in St. John's, Newfoundland, passionate about helping women look and feel their best through expert loc care, precision brow artistry, and personalized beauty services.</p>
+          <p style="color:var(--muted);margin-bottom:18px;font-size:15px;line-height:1.7">At TianaLux, I believe beauty is more than appearance — it's confidence, self-expression, and self-care. My goal is to provide every client with a luxury experience, exceptional service, and results tailored to their unique beauty.</p>
+          <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Whether you're visiting for loc maintenance, a fresh brow transformation, or a relaxing beauty treatment, I am committed to creating an experience that leaves you feeling confident, refreshed, and empowered.</p>
+          <div class="about-sig">Christiana Adesanya</div>
         </div>
-        <div class="about-frame" style="flex:1"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Tiana" style="height:500px;object-fit:cover"></div>
+        <div class="about-frame" style="flex:1"><img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80" alt="Christiana Adesanya - Founder of TianaLux" style="height:500px;object-fit:cover"></div>
       </div>
     </div>
   </section>
   <section class="section" style="background:var(--beige)">
     <div class="container" style="max-width:860px;text-align:center">
-      <div class="subtitle">The Legacy</div>
+      <div class="subtitle">The Story</div>
       <h2 class="section-title">Our Brand Story</h2>
-      <p style="font-size:15px;line-height:1.9;color:var(--black);margin-bottom:22px">Tiana Lux was conceived during Tiana's travels between Dubai and London. Witnessing the highly specialised premium service structures of overseas beauty houses, she noticed a gap in the Canadian market. Salons were predominantly generic operations where clients felt rushed and procedures lacked precision.</p>
-      <p style="font-size:15px;line-height:1.9;color:var(--black)">By creating TIANA LUX she unified two distinct domains under a single banner of luxury standards: <strong>TIANA LOCS</strong> and <strong>BROWS BY TIANA</strong>. Today our Toronto beauty house serves as a sanctuary where clients enjoy champagne, peaceful ambient sounds and bespoke beauty design.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--black);margin-bottom:22px">TianaLux was founded by Christiana Adesanya with a clear vision: to bring a truly elevated, personalized beauty experience to the women of St. John's, Newfoundland. Christiana saw a need for a space where clients weren't just serviced — they were celebrated, heard, and cared for with precision and warmth.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--black)">Under the TianaLux brand, Christiana built two distinct, expert-led divisions: <strong>Tiana Locs</strong> — dedicated to loc installations, retwists, microlocs, and natural hair care; and <strong>Brows by Tiana</strong> — specializing in semi-permanent ombré brows, brow corrections, and precision brow artistry.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--black);margin-top:22px;font-style:italic;color:var(--gold-dark)">&ldquo;I look forward to welcoming you to TianaLux.&rdquo; — Christiana Adesanya, Founder</p>
     </div>
   </section>
   <section class="section">
     <div class="container">
       <div class="section-wrap"><div class="subtitle">Values</div><h2 class="section-title">Our Pillars</h2></div>
       <div class="about-values">
-        <div class="value-card"><div class="value-icon">👁</div><h3 class="value-title">Our Vision</h3><p class="value-desc">To stand as the leading authority in Canadian luxury beauty, rivalling elite houses in Beverly Hills and London.</p></div>
-        <div class="value-card"><div class="value-icon">🛡</div><h3 class="value-title">Our Mission</h3><p class="value-desc">To honour our client's time, protect the health of natural hair and skin, and craft beauty enhancements with surgical precision.</p></div>
-        <div class="value-card"><div class="value-icon">✨</div><h3 class="value-title">Philosophy</h3><p class="value-desc">True beauty is an inside-out alignment. We don't mask who you are; we refine your features to elevate your natural, elegant self.</p></div>
+        <div class="value-card"><div class="value-icon">👁</div><h3 class="value-title">Our Vision</h3><p class="value-desc">To be Newfoundland's most trusted and beloved luxury beauty destination — a space where every woman feels seen, celebrated, and beautifully transformed.</p></div>
+        <div class="value-card"><div class="value-icon">🛡</div><h3 class="value-title">Our Mission</h3><p class="value-desc">To provide every client with a luxury experience, exceptional service, and results uniquely tailored to their natural beauty — with care, precision, and passion.</p></div>
+        <div class="value-card"><div class="value-icon">✨</div><h3 class="value-title">Philosophy</h3><p class="value-desc">Beauty is more than appearance — it's confidence, self-expression, and self-care. Every treatment at TianaLux is designed to leave you feeling empowered from the inside out.</p></div>
       </div>
     </div>
   </section>
   <section class="creds-bar">
     <div class="container" style="max-width:760px;text-align:center">
-      <div class="subtitle" style="color:var(--gold)">Credentials</div>
-      <h2 class="section-title" style="color:#fff;margin-bottom:32px">Mastery Certified</h2>
+      <div class="subtitle" style="color:var(--gold)">Based in Newfoundland</div>
+      <h2 class="section-title" style="color:#fff;margin-bottom:32px">Why Choose TianaLux</h2>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:22px;font-size:14px;font-weight:300;color:rgba(255,255,255,.75)">
-        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Senior Locs Practitioner Certification</strong> · London Academy of Natural Styling</li>
-        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Microblading & Lamination Master</strong> · Dubai Eyebrow Guild</li>
-        <li><strong>Aesthetician & Cosmetology Diploma</strong> · Ontario College of Aesthetics</li>
+        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Expert Loc Care</strong> · Traditional Locs, Microlocs, Loc Retie &amp; Retwist, Cornrows — done with precision and care.</li>
+        <li style="border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:18px"><strong>Precision Brow Artistry</strong> · Semi-permanent ombré brows, touch-ups, and corrections tailored to your unique facial features.</li>
+        <li><strong>Personalized Luxury Experience</strong> · Every visit is crafted to leave you feeling confident, refreshed, and completely empowered.</li>
       </ul>
     </div>
   </section>`;}
@@ -774,17 +779,24 @@ function renderServices(cat){
           <span class="svc-dur">⏱ ${s.dur}</span>
           <span class="svc-price"><small>starting at</small>$${s.price}</span>
         </div>
+        <div style="font-size:11px;margin-bottom:12px;display:flex;gap:6px;flex-wrap:wrap">
+          ${s.dep>0?`<span style="background:#f2e9dc;padding:3px 8px;border-radius:3px">Deposit: $${s.dep}</span>`:`<span style="background:#f0f9f0;color:#2d7a2d;padding:3px 8px;border-radius:3px">No deposit required</span>`}
+          ${s.consult?`<span style="background:#fff8e7;color:#8a6200;padding:3px 8px;border-radius:3px">Consultation required</span>`:''}
+        </div>
         <div class="svc-acts">
-          <button class="btn btn-solid" onclick="goTo('booking','${s.id}')">Book Slot</button>
-          <button class="btn btn-gold" onclick="goTo('booking','${s.id}')">Pay Deposit</button>
+          ${s.consult
+            ?`<button class="btn btn-gold" onclick="goTo('booking','${s.id}')">Request Consultation</button>`
+            :`<button class="btn btn-solid" onclick="goTo('booking','${s.id}')">Book Appointment</button>`
+          }
+          ${s.dep>0?`<button class="btn" onclick="goTo('booking','${s.id}')">Pay Deposit</button>`:''}
         </div>
       </div>
     </div>`).join('');
   return `
   <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&q=80')">
-    <div class="subtitle" style="color:var(--gold)">Services & Pricing</div>
-    <h1>The Luxury Catalog</h1>
-    <p>Indulge in our tailored services. Select a treatment to reserve your beauty experience.</p>
+    <div class="subtitle" style="color:var(--gold)">Services &amp; Pricing</div>
+    <h1>Tiana Locs &amp; Brows by Tiana</h1>
+    <p>Select a service below to request a consultation or book your appointment directly.</p>
   </section>
   <section class="section">
     <div class="container">
@@ -794,6 +806,10 @@ function renderServices(cat){
         <button class="fbtn ${cat==='brows'?'active':''}" onclick="filterSvc('brows')">Brows By Tiana</button>
       </div>
       <div class="svc-grid" id="svc-grid">${cards}</div>
+      <div style="max-width:700px;margin:50px auto 0;border-top:1px solid var(--beige-dark);padding-top:40px;text-align:center">
+        <p style="font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:10px"><strong>Deposits:</strong> All deposits are non-refundable and required to secure your appointment. Deposits are deducted from the final balance.</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.8"><strong>Pricing:</strong> Prices listed as "Starting From" are base prices only. Final pricing may vary based on hair length, density, condition, and service complexity.</p>
+      </div>
     </div>
   </section>`;
 }
@@ -927,23 +943,22 @@ function renderArticle(id){
 function renderContact(){return `
   <section class="page-hero" style="background-image:linear-gradient(rgba(17,17,17,.85),rgba(17,17,17,.85)),url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1600&q=80')">
     <div class="subtitle" style="color:var(--gold)">Get In Touch</div>
-    <h1>Connect With Tiana</h1>
-    <p>Custom questions about loc techniques, lamination or nail art? Drop us a line.</p>
+    <h1>Connect With TianaLux</h1>
+    <p>Have questions about our loc services, ombré brows, or beauty treatments? We'd love to hear from you.</p>
   </section>
   <section class="section">
     <div class="container">
       <div class="contact-grid">
         <div class="contact-panel">
           <h3>Contact Details</h3>
-          <div class="c-row"><div class="c-icon">📞</div><div><div class="c-lbl">Phone</div><div class="c-val">+1 (416) 555-LUXX</div><div class="c-val">+1 (416) 555-5899</div></div></div>
-          <div class="c-row"><div class="c-icon">✉</div><div><div class="c-lbl">Email</div><div class="c-val">appointments@tianalux.ca</div></div></div>
-          <div class="c-row"><div class="c-icon">📍</div><div><div class="c-lbl">Location</div><div class="c-val">88 Luxury Ave, Suite 100<br>Toronto, ON, M5V 2J2, Canada</div></div></div>
-          <div class="c-row"><div class="c-icon">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">Mon–Fri: 9am–7pm<br>Sat: 9am–6pm<br>Sun: Private bookings only</div></div></div>
+          <div class="c-row"><div class="c-icon">📍</div><div><div class="c-lbl">Location</div><div class="c-val">St. John's, Newfoundland<br>Canada</div></div></div>
+          <div class="c-row"><div class="c-icon">✉</div><div><div class="c-lbl">Email</div><div class="c-val">info@tianalux.ca</div><div class="c-val">appointments@tianalux.ca</div></div></div>
+          <div class="c-row"><div class="c-icon">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">Mon–Sat: 9am–7pm<br>Sun: By appointment only</div></div></div>
+          <div class="c-row"><div class="c-icon">📸</div><div><div class="c-lbl">Follow Us</div><div class="c-val"><a href="https://instagram.com/tianalux" target="_blank" style="color:var(--gold)">@tianalux</a> on Instagram</div><div class="c-val"><a href="https://facebook.com/tianalux" target="_blank" style="color:var(--gold)">TianaLux</a> on Facebook</div></div></div>
           <div class="socials">
-            <a href="https://instagram.com" target="_blank" class="soc-btn" title="Instagram">📸</a>
-            <a href="https://tiktok.com" target="_blank" class="soc-btn" title="TikTok">🎵</a>
-            <a href="https://facebook.com" target="_blank" class="soc-btn" title="Facebook">📘</a>
-            <a href="https://wa.me/14165555899" target="_blank" class="soc-btn" title="WhatsApp">💬</a>
+            <a href="https://instagram.com/tianalux" target="_blank" class="soc-btn" title="Instagram">📸</a>
+            <a href="https://facebook.com/tianalux" target="_blank" class="soc-btn" title="Facebook">📘</a>
+            <a href="https://wa.me/1" target="_blank" class="soc-btn" title="WhatsApp">💬</a>
           </div>
         </div>
         <div>
@@ -951,12 +966,18 @@ function renderContact(){return `
           <p style="font-size:12px;color:var(--muted);margin-bottom:26px">We respond within 1 business day.</p>
           <form id="contact-form" class="form-grid" style="gap:16px">
             <div class="fg"><label>Full Name *</label><input id="c-name" required placeholder="e.g. Jessica Jones"></div>
-            <div class="fg"><label>Phone Number *</label><input id="c-phone" required placeholder="+1 (647) 555-0112"></div>
+            <div class="fg"><label>Phone Number *</label><input id="c-phone" required placeholder="+1 (709) 555-0112"></div>
             <div class="fg full"><label>Email Address *</label><input id="c-email" type="email" required placeholder="jessica@example.com"></div>
             <div class="fg full"><label>Message *</label><textarea id="c-msg" rows="5" required placeholder="Write your inquiry here..."></textarea></div>
             <div class="fg full"><button type="submit" class="btn btn-solid">Send Message</button></div>
           </form>
-          <div class="map-ph">Interactive Map — Toronto, Canada</div>
+          <div style="margin-top:24px;border-radius:6px;overflow:hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d84280.09066673638!2d-52.8346703!3d47.5615096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0ca36c9e53f3ab%3A0x4d22fd0c33c787c3!2sSt.%20John's%2C%20NL!5e0!3m2!1sen!2sca!4v1718000000000" width="100%" height="250" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="margin-top:28px;background:#fff8e7;border-left:4px solid var(--gold-dark);padding:20px">
+            <p style="font-size:13px;color:var(--black);line-height:1.8;margin-bottom:8px"><strong>Deposits:</strong> All deposits are non-refundable and required to secure your appointment.</p>
+            <p style="font-size:13px;color:var(--black);line-height:1.8"><strong>Pricing:</strong> "Starting From" prices are base prices. Final pricing varies by hair length, density, and complexity.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1570,16 +1591,19 @@ function renderFooter(){
       <div class="foot-title">Our Divisions</div>
       <ul class="foot-links">
         <li><a onclick="goTo('services','locs')">Tiana Locs</a></li>
-        <li><a onclick="goTo('services','brows')">Brows By Tiana</a></li>
-        <li><a onclick="goTo('services','locs')">Loc Retwists</a></li>
-        <li><a onclick="goTo('services','brows')">Lash Extensions</a></li>
-        <li><a onclick="goTo('services','brows')">Nail Art Salon</a></li>
-        <li><a onclick="goTo('contact')">Contact Us</a></li>
+        <li><a onclick="goTo('services','locs')">Traditional Locs</a></li>
+        <li><a onclick="goTo('services','locs')">Microlocs</a></li>
+        <li><a onclick="goTo('services','locs')">Loc Retie / Retwist</a></li>
+        <li><a onclick="goTo('services','locs')">Cornrows &amp; Hair Wash</a></li>
+        <li><a onclick="goTo('services','brows')">Brows by Tiana</a></li>
+        <li><a onclick="goTo('services','brows')">Ombré Brows</a></li>
+        <li><a onclick="goTo('services','brows')">Brow Touch-Up</a></li>
+        <li><a onclick="goTo('services','brows')">Brow Correction</a></li>
       </ul>
     </div>
     <div>
       <div class="foot-title">Newsletter</div>
-      <p style="color:rgba(255,255,255,.55);font-size:12px;margin-bottom:16px;line-height:1.7">Subscribe for exclusive promotions, beauty tips and booking alerts.</p>
+      <p style="color:rgba(255,255,255,.55);font-size:12px;margin-bottom:16px;line-height:1.7">Subscribe for exclusive promotions, beauty tips and booking alerts from TianaLux.</p>
       <form class="nl-form" onsubmit="nlSignup(event)">
         <input class="nl-input" type="email" id="nl-email" placeholder="Your email address" required>
         <button type="submit" class="nl-btn">Join</button>
@@ -1587,8 +1611,8 @@ function renderFooter(){
     </div>
   </div>
   <div class="foot-bottom">
-    <div class="foot-tag">Experience Luxury. Experience Tiana Lux.</div>
-    <div>© 2026 TIANA LUX Beauty House. All Rights Reserved.</div>
+    <div class="foot-tag">Confidence. Expression. Self-Care. — TianaLux.</div>
+    <div>&copy; 2026 TIANA LUX &bull; St. John's, Newfoundland, Canada. All Rights Reserved.</div>
   </div>`;
 }
 function nlSignup(e){e.preventDefault();const em=document.getElementById('nl-email');if(em){toast('Welcome! '+em.value+' has been added to the Tiana Lux VIP list.','ok');em.value='';}}
