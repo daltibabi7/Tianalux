@@ -1,66 +1,99 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
+const DATA_VERSION = "2.0"; // Bump this to force-refresh static data
+
 const DEFAULT_SERVICES = [
     // TIANA LOCS
     {
         id: "locs-1",
         category: "locs",
-        name: "Luxury Starter Locs",
-        description: "Begin your loc journey with precision comb coils or two-strand twists. Includes a hair analysis, deep detoxifying wash, steam treatment, and professional mapping.",
-        duration: "180 min",
+        name: "Traditional Locs Installation",
+        description: "Begin your loc journey with expert traditional loc installation. Final price depends on hair length, density, desired size, and overall hair condition. A consultation helps us tailor the perfect plan for your hair.",
+        duration: "180+ min",
         durationMins: 180,
-        price: 250,
+        price: 200,
         deposit: 50,
+        requiresConsultation: true,
         image: "https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&auto=format&fit=crop&q=80",
         video: "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4"
     },
     {
         id: "locs-2",
         category: "locs",
-        name: "Premium Loc Retwist & Style",
-        description: "Professional palm rolling or interlocking technique to secure new growth. Finished with a luxury hair oil massage and your choice of design (barrels, ropes, or updos).",
-        duration: "120 min",
-        durationMins: 120,
-        price: 150,
-        deposit: 50,
+        name: "Microlocs Installation",
+        description: "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. A consultation is required before booking.",
+        duration: "360+ min",
+        durationMins: 360,
+        price: 600,
+        deposit: 100,
+        requiresConsultation: true,
         image: "https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&auto=format&fit=crop&q=80",
         video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4"
     },
     {
         id: "locs-3",
         category: "locs",
-        name: "Instant Loc Installation",
-        description: "Crochet needle method to create mature-looking locs instantly. Ideal for straight, wavy, or curly hair textures. Extensions can be added upon consultation.",
-        duration: "360 min",
-        durationMins: 360,
-        price: 650,
-        deposit: 150,
+        name: "Traditional Loc Retie / Retwist",
+        description: "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
+        duration: "90+ min",
+        durationMins: 90,
+        price: 100,
+        deposit: 25,
+        requiresConsultation: true,
         image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80",
         video: ""
     },
     {
         id: "locs-4",
         category: "locs",
-        name: "Knotless Braids (Medium/Long)",
-        description: "Ultra-sleek, lightweight, tension-free knotless braiding. Includes custom hair blending, hair wash, blow dry, and gold thread accessory highlights.",
-        duration: "240 min",
-        durationMins: 240,
-        price: 280,
+        name: "Microlocs Retie",
+        description: "Expert microloc retie service to keep your microlocs looking fresh and well-maintained. Final price depends on density, size, and time required.",
+        duration: "120+ min",
+        durationMins: 120,
+        price: 200,
         deposit: 50,
+        requiresConsultation: true,
         image: "https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&auto=format&fit=crop&q=80",
         video: ""
     },
     {
         id: "locs-5",
         category: "locs",
-        name: "Intense Botanical Hair Treatment",
-        description: "Custom blend of organic oils and deep steam hydration to restore moisture-protein balance in dry, damaged, or color-treated natural hair.",
+        name: "Hair Wash",
+        description: "A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required — book directly.",
+        duration: "45 min",
+        durationMins: 45,
+        price: 30,
+        deposit: 0,
+        requiresConsultation: false,
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
+        video: ""
+    },
+    {
+        id: "locs-6",
+        category: "locs",
+        name: "Cornrows",
+        description: "Beautifully crafted cornrows tailored to your style preferences. Final price depends on style, length, and complexity. Consultation recommended.",
+        duration: "120+ min",
+        durationMins: 120,
+        price: 50,
+        deposit: 20,
+        requiresConsultation: true,
+        image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
+        video: ""
+    },
+    {
+        id: "locs-7",
+        category: "locs",
+        name: "Luxury Pedicure",
+        description: "A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book your appointment directly — no consultation needed.",
         duration: "60 min",
         durationMins: 60,
-        price: 95,
-        deposit: 30,
-        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
+        price: 50,
+        deposit: 20,
+        requiresConsultation: false,
+        image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80",
         video: ""
     },
 
@@ -68,61 +101,40 @@ const DEFAULT_SERVICES = [
     {
         id: "brows-1",
         category: "brows",
-        name: "Luxury Brow Sculpt & Tint",
-        description: "Precision map, custom wax/thread, tweeze, and tint alignment using premium hybrid dyes that stain the skin and color brow hairs for up to 6 weeks.",
-        duration: "45 min",
-        durationMins: 45,
-        price: 80,
-        deposit: 25,
+        name: "Ombré Brows",
+        description: "Semi-permanent powder brows designed to enhance shape, definition, and symmetry. A beautiful, long-lasting brow transformation tailored to your features.",
+        duration: "120 min",
+        durationMins: 120,
+        price: 200,
+        deposit: 50,
+        requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
         video: "https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4"
     },
     {
         id: "brows-2",
         category: "brows",
-        name: "Luxury Brow Lamination",
-        description: "Keratin-infused lifting treatment that aligns brow hairs in a uniform upward direction, creating a fuller, fluffier, high-fashion runway look.",
-        duration: "60 min",
-        durationMins: 60,
-        price: 120,
-        deposit: 40,
+        name: "Ombré Brow Touch-Up",
+        description: "This touch-up price applies only to clients whose original Ombré Brows were done by Brows by Tiana. Clients from another artist will be charged as a new Ombré Brow service.",
+        duration: "90 min",
+        durationMins: 90,
+        price: 100,
+        deposit: 30,
+        requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
         video: ""
     },
     {
         id: "brows-3",
         category: "brows",
-        name: "Premium Silk Lash Extensions",
-        description: "Full set of premium feather-light silk lash extensions. Hand-applied using medical-grade adhesive. Available in natural, wispy, cat-eye, or hybrid volumes.",
-        duration: "120 min",
+        name: "Brow Correction / Previous Work Done Elsewhere",
+        description: "Expert brow correction for work done by other artists. A consultation is required before booking to assess the current state and design the best correction plan.",
+        duration: "120+ min",
         durationMins: 120,
-        price: 180,
+        price: 200,
         deposit: 50,
-        image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4"
-    },
-    {
-        id: "brows-4",
-        category: "brows",
-        name: "Signature Gel Manicure",
-        description: "Luxury nail shaping, cuticle care, hand exfoliation, and premium LED-cured gel polish application. Finished with warm towel wrapping and gold-infused cuticle oil.",
-        duration: "50 min",
-        durationMins: 50,
-        price: 75,
-        deposit: 25,
+        requiresConsultation: true,
         image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4"
-    },
-    {
-        id: "brows-5",
-        category: "brows",
-        name: "Luxury Jelly Pedicure SPA",
-        description: "Relaxing foot soak in warm organic jelly, detailed scrub, callus removal, nourishing mud masque, hot stone massage, and professional gel polish.",
-        duration: "75 min",
-        durationMins: 75,
-        price: 110,
-        deposit: 35,
-        image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80",
         video: ""
     }
 ];
@@ -187,25 +199,25 @@ const DEFAULT_TESTIMONIALS = [
     {
         id: "test-1",
         name: "Amara K.",
-        location: "Toronto, ON",
+        location: "St. John's, NL",
         rating: 5,
-        comment: "Tiana is the absolute queen of locs! She started my loc journey 6 months ago, and they look incredibly clean and healthy. The salon vibe is pure Beverly Hills—luxurious, peaceful, and professional.",
+        comment: "Christiana is absolutely incredible! She did my traditional locs and the result was breathtaking. The whole experience felt so personal and luxurious — I left feeling like a completely new woman. TianaLux is the real deal in Newfoundland.",
         video: "https://assets.mixkit.co/videos/preview/mixkit-woman-smiling-after-a-beauty-treatment-44361-large.mp4"
     },
     {
         id: "test-2",
         name: "Sophia M.",
-        location: "Mississauga, ON",
+        location: "St. John's, NL",
         rating: 5,
-        comment: "I get my brow lamination and lash extensions done here. The precision is unmatched. The gold detailing in the studio and the champagne service make you feel like royalty.",
+        comment: "I got my Ombré Brows done at Brows by Tiana and I'm obsessed! Christiana took her time to map out the perfect shape for my face. The semi-permanent results are gorgeous — I get compliments every single day.",
         video: ""
     },
     {
         id: "test-3",
         name: "Chloe D.",
-        location: "Oakville, ON",
+        location: "St. John's, NL",
         rating: 5,
-        comment: "Unmatched nail art! I showed Tiana a design from a Dubai influencer, and she executed it even better. The gel manicure easily lasts for 5 weeks without lifting.",
+        comment: "My microloc installation was done so beautifully — the precision and detail were unmatched. TianaLux made the whole process comfortable and fun. I'm booked for my retie already!",
         video: ""
     }
 ];
@@ -313,6 +325,16 @@ class StateManager {
     }
 
     initializeState() {
+        // Force-reset static content when data version changes
+        const storedVersion = localStorage.getItem("tiana_data_version");
+        if (storedVersion !== DATA_VERSION) {
+            localStorage.removeItem("tiana_services");
+            localStorage.removeItem("tiana_testimonials");
+            localStorage.removeItem("tiana_blogs");
+            localStorage.removeItem("tiana_portfolio");
+            localStorage.setItem("tiana_data_version", DATA_VERSION);
+        }
+
         if (!localStorage.getItem("tiana_services")) {
             localStorage.setItem("tiana_services", JSON.stringify(DEFAULT_SERVICES));
         }
