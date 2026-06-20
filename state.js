@@ -1,7 +1,7 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
-const DATA_VERSION = "2.0"; // Bump this to force-refresh static data
+const DATA_VERSION = "3.0"; // Bumped to load Tiana's real locs photos
 
 const DEFAULT_SERVICES = [
     // TIANA LOCS
@@ -15,7 +15,7 @@ const DEFAULT_SERVICES = [
         price: 200,
         deposit: 50,
         requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&auto=format&fit=crop&q=80",
+        image: "tiana-locs-1.jpg",
         video: "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4"
     },
     {
@@ -28,7 +28,7 @@ const DEFAULT_SERVICES = [
         price: 600,
         deposit: 100,
         requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&auto=format&fit=crop&q=80",
+        image: "tiana-locs-2.jpg",
         video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4"
     },
     {
@@ -41,7 +41,7 @@ const DEFAULT_SERVICES = [
         price: 100,
         deposit: 25,
         requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&auto=format&fit=crop&q=80",
+        image: "tiana-locs-3.jpg",
         video: ""
     },
     {
@@ -54,7 +54,7 @@ const DEFAULT_SERVICES = [
         price: 200,
         deposit: 50,
         requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&auto=format&fit=crop&q=80",
+        image: "tiana-locs-4.jpg",
         video: ""
     },
     {
@@ -80,7 +80,7 @@ const DEFAULT_SERVICES = [
         price: 50,
         deposit: 20,
         requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
+        image: "tiana-locs-5.jpg",
         video: ""
     },
     {
@@ -145,8 +145,8 @@ const DEFAULT_PORTFOLIO = [
         category: "locs",
         title: "Loc Installation & Grooming",
         description: "6 months progression of instant locs installation using human hair extensions.",
-        imageBefore: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?w=800&auto=format&fit=crop&q=80", // Natural afro
-        imageAfter: "https://images.unsplash.com/photo-1595959183075-c1d09e57ac4c?w=800&auto=format&fit=crop&q=80", // Styled locs
+        imageBefore: "tiana-locs-1.jpg",
+        imageAfter: "tiana-locs-3.jpg",
         type: "slider"
     },
     {
@@ -237,7 +237,7 @@ const DEFAULT_BLOGS = [
         
         Stay confident, trust the process, and visit our Toronto house for professional steam treatments!`,
         date: "June 15, 2026",
-        image: "https://images.unsplash.com/photo-1605497746444-ac9dbd39f4f5?w=800&auto=format&fit=crop&q=80"
+        image: "tiana-locs-2.jpg"
     },
     {
         id: "blog-2",
