@@ -708,9 +708,17 @@ function openVid(src){
   const v=document.getElementById('vplayer');
   const f=document.getElementById('vframe');
   if(src.includes('drive.google.com')){
-    v.style.display='none';
-    f.style.display='block';
-    f.src=src.replace(/\/view.*/, '/preview');
+    const match = src.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    if(match && match[1]){
+      f.style.display='none';
+      v.style.display='block';
+      v.src='https://drive.google.com/uc?export=download&id=' + match[1];
+      v.play().catch(()=>{});
+    } else {
+      v.style.display='none';
+      f.style.display='block';
+      f.src=src.replace(/\/view.*/, '/preview');
+    }
   }else{
     f.style.display='none';
     v.style.display='block';
