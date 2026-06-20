@@ -710,7 +710,7 @@ function openVid(src){
   if(src.includes('drive.google.com')){
     v.style.display='none';
     f.style.display='block';
-    f.src=src;
+    f.src=src.replace(/\/view.*/, '/preview');
   }else{
     f.style.display='none';
     v.style.display='block';
