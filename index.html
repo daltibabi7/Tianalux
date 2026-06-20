@@ -26,10 +26,18 @@ img,video{max-width:100%;height:auto;object-fit:cover;display:block}
 
 /* PRELOADER */
 #preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 1s ease,visibility 1s}
-.pre-logo{font-family:var(--serif);font-size:28px;letter-spacing:10px;color:var(--white);animation:shimmer 2s infinite}
+.pre-logo{font-family:var(--serif);font-size:28px;letter-spacing:10px;color:var(--white);animation:shimmer 2s infinite;text-align:center;padding:0 20px}
 .pre-bar{width:0;height:1px;background:var(--gold);margin:20px auto 0;animation:grow 1.5s forwards}
 @keyframes shimmer{0%,100%{opacity:.4;color:var(--white)}50%{opacity:1;color:var(--gold)}}
 @keyframes grow{to{width:120px}}
+@media(max-width:768px){
+  .pre-logo{font-size:22px;letter-spacing:6px}
+  @keyframes grow{to{width:90px}}
+}
+@media(max-width:480px){
+  .pre-logo{font-size:16px;letter-spacing:4px}
+  @keyframes grow{to{width:70px}}
+}
 
 /* HEADER */
 header{position:fixed;top:0;left:0;width:100%;z-index:1000;transition:var(--ease)}
