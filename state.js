@@ -1,7 +1,7 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
-const DATA_VERSION = "3.0"; // Bumped to load Tiana's real locs photos
+const DATA_VERSION = "7.0"; // Bumped: new traditional locs photos + removed before/after sliders
 
 const DEFAULT_SERVICES = [
     // TIANA LOCS
@@ -15,7 +15,7 @@ const DEFAULT_SERVICES = [
         price: 200,
         deposit: 50,
         requiresConsultation: true,
-        image: "tiana-locs-1.jpg",
+        image: "tiana-traditional-1.jpg",
         video: "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4"
     },
     {
@@ -41,7 +41,7 @@ const DEFAULT_SERVICES = [
         price: 100,
         deposit: 25,
         requiresConsultation: true,
-        image: "tiana-locs-3.jpg",
+        image: "tiana-traditional-2.jpg",
         video: ""
     },
     {
@@ -61,7 +61,7 @@ const DEFAULT_SERVICES = [
         id: "locs-5",
         category: "locs",
         name: "Hair Wash",
-        description: "A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required — book directly.",
+        description: "A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required; book directly.",
         duration: "45 min",
         durationMins: 45,
         price: 30,
@@ -87,7 +87,7 @@ const DEFAULT_SERVICES = [
         id: "locs-7",
         category: "locs",
         name: "Luxury Pedicure",
-        description: "A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book your appointment directly — no consultation needed.",
+        description: "A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book your appointment directly; no consultation needed.",
         duration: "60 min",
         durationMins: 60,
         price: 50,
@@ -145,27 +145,24 @@ const DEFAULT_PORTFOLIO = [
         category: "locs",
         title: "Loc Installation & Grooming",
         description: "6 months progression of instant locs installation using human hair extensions.",
-        imageBefore: "tiana-locs-1.jpg",
-        imageAfter: "tiana-locs-3.jpg",
-        type: "slider"
+        image: "tiana-traditional-2.jpg",
+        type: "image"
     },
     {
         id: "port-2",
         category: "brows",
         title: "Ombre Powder Brows Alignment",
         description: "Perfect gradient shading from light bulbs to defined dark arches.",
-        imageBefore: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-        imageAfter: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-        type: "slider"
+        image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
+        type: "image"
     },
     {
         id: "port-3",
-        category: "hair",
-        title: "Luxury Fulani Braids",
-        description: "Intricate scalp patterns combined with long waist-length braids.",
-        image: "https://images.unsplash.com/photo-1628073889146-27bc2446a6f1?w=800&auto=format&fit=crop&q=80",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4",
-        type: "video"
+        category: "locs",
+        title: "Precision Microlocs Installation",
+        description: "Beautifully crafted and tidy microloc grid installation.",
+        image: "tiana-locs-2.jpg",
+        type: "image"
     },
     {
         id: "port-4",
@@ -180,9 +177,8 @@ const DEFAULT_PORTFOLIO = [
         category: "lashes",
         title: "Volume Lashes Dramatic Set",
         description: "Full volume 5D lashes showing dramatic yet lightweight fluffiness.",
-        imageBefore: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&auto=format&fit=crop&q=80",
-        imageAfter: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-        type: "slider"
+        image: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&auto=format&fit=crop&q=80",
+        type: "image"
     },
     {
         id: "port-6",
@@ -201,7 +197,7 @@ const DEFAULT_TESTIMONIALS = [
         name: "Amara K.",
         location: "St. John's, NL",
         rating: 5,
-        comment: "Christiana is absolutely incredible! She did my traditional locs and the result was breathtaking. The whole experience felt so personal and luxurious — I left feeling like a completely new woman. TianaLux is the real deal in Newfoundland.",
+        comment: "Christiana is absolutely incredible! She did my traditional locs and the result was breathtaking. The whole experience felt so personal and luxurious, leaving me feeling like a completely new woman. TianaLux is the real deal in Newfoundland.",
         video: "https://assets.mixkit.co/videos/preview/mixkit-woman-smiling-after-a-beauty-treatment-44361-large.mp4"
     },
     {
@@ -209,7 +205,7 @@ const DEFAULT_TESTIMONIALS = [
         name: "Sophia M.",
         location: "St. John's, NL",
         rating: 5,
-        comment: "I got my Ombré Brows done at Brows by Tiana and I'm obsessed! Christiana took her time to map out the perfect shape for my face. The semi-permanent results are gorgeous — I get compliments every single day.",
+        comment: "I got my Ombré Brows done at Brows by Tiana and I'm obsessed! Christiana took her time to map out the perfect shape for my face. The semi-permanent results are gorgeous; I get compliments every single day.",
         video: ""
     },
     {
@@ -217,7 +213,7 @@ const DEFAULT_TESTIMONIALS = [
         name: "Chloe D.",
         location: "St. John's, NL",
         rating: 5,
-        comment: "My microloc installation was done so beautifully — the precision and detail were unmatched. TianaLux made the whole process comfortable and fun. I'm booked for my retie already!",
+        comment: "My microloc installation was done so beautifully, with unmatched precision and detail. TianaLux made the whole process comfortable and fun. I'm booked for my retie already!",
         video: ""
     }
 ];
@@ -263,7 +259,7 @@ const DEFAULT_BLOGS = [
         summary: "Keep your natural nails strong, flexible, and hydrated even with regular extensions.",
         content: `Acrylics look stunning, but your natural nails need care too.
         
-        1. Never peel or pick extensions off—always professional soak off.
+        1. Never peel or pick extensions off; always professional soak off.
         2. Apply cuticle oil twice daily. Cuticle hydration stimulates healthy nail growth.
         3. Take a 1-week break every 3 months. Use a keratin nail strengthener during the break.
         4. Wear gloves when using household cleaning products.`,
