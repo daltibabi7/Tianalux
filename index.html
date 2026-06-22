@@ -658,7 +658,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* ── STATE / LOCAL DB ── */
-const DATA_VER='8.4'; // bumped version to clear cache & load new service timings
+const DATA_VER='8.5'; // bumped version to clear cache & load new service timings
 // Auto-reset localStorage when data version changes
 (function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
 
@@ -862,7 +862,7 @@ function renderHome(){
   <section class="section">
     <div class="container">
       <div class="about-split">
-        <div class="about-frame"><img src="christiana.jpg?v=2" alt="Tiana Lux"></div>
+        <div class="about-frame"><img src="christiana.jpg?v=3" alt="Tiana Lux"></div>
         <div class="about-text">
           <div class="subtitle">About TianaLux &bull; Canada</div>
           <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Newfoundland &amp; Labrador's Premier Luxury Beauty Brand</h2>
@@ -979,7 +979,7 @@ function renderAbout(){return `
           <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Whether you're visiting for loc maintenance, a fresh brow transformation, or a relaxing beauty treatment, I am committed to creating an experience that leaves you feeling confident, refreshed, and empowered. Proudly serving St. John's, Newfoundland and surrounding communities across Canada.</p>
           <div class="about-sig">Christiana Adesanya</div>
         </div>
-        <div class="about-frame" style="flex:1"><img src="christiana.jpg?v=2" alt="Christiana Adesanya - Founder of TianaLux" style="height:500px;object-fit:cover"></div>
+        <div class="about-frame" style="flex:1"><img src="christiana.jpg?v=3" alt="Christiana Adesanya - Founder of TianaLux" style="height:500px;object-fit:cover"></div>
       </div>
     </div>
   </section>
@@ -1902,6 +1902,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </a>
 </body>
 </html>
+
 
 
 
