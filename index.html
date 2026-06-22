@@ -658,7 +658,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* ── STATE / LOCAL DB ── */
-const DATA_VER='8.0'; // bumped version to clear cache & load new service timings
+const DATA_VER='8.1'; // bumped version to clear cache & load new service timings
 // Auto-reset localStorage when data version changes
 (function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
 
@@ -1902,6 +1902,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 </a>
 </body>
 </html>
+
 
 
 
