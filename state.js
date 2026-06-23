@@ -1,7 +1,7 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
-const DATA_VERSION = "8.6"; // Bumped: new traditional locs photos + removed before/after sliders
+const DATA_VERSION = "8.7"; // Bumped: new traditional locs photos + removed before/after sliders
 
 const DEFAULT_SERVICES = [
     // TIANA LOCS
