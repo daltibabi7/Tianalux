@@ -1,7 +1,7 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
-const DATA_VERSION = "7.0"; // Bumped: new traditional locs photos + removed before/after sliders
+const DATA_VERSION = "8.6"; // Bumped: new traditional locs photos + removed before/after sliders
 
 const DEFAULT_SERVICES = [
     // TIANA LOCS
@@ -22,19 +22,19 @@ const DEFAULT_SERVICES = [
         id: "locs-2",
         category: "locs",
         name: "Microlocs Installation",
-        description: "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. A consultation is required before booking.",
+        description: "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. Consultation required.",
         duration: "Full Day",
         durationMins: 720,
         price: 600,
         deposit: 100,
         requiresConsultation: true,
-        image: "tiana-locs-2.jpg",
+        image: "photo_microlocs.jpg",
         video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4"
     },
     {
         id: "locs-3",
         category: "locs",
-        name: "Traditional Loc Retie / Retwist",
+        name: "Traditional Loc (startters loc)",
         description: "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
         duration: "3 hrs",
         durationMins: 180,
@@ -54,7 +54,7 @@ const DEFAULT_SERVICES = [
         price: 200,
         deposit: 50,
         requiresConsultation: true,
-        image: "tiana-locs-4.jpg",
+        image: "media__1782125029494.jpg",
         video: ""
     },
     {
@@ -122,19 +122,6 @@ const DEFAULT_SERVICES = [
         deposit: 30,
         requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-        video: ""
-    },
-    {
-        id: "brows-3",
-        category: "brows",
-        name: "Brow Correction / Previous Work Done Elsewhere",
-        description: "Expert brow correction for work done by other artists. A consultation is required before booking to assess the current state and design the best correction plan.",
-        duration: "120+ min",
-        durationMins: 120,
-        price: 200,
-        deposit: 50,
-        requiresConsultation: true,
-        image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80",
         video: ""
     }
 ];
