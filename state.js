@@ -1,7 +1,7 @@
 // Tiana Lux State Management Engine
 // Using LocalStorage for real-time reactivity and mock database persistence
 
-const DATA_VERSION = "8.7"; // Bumped: new traditional locs photos + removed before/after sliders
+const DATA_VERSION = "8.8"; // Bumped: added calLink for Cal.com integration
 
 const DEFAULT_SERVICES = [
     // TIANA LOCS
@@ -16,7 +16,8 @@ const DEFAULT_SERVICES = [
         deposit: 50,
         requiresConsultation: true,
         image: "tiana-traditional-1.jpg",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4"
+        video: "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4",
+        calLink: "https://cal.com/tianalux/traditional-locs-installation"
     },
     {
         id: "locs-2",
@@ -29,7 +30,8 @@ const DEFAULT_SERVICES = [
         deposit: 100,
         requiresConsultation: true,
         image: "photo_microlocs.jpg",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4"
+        video: "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4",
+        calLink: "https://cal.com/tianalux"
     },
     {
         id: "locs-3",
@@ -42,7 +44,8 @@ const DEFAULT_SERVICES = [
         deposit: 25,
         requiresConsultation: true,
         image: "tiana-traditional-2.jpg",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux/traditional-loc-retie-retwist-consultation"
     },
     {
         id: "locs-4",
@@ -55,7 +58,8 @@ const DEFAULT_SERVICES = [
         deposit: 50,
         requiresConsultation: true,
         image: "media__1782125029494.jpg",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux/microlocs-retie-consultation"
     },
     {
         id: "locs-5",
@@ -68,7 +72,8 @@ const DEFAULT_SERVICES = [
         deposit: 0,
         requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux"
     },
     {
         id: "locs-6",
@@ -81,7 +86,8 @@ const DEFAULT_SERVICES = [
         deposit: 20,
         requiresConsultation: true,
         image: "tiana-locs-5.jpg",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux/cornrows-consultation"
     },
     {
         id: "locs-7",
@@ -94,7 +100,8 @@ const DEFAULT_SERVICES = [
         deposit: 20,
         requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux"
     },
 
     // BROWS BY TIANA
@@ -109,7 +116,8 @@ const DEFAULT_SERVICES = [
         deposit: 50,
         requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-        video: "https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4"
+        video: "https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4",
+        calLink: "https://cal.com/tianalux/15min"
     },
     {
         id: "brows-2",
@@ -122,7 +130,8 @@ const DEFAULT_SERVICES = [
         deposit: 30,
         requiresConsultation: false,
         image: "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-        video: ""
+        video: "",
+        calLink: "https://cal.com/tianalux/ombre-brow-touch-up"
     }
 ];
 

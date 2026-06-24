@@ -1039,8 +1039,8 @@ function renderServices(cat){
         </div>
         <div class="svc-acts">
           ${s.consult
-            ?`<button class="btn btn-gold" onclick="window.open(s.calLink || 'https://cal.com/tianalux', '_blank')">Request Consultation</button>`
-            :`<button class="btn btn-solid" onclick="window.open(s.calLink || 'https://cal.com/tianalux', '_blank')">Book Appointment</button>`
+            ?`<button class="btn btn-gold" onclick="window.open('${s.calLink || 'https://cal.com/tianalux'}', '_blank')">Request Consultation</button>`
+            :`<button class="btn btn-solid" onclick="window.open('${s.calLink || 'https://cal.com/tianalux'}', '_blank')">Book Appointment</button>`
           }
           
         </div>
