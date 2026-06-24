@@ -604,6 +604,10 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
   }
 }
 </style>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 </head>
 <body>
 
@@ -708,7 +712,87 @@ function db(key){
   if(!raw){localStorage.setItem('tl_'+key,JSON.stringify(DEFAULTS[key]));return DEFAULTS[key];}
   return JSON.parse(raw);
 }
-function dbSet(key,val){localStorage.setItem('tl_'+key,JSON.stringify(val));}
+// GitHub API Config
+let ghToken = localStorage.getItem('tl_ghToken') || '';
+let ghRepo = localStorage.getItem('tl_ghRepo') || '';
+let ghBranch = 'main';
+
+async function ghFetchSha(path) {
+  if(!ghToken || !ghRepo) return null;
+  try {
+    const res = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, {
+      headers: { 'Authorization': 'token ' + ghToken }
+    });
+    if(!res.ok) return null;
+    const data = await res.json();
+    return data.sha;
+  } catch(e) { return null; }
+}
+
+async function ghSaveFile(path, contentStr, message, isBase64 = false) {
+  if(!ghToken || !ghRepo) return null;
+  const sha = await ghFetchSha(path);
+  const content = isBase64 ? contentStr : btoa(unescape(encodeURIComponent(contentStr)));
+  const body = { message, content, branch: ghBranch };
+  if(sha) body.sha = sha;
+  
+  const res = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + path, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'token ' + ghToken,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  });
+  return await res.json();
+}
+
+async function syncToGitHub() {
+  if(!ghToken || !ghRepo) {
+    console.log("GitHub not configured");
+    return;
+  }
+  // Export current localStorage data
+  const keys = ['services', 'portfolio', 'testimonials', 'blogs', 'bookings'];
+  const exportData = {};
+  keys.forEach(k => {
+    const v = localStorage.getItem('tl_'+k);
+    if(v) exportData[k] = JSON.parse(v);
+  });
+  
+  try {
+    await ghSaveFile('data.json', JSON.stringify(exportData, null, 2), "Admin Update Data");
+    console.log("Synced to GitHub successfully");
+  } catch(e) {
+    console.error("GitHub Sync Error", e);
+  }
+}
+
+async function syncFromGitHub() {
+  if(!ghRepo) return; // Cant fetch if no repo known
+  try {
+    // Try raw github url which is public
+    const res = await fetch("https://raw.githubusercontent.com/" + ghRepo + "/main/data.json?t=" + Date.now());
+    if(!res.ok) return;
+    const data = await res.json();
+    let hasChanges = false;
+    for(let k in data) {
+       localStorage.setItem('tl_'+k, JSON.stringify(data[k]));
+       hasChanges = true;
+    }
+    if(hasChanges) {
+      if(typeof render === 'function') render();
+      if(typeof renderAdmin === 'function') renderAdmin();
+    }
+  } catch(e) { console.error("GitHub Load Error", e); }
+}
+
+function dbSet(key,val){
+  localStorage.setItem('tl_'+key,JSON.stringify(val));
+  // Debounce the GitHub sync so it doesn't fire 10 times a second when saving
+  clearTimeout(window._ghSyncTimer);
+  window._ghSyncTimer = setTimeout(syncToGitHub, 2000);
+}
 function dbGetServices(){return db('services');}
 function dbGetPortfolio(){return db('portfolio');}
 function dbGetTestimonials(){return db('testimonials');}
@@ -1317,6 +1401,21 @@ function renderDashboard(){
           </ul>
         </aside>
         <div class="dash-main">
+          ${!isClient?`<div class="d-pane" style="display:block;margin-bottom:20px">
+            <div class="d-pane-title">⚙️ GitHub Database Settings</div>
+            <p style="font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:15px;line-height:1.6">
+              Connect your GitHub repository to securely save data and upload photos directly to your codebase. 100% Free!
+            </p>
+            <div style="background:rgba(255,255,255,0.03);padding:15px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">
+              <label class="form-label">Repository Name (e.g., yourusername/tianalux)</label>
+              <input type="text" id="gh-repo" class="form-input" placeholder="username/repo" value="${ghRepo}" onchange="localStorage.setItem('tl_ghRepo', this.value); ghRepo=this.value;">
+              
+              <label class="form-label" style="margin-top:15px">Personal Access Token (PAT)</label>
+              <input type="password" id="gh-token" class="form-input" placeholder="github_pat_xxx" value="${ghToken}" onchange="localStorage.setItem('tl_ghToken', this.value); ghToken=this.value;">
+              
+              <button class="btn btn-gold" style="width:100%;margin-top:20px" onclick="toast('GitHub Settings Saved!','ok'); syncFromGitHub();">Save & Connect to GitHub</button>
+            </div>
+          </div>`:`}
 
           ${!isClient?`<div class="d-pane active" id="p-overview">
             <div class="d-pane-title">Overview</div>
@@ -1885,6 +1984,7 @@ document.getElementById('burger').addEventListener('click',()=>{
 
 /* â”€â”€ BOOT â”€â”€ */
 document.addEventListener('DOMContentLoaded',()=>{
+  syncFromGitHub();
   renderFooter();
   goTo('home');
   setTimeout(()=>{
