@@ -610,7 +610,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
 <!-- PRELOADER -->
 <div id="preloader">
   <div>
-    <img src="media__1782125029494.jpg" alt="TianaLux Logo" style="width:100px;height:100px;margin-bottom:15px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;box-shadow: 0 4px 16px rgba(212,175,55,0.5);">
+    
     <div class="pre-logo">TIANA LUX</div>
     <div class="pre-bar"></div>
   </div>
@@ -662,7 +662,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* â”€â”€ STATE / LOCAL DB â”€â”€ */
-const DATA_VER='9.1'; // bumped version to clear cache & load new service timings
+const DATA_VER='9.2'; // bumped version to clear cache & load new service timings
 // Auto-reset localStorage when data version changes
 (function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
 
