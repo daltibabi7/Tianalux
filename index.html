@@ -661,7 +661,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* â”€â”€ STATE / LOCAL DB â”€â”€ */
-const DATA_VER='8.8'; // bumped version to clear cache & load new service timings
+const DATA_VER='8.9'; // bumped version to clear cache & load new service timings
 // Auto-reset localStorage when data version changes
 (function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
 
