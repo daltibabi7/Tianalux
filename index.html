@@ -905,7 +905,7 @@ function renderHome(){
   const cards=portfolio.map(p=>portCard(p)).join('');
   return `
   <section class="hero">
-    ${(() => { const si = db('site_images'); if(si && si.hero_bg) return <img class="hero-vid" src="" style="object-fit:cover;">; return <video class="hero-vid" autoplay loop muted playsinline><source src="https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4" type="video/mp4"></video>; })()}
+    ${(() => { const si = db('site_images'); if(si && si.hero_bg) return `<img class="hero-vid" src="${si.hero_bg}" style="object-fit:cover;">`; return `<video class="hero-vid" autoplay loop muted playsinline><source src="https://assets.mixkit.co/videos/preview/mixkit-beautician-applying-eyelash-extensions-44360-large.mp4" type="video/mp4"></video>`; })()}
     <div class="hero-overlay"></div>
     <div class="hero-body">
       <div class="subtitle" style="color:var(--gold)">St. John's, Newfoundland &bull; Canada</div>
@@ -1714,53 +1714,7 @@ function saveGitHubSettings() {
   syncToGitHub();
 }
 
-function saveSiteImages() {
-  const fileLogo = document.getElementById('si-logo').files[0];
-  const fileHero = document.getElementById('si-hero').files[0];
-  const fileAbout = document.getElementById('si-about').files[0];
-  
-  let currentImages = db('site_images') || {};
-  let toProcess = 0;
-  let processed = 0;
 
-  function finalize() {
-    dbSet('site_images', currentImages);
-    alert('Site images saved successfully! Please refresh or sync to GitHub.');
-    renderAdminDashboard();
-  }
-
-  function processFile(file, key) {
-    if(!file) return;
-    toProcess++;
-    const reader = new FileReader();
-    reader.onload = e => {
-      currentImages[key] = e.target.result;
-      processed++;
-      if(processed === toProcess) finalize();
-    };
-    reader.readAsDataURL(file);
-  }
-
-  if(fileLogo) processFile(fileLogo, 'logo');
-  if(fileHero) processFile(fileHero, 'hero_bg');
-  if(fileAbout) processFile(fileAbout, 'about_hero_bg');
-
-  if(toProcess === 0) {
-    // If user clicked save without files, just re-save to trigger sync or nothing
-    finalize();
-  }
-}
-
-
-function saveGitHubSettings() {
-  const t = document.getElementById('gh-token-input').value.trim();
-  const r = document.getElementById('gh-repo-input').value.trim();
-  localStorage.setItem('tl_ghToken', t);
-  localStorage.setItem('tl_ghRepo', r);
-  ghToken = t; ghRepo = r;
-  toast('GitHub settings saved!', 'ok');
-  syncToGitHub();
-}
 function initDash(){
   const profileForm=document.getElementById('profile-form');
   if(profileForm){profileForm.addEventListener('submit',e=>{e.preventDefault();dbSet('client',{name:document.getElementById('pf-name').value,email:dbGetClient().email,phone:document.getElementById('pf-phone').value});toast('Profile updated!','ok');});}
@@ -2113,11 +2067,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     const logoImg = document.querySelector('.logo-img-wrap img');
     if(logoImg) logoImg.src = si.logo;
   }
-  const si = db('site_images');
-  if(si && si.logo){
-    const logoImg = document.querySelector('.logo-img-wrap img');
-    if(logoImg) logoImg.src = si.logo;
-  }
   renderFooter();
   goTo('home');
   setTimeout(()=>{
@@ -2136,6 +2085,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 </a>
 </body>
 </html>
+
+
+
 
 
 
