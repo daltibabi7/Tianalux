@@ -710,7 +710,12 @@ const DEFAULTS = {
 
 function db(key){
   const raw=localStorage.getItem('tl_'+key);
-  if(!raw){localStorage.setItem('tl_'+key,JSON.stringify(DEFAULTS[key]));return DEFAULTS[key];}
+  if(!raw){
+    let def = DEFAULTS[key];
+    if(typeof def === 'undefined') { def = (key === 'client') ? {name:'Amara K.', email:'amara@example.com', phone:'555-0100'} : []; }
+    localStorage.setItem('tl_'+key,JSON.stringify(def));
+    return def;
+  }
   return JSON.parse(raw);
 }
 // GitHub API Config
@@ -2081,6 +2086,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 </a>
 </body>
 </html>
+
+
 
 
 
