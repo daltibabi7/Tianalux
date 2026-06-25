@@ -1340,7 +1340,7 @@ function renderDashboard(){
     {icon:'ðŸ“…',label:'Bookings Manager',pane:'p-bookings'},
     {icon:'âœ',label:'Services CMS',pane:'p-cms'},
     {icon:'ðŸ“',label:'Publish Blog',pane:'p-blog'},
-    {icon:'ðŸ“©',label:'Inquiries',pane:'p-inquiries'}
+    {icon:'ðŸ“©',label:'Inquiries',pane:'p-inquiries'}, {icon:'⚙',label:'GitHub Settings',pane:'p-github'}
   ];
   const menuHTML=menuItems.map((m,i)=>`<li class="d-item ${i===0?'active':''}" data-pane="${m.pane}" onclick="switchPane('${m.pane}')">${m.icon} ${m.label}</li>`).join('');
 
@@ -1440,7 +1440,22 @@ function renderDashboard(){
             <div>${iqHTML||'<p style="color:var(--muted)">No inquiries yet.</p>'}</div>
           </div>`:``}
 
-          <div class="d-pane" id="p-profile">
+          <div class="d-pane" id="p-github">
+  <div class="d-pane-title">GitHub Sync Settings</div>
+  <p style="color:var(--muted);margin-bottom:12px;font-size:14px;">Store your website's data in a GitHub repository for free hosting and image storage.</p>
+  <div style="max-width:520px;display:flex;flex-direction:column;gap:16px">
+    <div class="fg">
+      <label>GitHub Personal Access Token (PAT)</label>
+      <input id="gh-token-input" type="password" value="${ghToken}" placeholder="ghp_xxxxxxxxxxxx">
+    </div>
+    <div class="fg">
+      <label>GitHub Repository (username/repo)</label>
+      <input id="gh-repo-input" value="${ghRepo}" placeholder="e.g. johndoe/tianalux">
+    </div>
+    <button class="btn btn-solid" onclick="saveGitHubSettings()">Save & Connect</button>
+  </div>
+</div>
+<div class="d-pane" id="p-profile">
             <div class="d-pane-title">Profile Settings</div>
             <form id="profile-form" style="max-width:520px;display:flex;flex-direction:column;gap:16px">
               <div class="fg"><label>Full Name</label><input id="pf-name" value="${client.name}" required></div>
@@ -1636,6 +1651,15 @@ function saveGitHubSettings() {
   syncToGitHub();
 }
 
+function saveGitHubSettings() {
+  const t = document.getElementById('gh-token-input').value.trim();
+  const r = document.getElementById('gh-repo-input').value.trim();
+  localStorage.setItem('tl_ghToken', t);
+  localStorage.setItem('tl_ghRepo', r);
+  ghToken = t; ghRepo = r;
+  toast('GitHub settings saved!', 'ok');
+  syncToGitHub();
+}
 function initDash(){
   const profileForm=document.getElementById('profile-form');
   if(profileForm){profileForm.addEventListener('submit',e=>{e.preventDefault();dbSet('client',{name:document.getElementById('pf-name').value,email:dbGetClient().email,phone:document.getElementById('pf-phone').value});toast('Profile updated!','ok');});}
