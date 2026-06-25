@@ -709,14 +709,18 @@ const DEFAULTS = {
 };
 
 function db(key){
+  let def = DEFAULTS[key];
+  if(typeof def === 'undefined') { def = (key === 'client') ? {name:'Amara K.', email:'amara@example.com', phone:'555-0100'} : []; }
   const raw=localStorage.getItem('tl_'+key);
-  if(!raw || raw === 'undefined'){
-    let def = DEFAULTS[key];
-    if(typeof def === 'undefined') { def = (key === 'client') ? {name:'Amara K.', email:'amara@example.com', phone:'555-0100'} : []; }
+  if(!raw || raw === 'undefined' || raw === 'null'){
     localStorage.setItem('tl_'+key,JSON.stringify(def));
     return def;
   }
-  try { return JSON.parse(raw); } catch(e) { return []; }
+  try { 
+    let parsed = JSON.parse(raw); 
+    if (!parsed) return def;
+    return parsed;
+  } catch(e) { return def; }
 }
 // GitHub API Config
 let ghToken = localStorage.getItem('tl_ghToken') || '';
