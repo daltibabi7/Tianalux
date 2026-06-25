@@ -19,16 +19,16 @@ collections:
             widget: "list"
             fields:
               - {label: "ID", name: "id", widget: "string"}
-              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Category", name: "cat", widget: "string"}
               - {label: "Name", name: "name", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Description", name: "desc", widget: "text"}
               - {label: "Duration", name: "duration", widget: "string"}
               - {label: "Duration (Mins)", name: "durationMins", widget: "number"}
               - {label: "Price", name: "price", widget: "number"}
               - {label: "Deposit", name: "deposit", widget: "number"}
               - {label: "Requires Consultation", name: "requiresConsultation", widget: "boolean"}
-              - {label: "Image", name: "image", widget: "image"}
-              - {label: "Video URL", name: "video", widget: "string", required: false}
+              - {label: "Image", name: "img", widget: "image"}
+              - {label: "Video URL", name: "vid", widget: "string", required: false}
               - {label: "Cal.com Link", name: "calLink", widget: "string"}
 
       - label: "Portfolio"
@@ -40,11 +40,11 @@ collections:
             widget: "list"
             fields:
               - {label: "ID", name: "id", widget: "string"}
-              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Category", name: "cat", widget: "string"}
               - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - {label: "Image", name: "image", widget: "image"}
-              - {label: "Video", name: "video", widget: "string", required: false}
+              - {label: "Description", name: "desc", widget: "text"}
+              - {label: "Image", name: "img", widget: "image"}
+              - {label: "Video URL", name: "vid", widget: "string", required: false}
               - {label: "Type", name: "type", widget: "string", default: "image"}
 
       - label: "Blogs"
@@ -57,11 +57,11 @@ collections:
             fields:
               - {label: "ID", name: "id", widget: "string"}
               - {label: "Title", name: "title", widget: "string"}
-              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Category", name: "cat", widget: "string"}
               - {label: "Summary", name: "summary", widget: "text"}
               - {label: "Content", name: "content", widget: "markdown"}
               - {label: "Date", name: "date", widget: "string"}
-              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Image", name: "img", widget: "image"}
 
       - label: "Testimonials"
         name: "testimonials"
@@ -76,4 +76,4 @@ collections:
               - {label: "Location", name: "location", widget: "string"}
               - {label: "Rating", name: "rating", widget: "number", default: 5}
               - {label: "Comment", name: "comment", widget: "text"}
-              - {label: "Video URL", name: "video", widget: "string", required: false}
+              - {label: "Video URL", name: "vid", widget: "string", required: false}
