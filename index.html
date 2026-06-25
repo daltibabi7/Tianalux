@@ -1110,7 +1110,7 @@ function renderServices(cat){
         <h3 class="svc-name">${s.name}</h3>
         <p class="svc-desc">${s.desc}</p>
         <div class="svc-meta">
-          <span class="svc-dur">⏱ ${s.dur}</span>
+          <span class="svc-dur">⏱ ${s.dur||'1 Hour'}</span>
           <span class="svc-price"><small>starting at</small>$${s.price} CAD</span>
         </div>
         <div style="font-size:11px;margin-bottom:12px;display:flex;gap:6px;flex-wrap:wrap">
@@ -1362,14 +1362,14 @@ function renderDashboard(){
     <td>${b.svcName}</td>
     <td>${b.date} · ${b.time}</td>
     <td>$${b.paid} CAD<br><small style="color:var(--muted)">${b.payType}</small></td>
-    <td><span class="badge ${b.status.toLowerCase()}">${b.status}</span></td>
+    <td><span class="badge ${(b.status||`"Pending`").toLowerCase()}">${b.status||'Pending'}</span></td>
     ${!isClient?`<td><div class="tbl-acts">
       ${b.status!=='Approved'?`<button onclick="adminAction('approve','${b.id}')" style="background:#e8f5e9;color:#2e7d32;border-color:#c8e6c9">Approve</button>`:''}
       ${b.status!=='Cancelled'?`<button onclick="adminAction('cancel','${b.id}')" style="background:#ffebee;color:#c62828;border-color:#ffcdd2">Cancel</button>`:''}
     </div></td>`:''}</tr>`).join('');
 
   /* services CMS list */
-  const cmsItems=svcs.map(s=>`<div class="cms-item" data-id="${s.id}" onclick="selectCmsItem('${s.id}')"><div><div style="font-weight:600;font-size:12px">${s.name}</div><div style="font-size:10px;color:var(--muted)">${s.cat.toUpperCase()} · ${s.dur}</div></div><div style="font-weight:600">$${s.price} CAD</div></div>`).join('');
+  const cmsItems=svcs.map(s=>`<div class="cms-item" data-id="${s.id}" onclick="selectCmsItem('${s.id}')"><div><div style="font-weight:600;font-size:12px">${s.name}</div><div style="font-size:10px;color:var(--muted)">${(s.cat||'Other').toUpperCase()} · ${s.dur||'1 Hour'}</div></div><div style="font-weight:600">$${s.price} CAD</div></div>`).join('');
 
   /* inquiries */
   const iqHTML=dbGetInquiries().map(i=>`
@@ -1510,7 +1510,7 @@ function renderBooking(preselectId){
   const svcs=dbGetServices();
   const locs=svcs.filter(s=>s.cat==='locs');
   const brows=svcs.filter(s=>s.cat==='brows');
-  const rows=list=>list.map(s=>`<div class="svc-row" data-id="${s.id}" data-price="${s.price}" data-dep="${s.dep}" data-dur="${s.dur}" data-name="${s.name}" onclick="selectSvc(this)"><div><div class="svc-row-title">${s.name}</div><div class="svc-row-sub">${s.dur} · Starting price</div></div><div class="svc-row-price">$${s.price} CAD</div></div>`).join('');
+  const rows=list=>list.map(s=>`<div class="svc-row" data-id="${s.id}" data-price="${s.price}" data-dep="${s.dep}" data-dur="${s.dur||'1 Hour'}" data-name="${s.name}" onclick="selectSvc(this)"><div><div class="svc-row-title">${s.name}</div><div class="svc-row-sub">${s.dur||'1 Hour'} · Starting price</div></div><div class="svc-row-price">$${s.price} CAD</div></div>`).join('');
   return `
   <section class="section" style="padding:110px 20px 60px">
     <div class="container">
