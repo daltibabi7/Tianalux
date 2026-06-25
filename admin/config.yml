@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: daltibabi7/tianalux
+  branch: main
+  
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Settings & Data"
+    files:
+      - label: "Services"
+        name: "services"
+        file: "data/services.json"
+        fields:
+          - label: "Services List"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Duration", name: "duration", widget: "string"}
+              - {label: "Duration (Mins)", name: "durationMins", widget: "number"}
+              - {label: "Price", name: "price", widget: "number"}
+              - {label: "Deposit", name: "deposit", widget: "number"}
+              - {label: "Requires Consultation", name: "requiresConsultation", widget: "boolean"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Video URL", name: "video", widget: "string", required: false}
+              - {label: "Cal.com Link", name: "calLink", widget: "string"}
+
+      - label: "Portfolio"
+        name: "portfolio"
+        file: "data/portfolio.json"
+        fields:
+          - label: "Portfolio Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Video", name: "video", widget: "string", required: false}
+              - {label: "Type", name: "type", widget: "string", default: "image"}
+
+      - label: "Blogs"
+        name: "blogs"
+        file: "data/blogs.json"
+        fields:
+          - label: "Blog Posts"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Summary", name: "summary", widget: "text"}
+              - {label: "Content", name: "content", widget: "markdown"}
+              - {label: "Date", name: "date", widget: "string"}
+              - {label: "Image", name: "image", widget: "image"}
+
+      - label: "Testimonials"
+        name: "testimonials"
+        file: "data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "string"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Location", name: "location", widget: "string"}
+              - {label: "Rating", name: "rating", widget: "number", default: 5}
+              - {label: "Comment", name: "comment", widget: "text"}
+              - {label: "Video URL", name: "video", widget: "string", required: false}

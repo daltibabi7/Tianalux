@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+        "id": "blog-1",
+        "title": "The Ultimate Guide to Starter Locs Maintenance",
+        "category": "Loc Care",
+        "summary": "Important routines, washing schedules, and organic oils to use when embarking on your starter locs journey.",
+        "content": "Embarking on a loc journey is a beautiful decision. However, the starter stage is crucial. During the first 1 to 3 months, your locs are delicate and prone to unraveling.\n\nHere are 3 key tips from Tiana Lux for starter loc maintenance:\n1. **Avoid Frequent Washing**: Wash only once every 3 to 4 weeks using a stocking cap to protect the coils. Use a residue-free shampoo.\n2. **Moisturize Correctly**: Avoid heavy waxes or petroleum products. Opt for light botanical rosewater mist and jojoba oil.\n3. **Protect at Night**: Always wear a satin or silk bonnet to lock in moisture and prevent lint accumulation.\n\nStay confident, trust the process, and visit our Toronto house for professional steam treatments!",
+        "date": "June 15, 2026",
+        "image": "tiana-locs-2.jpg"
+    },
+    {
+        "id": "blog-2",
+        "title": "How to Extend Your Brow Lamination Lifespan",
+        "category": "Brows",
+        "summary": "Maximize your fluffy brow look for up to 8 weeks with these professional post-treatment rules.",
+        "content": "Brow lamination gives you that dreamy, full, brushed-up brow look. But how do you keep it looking fresh for 6-8 weeks?\n\nFirst 24 Hours:\n- Keep brows completely dry. No sweat, steam, or face washing.\n- Avoid sleeping on your face to prevent crimping.\n\nDaily Care:\n- Apply a drop of castor oil or keratin brow serum every night to keep hairs hydrated.\n- Brush them in place each morning using a clean spoolie brush.",
+        "date": "June 10, 2026",
+        "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80"
+    },
+    {
+        "id": "blog-3",
+        "title": "5 Nail Health Tips Between Acrylic Sets",
+        "category": "Nail Care",
+        "summary": "Keep your natural nails strong, flexible, and hydrated even with regular extensions.",
+        "content": "Acrylics look stunning, but your natural nails need care too.\n\n1. Never peel or pick extensions off; always professional soak off.\n2. Apply cuticle oil twice daily. Cuticle hydration stimulates healthy nail growth.\n3. Take a 1-week break every 3 months. Use a keratin nail strengthener during the break.\n4. Wear gloves when using household cleaning products.",
+        "date": "June 05, 2026",
+        "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80"
+    }
+  ]
+}

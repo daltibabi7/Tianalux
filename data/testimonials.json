@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+        "id": "test-1",
+        "name": "Amara K.",
+        "location": "St. John's, NL",
+        "rating": 5,
+        "comment": "Christiana is absolutely incredible! She did my traditional locs and the result was breathtaking. The whole experience felt so personal and luxurious, leaving me feeling like a completely new woman. TianaLux is the real deal in Newfoundland.",
+        "video": "https://assets.mixkit.co/videos/preview/mixkit-woman-smiling-after-a-beauty-treatment-44361-large.mp4"
+    },
+    {
+        "id": "test-2",
+        "name": "Sophia M.",
+        "location": "St. John's, NL",
+        "rating": 5,
+        "comment": "I got my Ombré Brows done at Brows by Tiana and I'm obsessed! Christiana took her time to map out the perfect shape for my face. The semi-permanent results are gorgeous; I get compliments every single day.",
+        "video": ""
+    },
+    {
+        "id": "test-3",
+        "name": "Chloe D.",
+        "location": "St. John's, NL",
+        "rating": 5,
+        "comment": "My microloc installation was done so beautifully, with unmatched precision and detail. TianaLux made the whole process comfortable and fun. I'm booked for my retie already!",
+        "video": ""
+    }
+  ]
+}

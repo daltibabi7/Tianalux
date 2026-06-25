@@ -1,32 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TIANA LUX Admin Panel</title>
-  <style>
-    body {font-family: Arial, sans-serif; padding: 2rem; background: #fafafa;}
-    h1 {color: #333;}
-    form {margin-top: 1rem;}
-    #result {margin-top: 1rem; color: green;}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tiana Lux Content Manager</title>
+  <!-- Include the script that builds the page and powers Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-  <h1>TIANA LUX – Admin Panel</h1>
-  <form id="uploadForm" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*" required />
-    <button type="submit">Upload Image</button>
-  </form>
-  <div id="result"></div>
-  <script>
-    document.getElementById('uploadForm').onsubmit = async e => {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
-      const resp = await fetch('/api/upload', {method: 'POST', body: data});
-      const txt = await resp.text();
-      document.getElementById('result').innerText = txt;
-    };
-  </script>
 </body>
 </html>
