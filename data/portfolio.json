@@ -8,9 +8,9 @@
       "img": "/uploads/photo_2026-06-20_12-24-53.jpg",
       "vid": "",
       "type": "image",
-      "category": "locs",
+      "image": "tiana-traditional-2.jpg",
       "description": "6 months progression of instant locs installation.",
-      "image": "tiana-traditional-2.jpg"
+      "category": "locs"
     },
     {
       "id": "port-2",
@@ -20,9 +20,9 @@
       "img": "/uploads/photo_2026-06-20_12-25-51.jpg",
       "vid": "",
       "type": "image",
-      "category": "brows",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
       "description": "Perfect gradient shading from light bulbs to defined dark arches.",
-      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80"
+      "category": "brows"
     },
     {
       "id": "port-3",
@@ -32,36 +32,9 @@
       "img": "/uploads/photo_2026-06-20_12-25-27.jpg",
       "vid": "",
       "type": "image",
-      "category": "locs",
+      "image": "tiana-locs-2.jpg",
       "description": "Beautifully crafted and tidy microloc grid installation.",
-      "image": "tiana-locs-2.jpg"
-    },
-    {
-      "id": "Port -4",
-      "cat": "Locs",
-      "title": "Men starters Locs",
-      "desc": "Men starters Locs",
-      "img": "/uploads/photo_2026-06-20_12-25-16.jpg",
-      "vid": "",
-      "type": "image"
-    },
-    {
-      "id": "port -5",
-      "cat": "Locs",
-      "title": "Small size traditional locs",
-      "desc": "Small size traditional locs",
-      "img": "/uploads/photo_2026-06-26_10-38-31.jpg",
-      "vid": "",
-      "type": "image"
-    },
-    {
-      "id": "Port -6",
-      "cat": "Locs",
-      "title": "Traditional Locs retie",
-      "desc": "Traditional Locs Retie",
-      "img": "/uploads/photo_2026-06-26_10-38-40.jpg",
-      "vid": "",
-      "type": "image"
+      "category": "locs"
     }
   ]
 }

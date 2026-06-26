@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -604,6 +604,13 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
   }
 }
 </style>
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("ui", {"styles":{"branding":{"brandColor":"#c3a343"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<!-- Cal element-click embed code ends -->
 </head>
 <body>
 
@@ -662,7 +669,7 @@ footer{background:var(--black);color:#fff;padding:72px 20px 28px;border-top:1px 
    =============================================*/
 
 /* â”€â”€ STATE / LOCAL DB â”€â”€ */
-const DATA_VER='11.2'; // bumped version to clear cache & load new service timings
+const DATA_VER='11.3'; // bumped version to clear cache & load new service timings
 // Auto-reset localStorage when data version changes
 (function(){if(localStorage.getItem('tl_ver')!==DATA_VER){['services','testimonials','portfolio','blogs','site_images'].forEach(k=>localStorage.removeItem('tl_'+k));localStorage.setItem('tl_ver',DATA_VER);}})();
 
@@ -884,8 +891,6 @@ function render(page,extra){
     case 'blog':return extra?renderArticle(extra):renderBlog();
     case 'contact':return renderContact();
     case 'dashboard':return renderDashboard();
-    case 'booking':return renderBooking(extra);
-    case 'payment':return renderPayment();
     default:return renderHome();
   }
 }
@@ -1111,8 +1116,8 @@ function renderServices(cat){
         </div>
         <div class="svc-acts">
           ${s.consult
-            ?`<button class="btn btn-gold" onclick="window.open('${s.calLink || 'https://cal.com/tianalux'}', '_blank')">Request Consultation</button>`
-            :`<button class="btn btn-solid" onclick="window.open('${s.calLink || 'https://cal.com/tianalux'}', '_blank')">Book Appointment</button>`
+            ?`<button class="btn btn-gold" data-cal-link="${(s.calLink || 'https://cal.com/tianalux').replace('https://cal.com/', '')}">Request Consultation</button>`
+            :`<button class="btn btn-solid" data-cal-link="${(s.calLink || 'https://cal.com/tianalux').replace('https://cal.com/', '')}">Book Appointment</button>`
           }
           
         </div>
@@ -1497,134 +1502,6 @@ function renderDashboard(){
   </section>`;
 }
 
-/* â”€â”€ BOOKING WIZARD â”€â”€ */
-function renderBooking(preselectId){
-  const svcs=dbGetServices();
-  const locs=svcs.filter(s=>s.cat==='locs');
-  const brows=svcs.filter(s=>s.cat==='brows');
-  const rows=list=>list.map(s=>`<div class="svc-row" data-id="${s.id}" data-price="${s.price}" data-dep="${s.dep}" data-dur="${s.dur}" data-name="${s.name}" onclick="selectSvc(this)"><div><div class="svc-row-title">${s.name}</div><div class="svc-row-sub">${s.dur} Â· Starting price</div></div><div class="svc-row-price">$${s.price} CAD</div></div>`).join('');
-  return `
-  <section class="section" style="padding:110px 20px 60px">
-    <div class="container">
-      <div class="book-wrap">
-        <div class="book-head"><h2>Book Your Experience in Canada</h2><p>Select a service and date to secure your slot with TianaLux.</p></div>
-        <div class="book-steps-bar">
-          <div class="step-ind active" id="si1"><div class="step-num">1</div>Service</div>
-          <div class="step-ind" id="si2"><div class="step-num">2</div>Date & Time</div>
-          <div class="step-ind" id="si3"><div class="step-num">3</div>Your Details</div>
-          <div class="step-ind" id="si4"><div class="step-num">4</div>Review</div>
-        </div>
-        <div class="book-body">
-          <div class="book-pane active" id="bp1">
-            <div class="cat-filter-row">
-              <button class="fbtn active" onclick="switchSvcCat('locs',this)">Tianalocs</button>
-              <button class="fbtn" onclick="switchSvcCat('brows',this)">Browsbytiana</button>
-            </div>
-            <div class="svc-list" id="svc-list-locs">${rows(locs)}</div>
-            <div class="svc-list hidden" id="svc-list-brows">${rows(brows)}</div>
-          </div>
-          <div class="book-pane" id="bp2">
-            <div class="cal-layout">
-              <div class="cal-box">
-                <div class="cal-hdr">
-                  <button class="cal-arrow" onclick="shiftCal(-1)">â†</button>
-                  <div class="cal-title" id="cal-title">June 2026</div>
-                  <button class="cal-arrow" onclick="shiftCal(1)">â†’</button>
-                </div>
-                <div class="cal-grid" id="cal-grid"></div>
-              </div>
-              <div class="slots-box">
-                <div class="slots-title">Available Slots</div>
-                <div class="slots-grid" id="slots-grid"><p style="color:var(--muted);font-size:12px">Select a date first.</p></div>
-              </div>
-            </div>
-          </div>
-          <div class="book-pane" id="bp3">
-            <div class="form-grid" id="client-form">
-              <div class="fg"><label>Full Name *</label><input id="bk-name" required placeholder="e.g. Amara Kingston"></div>
-              <div class="fg"><label>Phone Number *</label><input id="bk-phone" required placeholder="+1 (416) 555-0199"></div>
-              <div class="fg full"><label>Email Address *</label><input id="bk-email" type="email" required placeholder="amara@example.com"></div>
-              <div class="fg full"><label>Special Instructions</label><textarea id="bk-notes" rows="4" placeholder="Hair texture, style preferences..."></textarea></div>
-            </div>
-          </div>
-          <div class="book-pane" id="bp4">
-            <div class="summary-box">
-              <div class="sum-title" id="sum-svc">Service Name</div>
-              <div class="sum-row"><span class="sum-lbl">Duration:</span><span class="sum-val" id="sum-dur">â€”</span></div>
-              <div class="sum-row"><span class="sum-lbl">Date:</span><span class="sum-val" id="sum-date">â€”</span></div>
-              <div class="sum-row"><span class="sum-lbl">Time:</span><span class="sum-val" id="sum-time">â€”</span></div>
-              <div class="sum-row"><span class="sum-lbl">Artist:</span><span class="sum-val">Tiana (Senior Specialist)</span></div>
-              <div class="sum-row total"><span class="sum-lbl">Starting Price:</span><span class="sum-val" id="sum-price">â€”</span></div>
-              <div class="sum-row"><span class="sum-lbl">Deposit Due Now:</span><span class="sum-val" id="sum-dep" style="color:var(--gold-dark);font-weight:700">â€”</span></div>
-            </div>
-            <p style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:18px">Deposit is fully refundable if rescheduled 48+ hours in advance.</p>
-          </div>
-          <div class="book-nav">
-            <button class="btn" id="bk-back" style="visibility:hidden" onclick="bookStep(-1)">â† Back</button>
-            <button class="btn btn-solid" id="bk-next" disabled onclick="bookStep(1)">Select a Service First</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>`;
-}
-
-/* â”€â”€ PAYMENT â”€â”€ */
-function renderPayment(){
-  const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');
-  if(!tb){return `<section class="section" style="padding:120px 20px 60px"><div class="container" style="max-width:480px;text-align:center"><div style="font-size:48px;margin-bottom:18px">âš </div><h3 style="font-family:var(--serif);margin-bottom:14px">No Booking Found</h3><p style="color:var(--muted);margin-bottom:28px">Go back and complete the booking wizard first.</p><button class="btn btn-solid" onclick="goTo('services')">Go To Scheduler</button></div></section>`;}
-  return `
-  <section class="section" style="padding:120px 20px 60px">
-    <div class="container">
-      <div class="pay-wrap">
-        <h3 style="font-family:var(--serif);font-size:22px;text-align:center;margin-bottom:22px">Secure Canadian Checkout</h3>
-        <div style="background:var(--white);border:1px solid var(--beige-dark);padding:16px;margin-bottom:22px;font-size:13px">
-          <div style="display:flex;justify-content:space-between;font-weight:600;margin-bottom:4px"><span>${tb.svcName}</span><span>$${tb.price} CAD</span></div>
-          <div style="color:var(--muted)">${tb.date} at ${tb.time}</div>
-        </div>
-        <div class="fg" style="margin-bottom:22px"><label>Payment Option</label>
-          <select id="pay-type" style="border:1px solid var(--beige-dark);padding:10px;font-family:var(--sans);background:var(--white)" onchange="updatePayBtn()">
-            <option value="dep">Pay Deposit Only ($${tb.dep} CAD)</option>
-            <option value="full">Pay Full Amount ($${tb.price} CAD)</option>
-          </select>
-        </div>
-        <div class="pay-tabs">
-          <div class="pay-tab active" onclick="switchPayTab('card',this)">ðŸ’³ Card (Stripe)</div>
-          <div class="pay-tab" onclick="switchPayTab('paypal',this)">ðŸ…¿ PayPal</div>
-          <div class="pay-tab" onclick="switchPayTab('square',this)">â¬› Square</div>
-        </div>
-        <div id="pt-card">
-          <div class="card-mock">
-            <div style="display:flex;justify-content:space-between;align-items:center"><div class="chip"></div><div class="card-brand">Tiana Lux</div></div>
-            <div class="card-num-mock" id="mock-num">â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢</div>
-            <div class="card-btm">
-              <div><div style="font-size:7px;opacity:.55;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Card Holder</div><div class="card-holder-mock" id="mock-name">YOUR NAME</div></div>
-              <div><div style="font-size:7px;opacity:.55;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px">Expires</div><div class="card-exp-mock" id="mock-exp">MM/YY</div></div>
-            </div>
-          </div>
-          <form id="card-form" style="display:flex;flex-direction:column;gap:14px">
-            <div class="fg"><label>Card Holder Name</label><input id="cn-name" placeholder="e.g. Amara Kingston" required oninput="document.getElementById('mock-name').textContent=this.value.toUpperCase()||'YOUR NAME'"></div>
-            <div class="fg"><label>Card Number</label><input id="cn-num" placeholder="4111 2222 3333 4444" maxlength="19" required oninput="fmtCardNum(this)"></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-              <div class="fg"><label>Expiry Date</label><input id="cn-exp" placeholder="MM/YY" maxlength="5" required oninput="fmtExp(this)"></div>
-              <div class="fg"><label>CVC</label><input type="password" id="cn-cvc" placeholder="â€¢â€¢â€¢" maxlength="4" required></div>
-            </div>
-            <button type="submit" class="btn btn-solid" id="pay-submit-btn" style="width:100%;padding:14px">Pay Deposit ($${tb.dep} CAD)</button>
-          </form>
-        </div>
-        <div id="pt-paypal" class="hidden" style="text-align:center;padding:20px 0">
-          <div style="background:#f7c124;padding:14px;border-radius:4px;font-weight:700;cursor:pointer;color:#111" onclick="processPayment('PayPal')">Pay with PayPal</div>
-          <p style="font-size:11px;color:var(--muted);margin-top:12px">You will be redirected to PayPal's secure Canadian portal.</p>
-        </div>
-        <div id="pt-square" class="hidden" style="text-align:center;padding:20px 0">
-          <button class="btn" style="width:100%;border-color:#3f51b5;color:#3f51b5" onclick="processPayment('Square Pay')">Pay with Square Pay</button>
-        </div>
-        <div id="receipt-wrap"></div>
-      </div>
-    </div>
-  </section>`;
-}
-
 /* â”€â”€ PAGE INIT HOOKS â”€â”€ */
 function initPage(page,extra){
   switch(page){
@@ -1635,8 +1512,6 @@ function initPage(page,extra){
     case 'blog':break;
     case 'contact':initContactForm();break;
     case 'dashboard':initDash();break;
-    case 'booking':initBooking(extra);break;
-    case 'payment':initPayment();break;
   }
 }
 function initHome(){initBA();}
@@ -1803,189 +1678,6 @@ function simulateUpload(){
     }
   };
   input.click();
-}
-
-/* â”€â”€ BOOKING LOGIC â”€â”€ */
-let bkState={step:1,svcId:null,svcName:'',price:0,dep:0,dur:'',date:null,time:null};
-let calYear=2026,calMonth=5;
-const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-const TIMES=['09:00 AM','10:30 AM','12:00 PM','01:30 PM','03:00 PM','04:30 PM','06:00 PM'];
-
-function initBooking(preselectId){
-  // Pre-fill client info
-  const c=dbGetClient();
-  const n=document.getElementById('bk-name'),p=document.getElementById('bk-phone'),em=document.getElementById('bk-email');
-  if(n)n.value=c.name||'';if(p)p.value=c.phone||'';if(em)em.value=c.email||'';
-  // Validate form fields on input
-  ['bk-name','bk-phone','bk-email'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('input',checkClientForm);});
-  renderCal();
-  if(preselectId){
-    const row=document.querySelector(`.svc-row[data-id="${preselectId}"]`);
-    if(row){
-      const cat=preselectId.startsWith('b')?'brows':'locs';
-      if(cat==='brows')document.querySelectorAll('.cat-filter-row .fbtn').forEach((b,i)=>{b.classList.toggle('active',i===1);});
-      switchSvcCat(cat,document.querySelectorAll('.cat-filter-row .fbtn')[preselectId.startsWith('b')?1:0]);
-      selectSvc(row);
-    }
-  }
-}
-function switchSvcCat(cat,btn){
-  document.querySelectorAll('.cat-filter-row .fbtn').forEach(b=>b.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  document.getElementById('svc-list-locs').classList.toggle('hidden',cat==='brows');
-  document.getElementById('svc-list-brows').classList.toggle('hidden',cat==='locs');
-  bkState.svcId=null;updateBkNext();
-}
-function selectSvc(el){
-  document.querySelectorAll('.svc-row').forEach(r=>r.classList.remove('sel'));
-  el.classList.add('sel');
-  bkState.svcId=el.dataset.id;bkState.svcName=el.dataset.name;bkState.price=parseFloat(el.dataset.price);bkState.dep=parseFloat(el.dataset.dep);bkState.dur=el.dataset.dur;
-  updateBkNext();
-}
-function updateBkNext(){
-  const btn=document.getElementById('bk-next');if(!btn)return;
-  if(bkState.step===1){btn.disabled=!bkState.svcId;btn.textContent=bkState.svcId?'Next: Choose Date & Time â†’':'Select a Service First';}
-  if(bkState.step===2){btn.disabled=!(bkState.date&&bkState.time);btn.textContent=bkState.date&&bkState.time?'Next: Enter Your Details â†’':'Choose a Date & Time';}
-  if(bkState.step===3){checkClientForm();}
-  if(bkState.step===4){btn.disabled=false;btn.textContent='Confirm & Pay Deposit';}
-}
-function checkClientForm(){
-  const btn=document.getElementById('bk-next');if(!btn||bkState.step!==3)return;
-  const ok=document.getElementById('bk-name')?.value.trim()&&document.getElementById('bk-phone')?.value.trim()&&document.getElementById('bk-email')?.value.trim();
-  btn.disabled=!ok;btn.textContent=ok?'Next: Review Booking â†’':'Fill Required Fields';
-}
-function renderCal(){
-  const grid=document.getElementById('cal-grid');const title=document.getElementById('cal-title');
-  if(!grid||!title)return;
-  title.textContent=MONTHS[calMonth]+' '+calYear;
-  grid.innerHTML='';
-  ['Su','Mo','Tu','We','Th','Fr','Sa'].forEach(d=>{const h=document.createElement('div');h.className='cal-dh';h.textContent=d;grid.appendChild(h);});
-  const first=new Date(calYear,calMonth,1).getDay();
-  const days=new Date(calYear,calMonth+1,0).getDate();
-  const today=new Date(2026,5,18);
-  for(let i=0;i<first;i++){grid.appendChild(document.createElement('div'));}
-  for(let d=1;d<=days;d++){
-    const cell=document.createElement('div');cell.className='cal-d';cell.textContent=d;
-    const dt=new Date(calYear,calMonth,d);
-    if(dt<today){cell.classList.add('dis');}else{
-      if(bkState.date&&bkState.date.getDate()===d&&bkState.date.getMonth()===calMonth&&bkState.date.getFullYear()===calYear)cell.classList.add('sel');
-      cell.onclick=()=>{bkState.date=new Date(calYear,calMonth,d);bkState.time=null;renderCal();renderSlots();};
-    }
-    grid.appendChild(cell);
-  }
-}
-function shiftCal(dir){calMonth+=dir;if(calMonth<0){calMonth=11;calYear--;}if(calMonth>11){calMonth=0;calYear++;}renderCal();}
-function renderSlots(){
-  const g=document.getElementById('slots-grid');if(!g||!bkState.date)return;
-  const dateStr=bkState.date.toISOString().split('T')[0];
-  const booked=dbGetBookings().filter(b=>b.date===dateStr&&b.status!=='Cancelled').map(b=>b.time);
-  g.innerHTML='';
-  TIMES.forEach(t=>{
-    const btn=document.createElement('button');btn.className='slot-btn';btn.textContent=t;
-    if(booked.includes(t)){btn.classList.add('dis');btn.disabled=true;}
-    else{if(bkState.time===t)btn.classList.add('sel');btn.onclick=()=>{bkState.time=t;renderSlots();updateBkNext();};}
-    g.appendChild(btn);
-  });
-  updateBkNext();
-}
-function fillSummary(){
-  document.getElementById('sum-svc').textContent=bkState.svcName;
-  document.getElementById('sum-dur').textContent=bkState.dur;
-  const opts={weekday:'long',year:'numeric',month:'long',day:'numeric'};
-  document.getElementById('sum-date').textContent=bkState.date.toLocaleDateString('en-US',opts);
-  document.getElementById('sum-time').textContent=bkState.time;
-  document.getElementById('sum-price').textContent='$'+bkState.price.toFixed(2)+' CAD';
-  document.getElementById('sum-dep').textContent='$'+bkState.dep.toFixed(2)+' CAD';
-}
-function bookStep(dir){
-  const max=4;const min=1;const next=bkState.step+dir;
-  if(next<min||next>max)return;
-  document.getElementById('bp'+bkState.step).classList.remove('active');
-  document.getElementById('si'+bkState.step).classList.remove('active');
-  if(dir>0)document.getElementById('si'+bkState.step).classList.add('done');
-  else document.getElementById('si'+next).classList.remove('done');
-  bkState.step=next;
-  document.getElementById('bp'+bkState.step).classList.add('active');
-  document.getElementById('si'+bkState.step).classList.add('active');
-  const back=document.getElementById('bk-back');if(back)back.style.visibility=bkState.step>1?'visible':'hidden';
-  if(bkState.step===4)fillSummary();
-  if(bkState.step===4){
-    const btn=document.getElementById('bk-next');
-    btn.textContent='Confirm & Pay Deposit';btn.disabled=false;
-    btn.onclick=()=>{
-      sessionStorage.setItem('tl_pending',JSON.stringify({svcId:bkState.svcId,svcName:bkState.svcName,price:bkState.price,dep:bkState.dep,date:bkState.date.toISOString().split('T')[0],time:bkState.time,clientName:document.getElementById('bk-name').value,clientEmail:document.getElementById('bk-email').value,clientPhone:document.getElementById('bk-phone').value,notes:document.getElementById('bk-notes').value}));
-      toast('Opening checkout...','ok');setTimeout(()=>goTo('payment'),700);
-    };
-  }else{updateBkNext();}
-}
-
-/* â”€â”€ PAYMENT LOGIC â”€â”€ */
-let payAmtType='dep';
-function updatePayBtn(){
-  const sel=document.getElementById('pay-type');const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');if(!sel||!tb)return;
-  payAmtType=sel.value;
-  const amt=payAmtType==='dep'?tb.dep:tb.price;
-  const btn=document.getElementById('pay-submit-btn');if(btn)btn.textContent=`Pay $${amt.toFixed(2)} CAD`;
-}
-function switchPayTab(tab,el){
-  document.querySelectorAll('.pay-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');
-  ['pt-card','pt-paypal','pt-square'].forEach(id=>document.getElementById(id)?.classList.add('hidden'));
-  document.getElementById('pt-'+tab)?.classList.remove('hidden');
-}
-function fmtCardNum(el){let v=el.value.replace(/\D/g,''),f='';for(let i=0;i<v.length;i++){if(i>0&&i%4===0)f+=' ';f+=v[i];}el.value=f;document.getElementById('mock-num').textContent=f||'â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢ â€¢â€¢â€¢â€¢';}
-function fmtExp(el){let v=el.value.replace(/\D/g,'');if(v.length>2)v=v.slice(0,2)+'/'+v.slice(2,4);el.value=v;document.getElementById('mock-exp').textContent=v||'MM/YY';}
-function initPayment(){
-  const cf=document.getElementById('card-form');
-  if(cf)cf.addEventListener('submit',e=>{e.preventDefault();processPayment('Stripe Card');});
-}
-function processPayment(method){
-  const tb=JSON.parse(sessionStorage.getItem('tl_pending')||'null');if(!tb)return;
-  const btn=document.getElementById('pay-submit-btn');if(btn){btn.disabled=true;btn.textContent='Processing...';}
-  toast('Authenticating... please wait.','ok');
-  setTimeout(()=>{
-    const amt=payAmtType==='dep'?tb.dep:tb.price;
-    const rec='TX-2026-'+Math.floor(1000+Math.random()*9000);
-    const ts=new Date().toISOString().split('T')[0];
-    const bks=dbGetBookings();
-    bks.unshift({id:'bk'+Date.now(),client:tb.clientName,email:tb.clientEmail,phone:tb.clientPhone,svcName:tb.svcName,svcId:tb.svcId,date:tb.date,time:tb.time,notes:tb.notes,status:'Approved',paid:amt,payType:payAmtType==='dep'?'Deposit Only':'Full Payment',receipt:rec});
-    dbSet('bookings',bks);
-    sessionStorage.removeItem('tl_pending');
-    const rw=document.getElementById('receipt-wrap');
-    document.getElementById('pt-card')?.classList.add('hidden');
-    document.getElementById('pt-paypal')?.classList.add('hidden');
-    document.getElementById('pt-square')?.classList.add('hidden');
-    document.querySelector('.pay-tabs')?.style.setProperty('display','none');
-    document.querySelector('#pay-type')?.parentElement?.style.setProperty('display','none');
-    if(rw)rw.innerHTML=`<div class="receipt">
-      <div class="receipt-head">
-        <div style="font-size:28px;color:#4caf50;margin-bottom:8px">âœ”</div>
-        <div class="receipt-logo">T I A N A &nbsp; L U X</div>
-        <div style="font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px">Booking Invoice & Receipt</div>
-      </div>
-      <div style="font-size:12px;line-height:1.7;margin-bottom:16px">
-        <div><strong>Receipt No:</strong> ${rec}</div>
-        <div><strong>Date:</strong> ${ts}</div>
-        <div><strong>Client:</strong> ${tb.clientName}</div>
-        <div><strong>Email:</strong> ${tb.clientEmail}</div>
-      </div>
-      <table style="width:100%;font-size:12px;border-collapse:collapse;margin-bottom:20px">
-        <thead><tr style="border-bottom:1px solid var(--beige-dark);text-align:left;font-weight:600"><th style="padding:6px 0">Description</th><th style="padding:6px 0;text-align:right">Amount</th></tr></thead>
-        <tbody>
-          <tr><td style="padding:9px 0">${tb.svcName}<br><small style="color:var(--muted)">${tb.date} @ ${tb.time}</small></td><td style="padding:9px 0;text-align:right">$${tb.price.toFixed(2)} CAD</td></tr>
-          <tr style="border-top:1px solid var(--beige-dark);font-weight:600"><td style="padding:9px 0">Paid (${payAmtType==='dep'?'Deposit':' Full'} via ${method}):</td><td style="padding:9px 0;text-align:right;color:#2e7d32">$${amt.toFixed(2)} CAD</td></tr>
-          <tr><td style="padding:5px 0;font-size:10px;color:var(--muted)">Balance due at salon:</td><td style="padding:5px 0;text-align:right;font-size:10px;color:var(--muted)">$${(tb.price-amt).toFixed(2)} CAD</td></tr>
-        </tbody>
-      </table>
-      <div style="text-align:center;display:flex;gap:10px;justify-content:center">
-        <button class="btn btn-solid" onclick="window.print()" style="padding:8px 16px;font-size:9px">ðŸ–¨ Print Receipt</button>
-        <button class="btn" onclick="goTo('dashboard')" style="padding:8px 16px;font-size:9px">Go to Dashboard</button>
-      </div>
-      <div style="background:#e3f2fd;border:1px solid #90caf9;padding:12px;margin-top:16px;font-size:11px;text-align:center;color:#0d47a1">
-        âœ‰ Simulated confirmation email sent to <strong>${tb.clientEmail}</strong>
-      </div>
-    </div>`;
-    toast('Payment successful! Appointment confirmed.','ok');
-  },2000);
 }
 
 /* â”€â”€ FOOTER â”€â”€ */
