@@ -44,6 +44,24 @@
       "img": "/uploads/photo_2026-06-20_12-25-16.jpg",
       "vid": "",
       "type": "image"
+    },
+    {
+      "id": "port -5",
+      "cat": "Locs",
+      "title": "Small size traditional locs",
+      "desc": "Small size traditional locs",
+      "img": "/uploads/photo_2026-06-26_10-38-31.jpg",
+      "vid": "",
+      "type": "image"
+    },
+    {
+      "id": "Port -6",
+      "cat": "Locs",
+      "title": "Traditional Locs retie",
+      "desc": "Traditional Locs Retie",
+      "img": "/uploads/photo_2026-06-26_10-38-40.jpg",
+      "vid": "",
+      "type": "image"
     }
   ]
 }
