@@ -1,6 +1,24 @@
 {
   "items": [
     {
+      "id": "locs-3",
+      "cat": "Tiana Locs",
+      "name": "Traditional Locs (starters loc)",
+      "desc": "Professional loc retie and retwist to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
+      "duration": "3 hrs",
+      "durationMins": 180,
+      "price": 100,
+      "deposit": 25,
+      "requiresConsultation": true,
+      "img": "/uploads/photo_2026-06-20_12-24-53.jpg",
+      "vid": "",
+      "calLink": "https://cal.com/tianalux/traditional-loc-retie-retwist-consultation",
+      "video": "",
+      "image": "tiana-traditional-2.jpg",
+      "description": "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
+      "category": "locs"
+    },
+    {
       "id": "locs-1",
       "cat": "Tiana Locs",
       "name": "Traditional Locs Installation",
@@ -34,24 +52,6 @@
       "video": "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4",
       "image": "microlocs-installation.jpg",
       "description": "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. Consultation required.",
-      "category": "locs"
-    },
-    {
-      "id": "locs-3",
-      "cat": "Tiana Locs",
-      "name": "Traditional Loc (starters loc)",
-      "desc": "Professional loc retie and retwist to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
-      "duration": "3 hrs",
-      "durationMins": 180,
-      "price": 100,
-      "deposit": 25,
-      "requiresConsultation": true,
-      "img": "/uploads/photo_2026-06-20_12-24-53.jpg",
-      "vid": "",
-      "calLink": "https://cal.com/tianalux/traditional-loc-retie-retwist-consultation",
-      "video": "",
-      "image": "tiana-traditional-2.jpg",
-      "description": "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
       "category": "locs"
     },
     {
