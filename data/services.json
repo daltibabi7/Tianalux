@@ -13,10 +13,10 @@
       "img": "/uploads/photo_2026-06-21_03-22-05.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/traditional-locs-installation",
-      "category": "locs",
-      "description": "Begin your loc journey with expert traditional loc installation. Final price depends on hair length, density, desired size, and overall hair condition. A consultation helps us tailor the perfect plan for your hair.",
+      "video": "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4",
       "image": "tiana-traditional-1.jpg",
-      "video": "https://assets.mixkit.co/videos/preview/mixkit-woman-getting-her-hair-washed-in-a-salon-44358-large.mp4"
+      "description": "Begin your loc journey with expert traditional loc installation. Final price depends on hair length, density, desired size, and overall hair condition. A consultation helps us tailor the perfect plan for your hair.",
+      "category": "locs"
     },
     {
       "id": "locs-2",
@@ -31,10 +31,10 @@
       "img": "/uploads/microlocs-installation.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux",
-      "category": "locs",
-      "description": "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. Consultation required.",
+      "video": "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4",
       "image": "microlocs-installation.jpg",
-      "video": "https://assets.mixkit.co/videos/preview/mixkit-hairdresser-styling-hair-of-a-woman-40483-large.mp4"
+      "description": "Precision microloc installation crafted to perfection. Final price depends on consultation, hair density, hair length, and grid size. Consultation required.",
+      "category": "locs"
     },
     {
       "id": "locs-3",
@@ -49,10 +49,10 @@
       "img": "/uploads/photo_2026-06-20_12-24-53.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/traditional-loc-retie-retwist-consultation",
-      "category": "locs",
-      "description": "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
+      "video": "",
       "image": "tiana-traditional-2.jpg",
-      "video": ""
+      "description": "Professional loc retie and retwist service to maintain the health and shape of your locs. Final price depends on hair length, density, and amount of new growth.",
+      "category": "locs"
     },
     {
       "id": "locs-4",
@@ -67,10 +67,10 @@
       "img": "/uploads/photo_2026-06-21_09-17-26.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/microlocs-retie-consultation",
-      "category": "locs",
-      "description": "Expert microloc retie service to keep your microlocs looking fresh and well-maintained. Final price depends on density, size, and time required.",
+      "video": "",
       "image": "media__1782125029494.jpg",
-      "video": ""
+      "description": "Expert microloc retie service to keep your microlocs looking fresh and well-maintained. Final price depends on density, size, and time required.",
+      "category": "locs"
     },
     {
       "id": "locs-5",
@@ -82,13 +82,13 @@
       "price": 30,
       "deposit": 0,
       "requiresConsultation": false,
-      "img": "/uploads/photo_2026-06-22_10-36-49.jpg",
+      "img": "/uploads/photo_2026-06-26_06-54-52.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux",
-      "category": "locs",
-      "description": "A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required; book directly.",
+      "video": "",
       "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-      "video": ""
+      "description": "A thorough, professional hair wash using premium products to cleanse and nourish your scalp and hair. No deposit required; book directly.",
+      "category": "locs"
     },
     {
       "id": "locs-6",
@@ -103,10 +103,10 @@
       "img": "/uploads/photo_2026-06-22_10-36-49.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/cornrows-consultation",
-      "category": "locs",
-      "description": "Beautifully crafted cornrows tailored to your style preferences. Final price depends on style, length, and complexity. Consultation recommended.",
+      "video": "",
       "image": "tiana-locs-5.jpg",
-      "video": ""
+      "description": "Beautifully crafted cornrows tailored to your style preferences. Final price depends on style, length, and complexity. Consultation recommended.",
+      "category": "locs"
     },
     {
       "id": "locs-7",
@@ -121,10 +121,10 @@
       "img": "/uploads/photo_2026-06-22_08-53-10.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux",
-      "category": "locs",
-      "description": "A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book your appointment directly; no consultation needed.",
+      "video": "",
       "image": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80",
-      "video": ""
+      "description": "A luxury pedicure service designed to leave feet clean, refreshed, and beautifully groomed. Book your appointment directly; no consultation needed.",
+      "category": "locs"
     },
     {
       "id": "brows-1",
@@ -139,10 +139,10 @@
       "img": "/uploads/photo_2026-06-20_12-25-51.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/15min",
-      "category": "brows",
-      "description": "Semi-permanent powder brows designed to enhance shape, definition, and symmetry. A beautiful, long-lasting brow transformation tailored to your features.",
+      "video": "https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4",
       "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-      "video": "https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-applying-eyebrow-makeup-44363-large.mp4"
+      "description": "Semi-permanent powder brows designed to enhance shape, definition, and symmetry. A beautiful, long-lasting brow transformation tailored to your features.",
+      "category": "brows"
     },
     {
       "id": "brows-2",
@@ -157,10 +157,10 @@
       "img": "/uploads/photo_2026-06-20_12-26-02.jpg",
       "vid": "",
       "calLink": "https://cal.com/tianalux/ombre-brow-touch-up",
-      "category": "brows",
-      "description": "This touch-up price applies only to clients whose original Ombré Brows were done by Brows by Tiana. Clients from another artist will be charged as a new Ombré Brow service.",
+      "video": "",
       "image": "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?w=800&auto=format&fit=crop&q=80",
-      "video": ""
+      "description": "This touch-up price applies only to clients whose original Ombré Brows were done by Brows by Tiana. Clients from another artist will be charged as a new Ombré Brow service.",
+      "category": "brows"
     }
   ]
 }
