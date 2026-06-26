@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -936,7 +936,7 @@ function renderHome(){
   <section class="section">
     <div class="container">
       <div class="about-split">
-        <div class="about-frame"><img src="christiana.jpg?v=3" alt="Tiana Lux"></div>
+        <div class="about-frame"><img src="${(() => { const si = db('site_images'); return (si && si.about_img) ? si.about_img : 'christiana.jpg?v=3'; })()}" alt="Tiana Lux"></div>
         <div class="about-text">
           <div class="subtitle">About TianaLux &bull; Canada</div>
           <h2 class="section-title" style="text-align:left;display:block;margin-bottom:22px">Luxury Beauty &amp; PMU Experience in St.John's, Newfoundland</h2>
@@ -1053,7 +1053,7 @@ function renderAbout(){return `
           <p style="color:var(--muted);margin-bottom:30px;font-size:15px;line-height:1.7">Whether you're visiting for loc maintenance, a fresh brow transformation, or a relaxing beauty treatment, I am committed to creating an experience that leaves you feeling confident, refreshed, and empowered. Proudly serving St. John's, Newfoundland and surrounding communities across Canada.</p>
           <div class="about-sig">Christiana Adesanya</div>
         </div>
-        <div class="about-frame" style="flex:1"><img src="christiana.jpg?v=3" alt="Christiana Adesanya - Founder of TianaLux" style="height:500px;object-fit:cover"></div>
+        <div class="about-frame" style="flex:1"><img src="${(() => { const si = db('site_images'); return (si && si.about_img) ? si.about_img : 'christiana.jpg?v=3'; })()}" alt="Christiana Adesanya - Founder of TianaLux" style="height:500px;object-fit:cover"></div>
       </div>
     </div>
   </section>
@@ -2062,13 +2062,14 @@ document.getElementById('burger').addEventListener('click',()=>{
 /* â”€â”€ BOOT â”€â”€ */
 async function loadCmsData() {
   try {
-    const urls = ['/data/services.json', '/data/portfolio.json', '/data/blogs.json', '/data/testimonials.json'];
+    const urls = ['/data/services.json', '/data/portfolio.json', '/data/blogs.json', '/data/testimonials.json', '/data/home.json'];
     const fetches = urls.map(url => fetch(url + '?t=' + Date.now(), { cache: 'no-store' }).then(res => res.ok ? res.json() : null).catch(e => null));
-    const [services, portfolio, blogs, testimonials] = await Promise.all(fetches);
+    const [services, portfolio, blogs, testimonials, home] = await Promise.all(fetches);
     if (services && services.items) localStorage.setItem('tl_services', JSON.stringify(services.items));
     if (portfolio && portfolio.items) localStorage.setItem('tl_portfolio', JSON.stringify(portfolio.items));
     if (blogs && blogs.items) localStorage.setItem('tl_blogs', JSON.stringify(blogs.items));
     if (testimonials && testimonials.items) localStorage.setItem('tl_testimonials', JSON.stringify(testimonials.items));
+    if (home) localStorage.setItem('tl_site_images', JSON.stringify(home));
   } catch (e) { console.warn("Failed to load CMS data:", e); }
 }
 
