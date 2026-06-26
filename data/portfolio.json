@@ -1,10 +1,10 @@
-{
+﻿{
   "items": [
     {
         "id": "port-1",
         "category": "locs",
         "title": "Loc Installation & Grooming",
-        "description": "6 months progression of instant locs installation using human hair extensions.",
+        "description": "6 months progression of instant locs installation.",
         "image": "tiana-traditional-2.jpg",
         "type": "image"
     },
@@ -51,3 +51,4 @@
     }
   ]
 }
+
