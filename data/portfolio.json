@@ -1,54 +1,40 @@
-﻿{
+{
   "items": [
     {
-        "id": "port-1",
-        "category": "locs",
-        "title": "Loc Installation & Grooming",
-        "description": "6 months progression of instant locs installation.",
-        "image": "tiana-traditional-2.jpg",
-        "type": "image"
+      "id": "port-1",
+      "cat": "Locs",
+      "title": "Loc Installation & Grooming",
+      "desc": "Loc Installation & Grooming\n6 months progression of instant locs installation.",
+      "img": "/uploads/photo_2026-06-20_12-24-53.jpg",
+      "vid": "",
+      "type": "image",
+      "image": "tiana-traditional-2.jpg",
+      "description": "6 months progression of instant locs installation.",
+      "category": "locs"
     },
     {
-        "id": "port-2",
-        "category": "brows",
-        "title": "Ombre Powder Brows Alignment",
-        "description": "Perfect gradient shading from light bulbs to defined dark arches.",
-        "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
-        "type": "image"
+      "id": "port-2",
+      "cat": "Brows",
+      "title": "Ombre Powder Brows Alignment",
+      "desc": "Perfect gradient shading from light bulbs to defined dark arches.",
+      "img": "/uploads/photo_2026-06-20_12-25-51.jpg",
+      "vid": "",
+      "type": "image",
+      "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80",
+      "description": "Perfect gradient shading from light bulbs to defined dark arches.",
+      "category": "brows"
     },
     {
-        "id": "port-3",
-        "category": "locs",
-        "title": "Precision Microlocs Installation",
-        "description": "Beautifully crafted and tidy microloc grid installation.",
-        "image": "tiana-locs-2.jpg",
-        "type": "image"
-    },
-    {
-        "id": "port-4",
-        "category": "nails",
-        "title": "Luxury Gold Foil Nail Art",
-        "description": "French tips embellished with 24k gold foil accents on acrylic extensions.",
-        "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&auto=format&fit=crop&q=80",
-        "type": "image"
-    },
-    {
-        "id": "port-5",
-        "category": "lashes",
-        "title": "Volume Lashes Dramatic Set",
-        "description": "Full volume 5D lashes showing dramatic yet lightweight fluffiness.",
-        "image": "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=800&auto=format&fit=crop&q=80",
-        "type": "image"
-    },
-    {
-        "id": "port-6",
-        "category": "nails",
-        "title": "Champagne Nude Extensions",
-        "description": "Handpainted chrome details on coffin gel nails.",
-        "image": "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&auto=format&fit=crop&q=80",
-        "video": "https://assets.mixkit.co/videos/preview/mixkit-woman-showing-her-manicure-44362-large.mp4",
-        "type": "video"
+      "id": "port-3",
+      "cat": "Locs",
+      "title": "Precision Microlocs Installation",
+      "desc": "Beautifully crafted and tidy microloc grid inst",
+      "img": "/uploads/photo_2026-06-20_12-25-27.jpg",
+      "vid": "",
+      "type": "image",
+      "image": "tiana-locs-2.jpg",
+      "description": "Beautifully crafted and tidy microloc grid installation.",
+      "category": "locs"
     }
   ]
 }
-
